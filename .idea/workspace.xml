@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5d5e08be-ba77-4f08-9f80-261d632cb0bc" name="Default Changelist" comment="реализауия профессий в коде 219348">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/job4j/com/company/Main.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/job4j/condition/DummyBot.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/job4j/condition/DummyBotTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/job4j/condition/Point.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/job4j/ru/job4j/converter/Converter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/condition/Max.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Rebase.Settings">
+    <option name="ONTO" value="refs/heads/master" />
+  </component>
+  <component name="Git.Settings">
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--follow-tags" />
+        <option name="title" value="Current Branch" />
+      </GitPushTagMode>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="SYNC" />
+    <option name="UPDATE_TYPE" value="MERGE" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1W7bDUU3xd2YnVbyviH0ztKzFVZ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="flattenModules" value="true" />
+    <option name="flattenPackages" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+    <option name="showVisibilityIcons" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="ru.job4j.oop" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/src/condition" />
+      <recent name="$PROJECT_DIR$/ru.job4j/src" />
+      <recent name="$PROJECT_DIR$/chapter-001" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.DummyBotTest">
+    <configuration name="Main" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="11.0.3" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.company.Main" />
+      <module name="job4j" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DummyBotTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="job4j" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="condition.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="condition" />
+      <option name="MAIN_CLASS_NAME" value="condition.DummyBotTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.DummyBotTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5d5e08be-ba77-4f08-9f80-261d632cb0bc" name="Default Changelist" comment="" />
+      <created>1578503460453</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1578503460453</updated>
+    </task>
+    <task id="LOCAL-00001" summary="реализауия профессий в коде 219348">
+      <created>1578838575501</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1578838575501</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="реализауия профессий в коде 219348" />
+    <option name="LAST_COMMIT_MESSAGE" value="реализауия профессий в коде 219348" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="320" y="147" width="811" height="669" key="#Project_Structure" timestamp="1578814070116">
+      <screen x="0" y="23" width="1440" height="804" />
+    </state>
+    <state x="320" y="147" width="811" height="669" key="#Project_Structure/0.23.1440.804@0.23.1440.804" timestamp="1578814070116" />
+    <state x="184" y="143" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578512279481">
+      <screen x="0" y="23" width="1440" height="798" />
+    </state>
+    <state x="184" y="143" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.798@0.23.1440.798" timestamp="1578512279481" />
+    <state x="348" y="291" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1578828342472">
+      <screen x="0" y="23" width="1440" height="822" />
+    </state>
+    <state x="348" y="291" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.822@0.23.1440.822" timestamp="1578828342472" />
+    <state x="533" y="203" key="#com.intellij.ide.util.MemberChooser" timestamp="1578832429456">
+      <screen x="0" y="23" width="1440" height="822" />
+    </state>
+    <state x="533" y="203" key="#com.intellij.ide.util.MemberChooser/0.23.1440.822@0.23.1440.822" timestamp="1578832429456" />
+    <state x="465" y="414" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1578814661385">
+      <screen x="0" y="23" width="1440" height="804" />
+    </state>
+    <state x="465" y="414" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.23.1440.804@0.23.1440.804" timestamp="1578814661385" />
+    <state x="344" y="50" width="752" height="661" key="CommitChangelistDialog2" timestamp="1578839739060">
+      <screen x="0" y="23" width="1440" height="822" />
+    </state>
+    <state x="344" y="50" width="752" height="661" key="CommitChangelistDialog2/0.23.1440.822@0.23.1440.822" timestamp="1578839739060" />
+    <state x="144" y="106" key="DiffContextDialog" timestamp="1578839729592">
+      <screen x="0" y="23" width="1440" height="822" />
+    </state>
+    <state x="144" y="106" key="DiffContextDialog/0.23.1440.822@0.23.1440.822" timestamp="1578839729592" />
+    <state x="523" y="397" key="Github.CreateGistDialog" timestamp="1578840860959">
+      <screen x="0" y="23" width="1440" height="812" />
+    </state>
+    <state x="523" y="387" key="Github.CreateGistDialog/0.23.1440.798@0.23.1440.798" timestamp="1578513245814" />
+    <state x="523" y="397" key="Github.CreateGistDialog/0.23.1440.812@0.23.1440.812" timestamp="1578840860959" />
+    <state x="523" y="398" key="Github.CreateGistDialog/0.23.1440.814@0.23.1440.814" timestamp="1578840323580" />
+    <state x="523" y="398" key="Github.CreateGistDialog/0.23.1440.816@0.23.1440.816" timestamp="1578840250593" />
+    <state x="523" y="398" key="Github.CreateGistDialog/0.23.1440.822@0.23.1440.822" timestamp="1578839521871" />
+    <state width="699" height="165" key="GridCell.Tab.0.bottom" timestamp="1578832572228">
+      <screen x="0" y="23" width="1440" height="822" />
+    </state>
+    <state width="1398" height="165" key="GridCell.Tab.0.bottom/0.23.1440.798@0.23.1440.798" timestamp="1578541035002" />
+    <state width="1398" height="165" key="GridCell.Tab.0.bottom/0.23.1440.801@0.23.1440.801" timestamp="1578515068119" />
+    <state width="699" height="165" key="GridCell.Tab.0.bottom/0.23.1440.822@0.23.1440.822" timestamp="1578832572228" />
+    <state width="699" height="165" key="GridCell.Tab.0.center" timestamp="1578832572227">
+      <screen x="0" y="23" width="1440" height="822" />
+    </state>
+    <state width="1398" height="165" key="GridCell.Tab.0.center/0.23.1440.798@0.23.1440.798" timestamp="1578541035001" />
+    <state width="1398" height="165" key="GridCell.Tab.0.center/0.23.1440.801@0.23.1440.801" timestamp="1578515068117" />
+    <state width="699" height="165" key="GridCell.Tab.0.center/0.23.1440.822@0.23.1440.822" timestamp="1578832572227" />
+    <state width="699" height="165" key="GridCell.Tab.0.left" timestamp="1578832572226">
+      <screen x="0" y="23" width="1440" height="822" />
+    </state>
+    <state width="1398" height="165" key="GridCell.Tab.0.left/0.23.1440.798@0.23.1440.798" timestamp="1578541035000" />
+    <state width="1398" height="165" key="GridCell.Tab.0.left/0.23.1440.801@0.23.1440.801" timestamp="1578515068116" />
+    <state width="699" height="165" key="GridCell.Tab.0.left/0.23.1440.822@0.23.1440.822" timestamp="1578832572226" />
+    <state width="699" height="165" key="GridCell.Tab.0.right" timestamp="1578832572227">
+      <screen x="0" y="23" width="1440" height="822" />
+    </state>
+    <state width="1398" height="165" key="GridCell.Tab.0.right/0.23.1440.798@0.23.1440.798" timestamp="1578541035002" />
+    <state width="1398" height="165" key="GridCell.Tab.0.right/0.23.1440.801@0.23.1440.801" timestamp="1578515068119" />
+    <state width="699" height="165" key="GridCell.Tab.0.right/0.23.1440.822@0.23.1440.822" timestamp="1578832572227" />
+    <state x="569" y="198" key="RollbackChangesDialog" timestamp="1578843665587">
+      <screen x="0" y="23" width="1440" height="808" />
+    </state>
+    <state x="569" y="198" key="RollbackChangesDialog/0.23.1440.808@0.23.1440.808" timestamp="1578843665587" />
+    <state x="208" y="23" key="SettingsEditor" timestamp="1578841656781">
+      <screen x="0" y="23" width="1440" height="808" />
+    </state>
+    <state x="208" y="23" key="SettingsEditor/0.23.1440.798@0.23.1440.798" timestamp="1578513201600" />
+    <state x="208" y="23" key="SettingsEditor/0.23.1440.808@0.23.1440.808" timestamp="1578841656781" />
+    <state x="208" y="23" key="SettingsEditor/0.23.1440.822@0.23.1440.822" timestamp="1578838145091" />
+    <state x="320" y="220" key="Vcs.Push.Dialog.v2" timestamp="1578838482243">
+      <screen x="0" y="23" width="1440" height="822" />
+    </state>
+    <state x="320" y="220" key="Vcs.Push.Dialog.v2/0.23.1440.822@0.23.1440.822" timestamp="1578838482243" />
+    <state x="397" y="310" key="com.intellij.ide.util.TipDialog" timestamp="1578840487021">
+      <screen x="0" y="23" width="1440" height="806" />
+    </state>
+    <state x="397" y="310" key="com.intellij.ide.util.TipDialog/0.23.1440.806@0.23.1440.806" timestamp="1578840487021" />
+    <state x="397" y="314" key="com.intellij.ide.util.TipDialog/0.23.1440.816@0.23.1440.816" timestamp="1578827807088" />
+    <state x="424" y="382" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1578512975900">
+      <screen x="0" y="23" width="1440" height="798" />
+    </state>
+    <state x="424" y="382" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.23.1440.798@0.23.1440.798" timestamp="1578512975900" />
+    <state x="503" y="399" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1578844093760">
+      <screen x="0" y="23" width="1440" height="812" />
+    </state>
+    <state x="503" y="399" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.812@0.23.1440.812" timestamp="1578844093760" />
+    <state x="503" y="401" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.816@0.23.1440.816" timestamp="1578840286756" />
+    <state x="503" y="404" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.822@0.23.1440.822" timestamp="1578839828881" />
+    <state x="422" y="279" key="git4idea.merge.GitPullDialog" timestamp="1578839854824">
+      <screen x="0" y="23" width="1440" height="822" />
+    </state>
+    <state x="422" y="279" key="git4idea.merge.GitPullDialog/0.23.1440.822@0.23.1440.822" timestamp="1578839854824" />
+    <state x="510" y="352" key="git4idea.rebase.GitRebaseDialog" timestamp="1578841626960">
+      <screen x="0" y="23" width="1440" height="808" />
+    </state>
+    <state x="510" y="352" key="git4idea.rebase.GitRebaseDialog/0.23.1440.808@0.23.1440.808" timestamp="1578841626960" />
+    <state x="97" y="69" key="new project wizard" timestamp="1578513884350">
+      <screen x="0" y="23" width="1440" height="801" />
+    </state>
+    <state x="97" y="69" key="new project wizard/0.23.1440.801@0.23.1440.801" timestamp="1578513884350" />
+  </component>
+</project>
