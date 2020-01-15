@@ -1,16 +1,18 @@
 package ru.job4j.oop.proffesion;
 
 public class Doctor extends Proffesion {
-    String categoria;
-    String reiting;
+
     String rentgen;
-    public Doctor(String name, String surname, String education, String birthday,String categoria,String reiting) {
+    public Doctor(String name, String surname, String education, String birthday) {
         super(name, surname, education, birthday);
-        this.categoria = categoria;
-        this.reiting = reiting;
+
 
 
     }
+
+
+
+
     public class Diagnose {
         Diagnose diagnose = new Diagnose();
 
