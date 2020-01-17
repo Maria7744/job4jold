@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5d5e08be-ba77-4f08-9f80-261d632cb0bc" name="Default Changelist" comment="интеграция Git и idea">
-      <change afterPath="$PROJECT_DIR$/out/production/job4j/iterrator/IterIterator.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/job4j/iterrator/IterIterator1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/job4j/iterrator/IterIteratorTest$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/job4j/iterrator/IterIteratorTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="5d5e08be-ba77-4f08-9f80-261d632cb0bc" name="Default Changelist" comment="5.2.4 создать convert Iteratot&lt;Iterator&gt;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,6 +21,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="JUnit5 Test Class" />
         <option value="Class" />
       </list>
     </option>
@@ -79,21 +75,31 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="create.test.in.the.same.root" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="ru.job4j" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="ru.job4j" />
+      <recent name="ru.job4j.oop" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/chapter-001/lib" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/condition" />
       <recent name="$PROJECT_DIR$/ru.job4j/src" />
       <recent name="$PROJECT_DIR$/chapter-001" />
-    </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="ru.job4j.oop" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Evlent">
@@ -195,7 +201,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579117881284</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="5.2.4 создать convert Iteratot&lt;Iterator&gt;">
+      <created>1579200115034</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1579200115034</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -214,7 +227,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="реализауия профессий в коде 219348" />
     <MESSAGE value="интерфейс иттератор" />
-    <option name="LAST_COMMIT_MESSAGE" value="интерфейс иттератор" />
+    <MESSAGE value="5.2.4 создать convert Iteratot&lt;Iterator&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="5.2.4 создать convert Iteratot&lt;Iterator&gt;" />
   </component>
   <component name="WindowStateProjectService">
     <state x="320" y="115" key="#Notifications" timestamp="1578933330419">
@@ -247,19 +261,20 @@
       <screen x="0" y="23" width="1440" height="806" />
     </state>
     <state x="269" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1440.806@0.23.1440.806" timestamp="1578947675089" />
-    <state x="344" y="30" width="752" height="793" key="CommitChangelistDialog2" timestamp="1579199876050">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="344" y="32" width="752" height="793" key="CommitChangelistDialog2" timestamp="1579283180730">
+      <screen x="0" y="23" width="1440" height="801" />
     </state>
-    <state x="344" y="30" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1579199876050" />
-    <state x="344" y="32" key="CommitChangelistDialog2/0.23.1440.804@0.23.1440.804" timestamp="1579187745642" />
+    <state x="344" y="30" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1579200114803" />
+    <state x="344" y="32" key="CommitChangelistDialog2/0.23.1440.801@0.23.1440.801" timestamp="1579283180730" />
+    <state x="344" y="32" key="CommitChangelistDialog2/0.23.1440.804@0.23.1440.804" timestamp="1579200604435" />
     <state x="344" y="36" width="752" height="793" key="CommitChangelistDialog2/0.23.1440.806@0.23.1440.806" timestamp="1579118946739" />
     <state x="344" y="50" key="CommitChangelistDialog2/0.23.1440.812@0.23.1440.812" timestamp="1578844108648" />
     <state x="344" y="50" width="752" height="661" key="CommitChangelistDialog2/0.23.1440.822@0.23.1440.822" timestamp="1578839739060" />
-    <state x="144" y="104" width="1152" height="642" key="DiffContextDialog" timestamp="1579187681959">
+    <state x="144" y="104" width="1152" height="642" key="DiffContextDialog" timestamp="1579200571398">
       <screen x="0" y="23" width="1440" height="804" />
     </state>
     <state x="144" y="103" key="DiffContextDialog/0.23.1440.801@0.23.1440.801" timestamp="1579119530852" />
-    <state x="144" y="104" width="1152" height="642" key="DiffContextDialog/0.23.1440.804@0.23.1440.804" timestamp="1579187681959" />
+    <state x="144" y="104" width="1152" height="642" key="DiffContextDialog/0.23.1440.804@0.23.1440.804" timestamp="1579200571398" />
     <state x="144" y="104" width="1152" height="643" key="DiffContextDialog/0.23.1440.806@0.23.1440.806" timestamp="1579118942979" />
     <state x="144" y="90" width="1152" height="718" key="DiffContextDialog/0.23.1440.808@0.23.1440.808" timestamp="1578937372572" />
     <state x="144" y="106" key="DiffContextDialog/0.23.1440.822@0.23.1440.822" timestamp="1578839729592" />
@@ -331,17 +346,19 @@
     <state x="208" y="23" key="SettingsEditor/0.23.1440.798@0.23.1440.798" timestamp="1578513201600" />
     <state x="208" y="23" key="SettingsEditor/0.23.1440.808@0.23.1440.808" timestamp="1578841656781" />
     <state x="208" y="23" key="SettingsEditor/0.23.1440.822@0.23.1440.822" timestamp="1578838145091" />
-    <state x="320" y="216" key="Vcs.Push.Dialog.v2" timestamp="1579199855901">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="320" y="216" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1579199855901" />
-    <state x="320" y="216" key="Vcs.Push.Dialog.v2/0.23.1440.806@0.23.1440.806" timestamp="1578946742651" />
-    <state x="320" y="220" key="Vcs.Push.Dialog.v2/0.23.1440.822@0.23.1440.822" timestamp="1578838482243" />
-    <state x="397" y="310" key="com.intellij.ide.util.TipDialog" timestamp="1579186386701">
+    <state x="320" y="216" key="Vcs.Push.Dialog.v2" timestamp="1579200444489">
       <screen x="0" y="23" width="1440" height="804" />
     </state>
+    <state x="320" y="216" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1579200151776" />
+    <state x="320" y="216" key="Vcs.Push.Dialog.v2/0.23.1440.804@0.23.1440.804" timestamp="1579200444489" />
+    <state x="320" y="216" key="Vcs.Push.Dialog.v2/0.23.1440.806@0.23.1440.806" timestamp="1578946742651" />
+    <state x="320" y="220" key="Vcs.Push.Dialog.v2/0.23.1440.822@0.23.1440.822" timestamp="1578838482243" />
+    <state x="397" y="308" key="com.intellij.ide.util.TipDialog" timestamp="1579283077435">
+      <screen x="0" y="23" width="1440" height="798" />
+    </state>
     <state x="397" y="321" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1579027698746" />
-    <state x="397" y="309" key="com.intellij.ide.util.TipDialog/0.23.1440.801@0.23.1440.801" timestamp="1579119485143" />
+    <state x="397" y="308" key="com.intellij.ide.util.TipDialog/0.23.1440.798@0.23.1440.798" timestamp="1579283077435" />
+    <state x="397" y="309" key="com.intellij.ide.util.TipDialog/0.23.1440.801@0.23.1440.801" timestamp="1579280122618" />
     <state x="397" y="310" key="com.intellij.ide.util.TipDialog/0.23.1440.804@0.23.1440.804" timestamp="1579186386701" />
     <state x="397" y="310" key="com.intellij.ide.util.TipDialog/0.23.1440.806@0.23.1440.806" timestamp="1578840487021" />
     <state x="397" y="311" key="com.intellij.ide.util.TipDialog/0.23.1440.808@0.23.1440.808" timestamp="1578849294503" />
@@ -350,14 +367,18 @@
       <screen x="0" y="23" width="1440" height="798" />
     </state>
     <state x="424" y="382" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.23.1440.798@0.23.1440.798" timestamp="1578512975900" />
-    <state x="503" y="395" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1579117207748">
+    <state x="503" y="395" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1579200489908">
       <screen x="0" y="23" width="1440" height="804" />
     </state>
-    <state x="503" y="395" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.804@0.23.1440.804" timestamp="1579117207748" />
+    <state x="503" y="395" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.804@0.23.1440.804" timestamp="1579200489908" />
     <state x="503" y="396" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.806@0.23.1440.806" timestamp="1578946337324" />
     <state x="503" y="399" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.812@0.23.1440.812" timestamp="1578844093760" />
     <state x="503" y="401" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.816@0.23.1440.816" timestamp="1578840286756" />
     <state x="503" y="404" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.822@0.23.1440.822" timestamp="1578839828881" />
+    <state x="499" y="156" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1579280887861">
+      <screen x="0" y="23" width="1440" height="798" />
+    </state>
+    <state x="499" y="156" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.23.1440.798@0.23.1440.798" timestamp="1579280887861" />
     <state x="422" y="274" key="git4idea.merge.GitPullDialog" timestamp="1579118112363">
       <screen x="0" y="23" width="1440" height="804" />
     </state>
