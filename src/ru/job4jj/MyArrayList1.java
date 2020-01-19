@@ -1,12 +1,9 @@
-package ru.job4j;
+package ru.job4jj;
 
-
-import java.util.ConcurrentModificationException;
-import java.util.Iterator;
 
 public class MyArrayList1<E> {
 
-        private  E[] elements;
+      /*  private  E[] elements;
         private int count = 0;
 
         public MyArrayList1() {
@@ -46,7 +43,7 @@ public class MyArrayList1<E> {
     }
 public class Iterator1 extends Iterable {
     private Object cities;
-    Iterator1<E> cityIterator= cities.iterator1();
+    Iterator1<E> cityIterator= .iterator1();
 cityIterator.next();
 cities.remove(1);
 cityIterator.next();
@@ -57,6 +54,6 @@ cityIterator.next();
         if (modCount != expectedModCount)
             throw new ConcurrentModificationException();
     }
-}
+}*/
 
 }

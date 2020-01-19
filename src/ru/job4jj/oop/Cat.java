@@ -1,4 +1,4 @@
-package ru.job4j.oop;
+package ru.job4jj.oop;
 
 public class Cat {
     private String name = "Гав";

@@ -1,6 +1,4 @@
-package ru.job4j.oop.proffesion;
-
-import ru.job4j.oop.proffesion.Proffesion;
+package ru.job4jj.oop.proffesion;
 
 public class Engineer extends Proffesion {
     public Engineer(String name, String surname, String education, String birthday) {

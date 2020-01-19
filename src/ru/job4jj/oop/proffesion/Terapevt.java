@@ -1,4 +1,4 @@
-package ru.job4j.oop.proffesion;
+package ru.job4jj.oop.proffesion;
 
 public class Terapevt extends Doctor {
     public Terapevt(String name, String surname, String education, String birthday) {

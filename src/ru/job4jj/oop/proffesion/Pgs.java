@@ -1,4 +1,4 @@
-package ru.job4j.oop.proffesion;
+package ru.job4jj.oop.proffesion;
 
 public class Pgs extends Engineer {
     public Pgs(String name, String surname, String education, String birthday) {

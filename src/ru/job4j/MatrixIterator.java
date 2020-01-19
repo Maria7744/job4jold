@@ -3,23 +3,21 @@ package ru.job4j;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class  MassivIt<Integer> implements Iterator<java.lang.Integer> {
-
+public class  MatrixIterator<T> implements Iterator<T> {
     private int size;          //всего элементов в матрице
     private int position = 0;  //номер текущего элемента для "выдачи"
     private int row = 0;       //строка текущего элемента
     private int col = 0;       //столбец текущего элемента
-    Integer[][] value = {{1, 2}, {3, 4}};
+    private T[][] value;
 
-
-    public MassivIt(int [][] value) {
-        this.value= value;
+    public MatrixIterator(T[][] value) {
+        this.value = value;
         this.size = countElements(value);
     }
 
-    private int countElements(int[][] value) {  //считаем количество элементов в матрице
+    private int countElements(T[][] value) {  //считаем количество элементов в матрице
         int count = 0;
-        for (int[] row : value) {
+        for (T[] row : value) {
             count += row.length;
         }
         return count;
@@ -29,15 +27,13 @@ public class  MassivIt<Integer> implements Iterator<java.lang.Integer> {
     public boolean hasNext() {
         return position < size;
     }
-    /* {*/
-
 
     @Override
-    public java.lang.Integer next() {
+    public T next() {
         if (position >= size) { //если перебрали все элементы, то бросить исключение
             throw new NoSuchElementException();
         }
-        int element = value[row][col];  //запоминаем текущий элемент
+        T element = value[row][col];  //запоминаем текущий элемент
         //переходим к следующему элементу
         position++;
         col++;
@@ -47,10 +43,17 @@ public class  MassivIt<Integer> implements Iterator<java.lang.Integer> {
         }
         return element;
     }
-    Integer[][] value = {{1, 2, 3}, {}, {4, 5}, {6}};
-    Iterator<Integer> iterator = new MassivIt<>(value);
-while (iterator.hasNext());
- System.out.println(iterator.next());
 
+    public static void main(String[] args) {
+
+
+
+
+        Integer[][] value  = {{1, 2}, {3, 4}};
+        Iterator<Integer> iterator = new MatrixIterator<>(value);
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+
+    }
 }
-
