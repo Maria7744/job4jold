@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 
 public class IterIteratorTest {
-    public static void main(String[] args) {
+   public static void main(String[] args) {
         Iterator<Integer> i1 = Arrays.asList(4, 2, 0, 4, 6, 4, 9).iterator();
         Iterator<Integer> i2 = Arrays.asList(0, 9, 8, 7, 5).iterator();
         Iterator<Integer> i4 = new ArrayList<Integer>().iterator();
