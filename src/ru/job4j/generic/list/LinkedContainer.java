@@ -1,4 +1,4 @@
-package ru.job4j.list;
+package ru.job4j.generic.list;
 
 import net.jcip.annotations.GuardedBy;
 
