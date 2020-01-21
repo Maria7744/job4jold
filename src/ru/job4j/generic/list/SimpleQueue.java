@@ -1,4 +1,4 @@
-package ru.job4j.list;
+package ru.job4j.generic.list;
 //5.3.4
 public class SimpleQueue <E> extends LinkedContainer<E> {
     /**
