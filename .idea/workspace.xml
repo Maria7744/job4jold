@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5d5e08be-ba77-4f08-9f80-261d632cb0bc" name="Default Changelist" comment="#223219 Создать контейнер на базе связного списка">
-      <change afterPath="$PROJECT_DIR$/src/ru/job4j/generic/Base.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ru/job4j/generic/BaseStore.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ru/job4j/generic/Role.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ru/job4j/generic/RoleStore.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ru/job4j/generic/SimpleArray.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ru/job4j/generic/Store.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ru/job4j/generic/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ru/job4j/generic/UserStore.java" afterDir="false" />
+    <list default="true" id="5d5e08be-ba77-4f08-9f80-261d632cb0bc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -282,7 +274,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579626958758</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary=".ignore добавлена идея">
+      <created>1579635142499</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1579635142499</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -307,7 +306,8 @@
     <MESSAGE value="# 223224 Создать итератор возвращающий только четные цифры 5.1.2" />
     <MESSAGE value="# 219281 Set HashSet Iterator" />
     <MESSAGE value="#223219 Создать контейнер на базе связного списка" />
-    <option name="LAST_COMMIT_MESSAGE" value="#223219 Создать контейнер на базе связного списка" />
+    <MESSAGE value=".ignore добавлена идея" />
+    <option name="LAST_COMMIT_MESSAGE" value=".ignore добавлена идея" />
   </component>
   <component name="WindowStateProjectService">
     <state x="320" y="87" key="#Inspections" timestamp="1579378351008">
@@ -338,11 +338,11 @@
     <state x="533" y="199" key="#com.intellij.ide.util.MemberChooser/0.23.1440.804@0.23.1440.804" timestamp="1579625445895" />
     <state x="533" y="200" key="#com.intellij.ide.util.MemberChooser/0.23.1440.808@0.23.1440.808" timestamp="1579443910646" />
     <state x="533" y="203" key="#com.intellij.ide.util.MemberChooser/0.23.1440.822@0.23.1440.822" timestamp="1578832429456" />
-    <state x="465" y="415" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1579118957220">
+    <state x="465" y="415" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1579635319791">
       <screen x="0" y="23" width="1440" height="806" />
     </state>
     <state x="465" y="414" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.23.1440.804@0.23.1440.804" timestamp="1578814661385" />
-    <state x="465" y="415" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.23.1440.806@0.23.1440.806" timestamp="1579118957220" />
+    <state x="465" y="415" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.23.1440.806@0.23.1440.806" timestamp="1579635319791" />
     <state x="269" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1578947675089">
       <screen x="0" y="23" width="1440" height="806" />
     </state>
@@ -360,14 +360,14 @@
     <state x="458" y="134" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.23.1440.801@0.23.1440.801" timestamp="1579551275576" />
     <state x="458" y="134" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.23.1440.804@0.23.1440.804" timestamp="1579538419914" />
     <state x="458" y="135" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.23.1440.808@0.23.1440.808" timestamp="1579465944043" />
-    <state x="344" y="32" width="752" height="793" key="CommitChangelistDialog2" timestamp="1579634571998">
-      <screen x="0" y="23" width="1440" height="804" />
+    <state x="344" y="36" width="752" height="793" key="CommitChangelistDialog2" timestamp="1579635285454">
+      <screen x="0" y="23" width="1440" height="806" />
     </state>
     <state x="344" y="30" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1579200114803" />
     <state x="300" y="26" key="CommitChangelistDialog2/0.23.1440.798@0.23.1440.798" timestamp="1579432026167" />
     <state x="300" y="29" key="CommitChangelistDialog2/0.23.1440.801@0.23.1440.801" timestamp="1579432415518" />
     <state x="344" y="32" key="CommitChangelistDialog2/0.23.1440.804@0.23.1440.804" timestamp="1579634571998" />
-    <state x="344" y="36" width="752" height="793" key="CommitChangelistDialog2/0.23.1440.806@0.23.1440.806" timestamp="1579627466611" />
+    <state x="344" y="36" width="752" height="793" key="CommitChangelistDialog2/0.23.1440.806@0.23.1440.806" timestamp="1579635285454" />
     <state x="300" y="29" key="CommitChangelistDialog2/0.23.1440.808@0.23.1440.808" timestamp="1579626319358" />
     <state x="344" y="50" key="CommitChangelistDialog2/0.23.1440.812@0.23.1440.812" timestamp="1578844108648" />
     <state x="344" y="50" width="752" height="661" key="CommitChangelistDialog2/0.23.1440.822@0.23.1440.822" timestamp="1578839739060" />
@@ -449,13 +449,13 @@
     <state x="208" y="23" key="SettingsEditor/0.23.1440.801@0.23.1440.801" timestamp="1579283324805" />
     <state x="208" y="23" key="SettingsEditor/0.23.1440.808@0.23.1440.808" timestamp="1578841656781" />
     <state x="208" y="23" key="SettingsEditor/0.23.1440.822@0.23.1440.822" timestamp="1578838145091" />
-    <state x="320" y="216" key="Vcs.Push.Dialog.v2" timestamp="1579634347121">
-      <screen x="0" y="23" width="1440" height="804" />
+    <state x="320" y="216" key="Vcs.Push.Dialog.v2" timestamp="1579635158477">
+      <screen x="0" y="23" width="1440" height="806" />
     </state>
     <state x="320" y="216" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1579200151776" />
     <state x="320" y="215" key="Vcs.Push.Dialog.v2/0.23.1440.801@0.23.1440.801" timestamp="1579432431557" />
     <state x="320" y="216" key="Vcs.Push.Dialog.v2/0.23.1440.804@0.23.1440.804" timestamp="1579634347121" />
-    <state x="320" y="216" key="Vcs.Push.Dialog.v2/0.23.1440.806@0.23.1440.806" timestamp="1579627355204" />
+    <state x="320" y="216" key="Vcs.Push.Dialog.v2/0.23.1440.806@0.23.1440.806" timestamp="1579635158477" />
     <state x="320" y="217" key="Vcs.Push.Dialog.v2/0.23.1440.808@0.23.1440.808" timestamp="1579442858041" />
     <state x="320" y="220" key="Vcs.Push.Dialog.v2/0.23.1440.822@0.23.1440.822" timestamp="1578838482243" />
     <state x="397" y="310" key="com.intellij.ide.util.TipDialog" timestamp="1579635004781">
