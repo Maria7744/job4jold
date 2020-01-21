@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5d5e08be-ba77-4f08-9f80-261d632cb0bc" name="Default Changelist" comment="#">
-      <change afterPath="$PROJECT_DIR$/src/ru/job4j/list/Cycle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ru/job4j/list/LinkedContainer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ru/job4j/list/ListContainer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ru/job4j/list/SimpleQueue.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ru/job4j/list/StackContainer.java" afterDir="false" />
+    <list default="true" id="5d5e08be-ba77-4f08-9f80-261d632cb0bc" name="Default Changelist" comment="#223219 Создать контейнер на базе связного списка">
+      <change afterPath="$PROJECT_DIR$/src/ru/job4j/generic/Base.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ru/job4j/generic/BaseStore.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ru/job4j/generic/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ru/job4j/generic/RoleStore.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ru/job4j/generic/SimpleArray.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ru/job4j/generic/Store.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ru/job4j/generic/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ru/job4j/generic/UserStore.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/job4j.iml" beforeDir="false" afterPath="$PROJECT_DIR$/job4j.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -273,7 +275,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579538539635</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="#223219 Создать контейнер на базе связного списка">
+      <created>1579626958758</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1579626958758</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -297,7 +306,8 @@
     <MESSAGE value=" #223227 итератор для двухмерного массива 5.1.1" />
     <MESSAGE value="# 223224 Создать итератор возвращающий только четные цифры 5.1.2" />
     <MESSAGE value="# 219281 Set HashSet Iterator" />
-    <option name="LAST_COMMIT_MESSAGE" value="# 219281 Set HashSet Iterator" />
+    <MESSAGE value="#223219 Создать контейнер на базе связного списка" />
+    <option name="LAST_COMMIT_MESSAGE" value="#223219 Создать контейнер на базе связного списка" />
   </component>
   <component name="WindowStateProjectService">
     <state x="320" y="87" key="#Inspections" timestamp="1579378351008">
@@ -350,24 +360,24 @@
     <state x="458" y="134" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.23.1440.801@0.23.1440.801" timestamp="1579551275576" />
     <state x="458" y="134" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.23.1440.804@0.23.1440.804" timestamp="1579538419914" />
     <state x="458" y="135" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.23.1440.808@0.23.1440.808" timestamp="1579465944043" />
-    <state x="344" y="36" width="752" height="793" key="CommitChangelistDialog2" timestamp="1579626888206">
-      <screen x="0" y="23" width="1440" height="806" />
+    <state x="344" y="32" width="752" height="793" key="CommitChangelistDialog2" timestamp="1579634571998">
+      <screen x="0" y="23" width="1440" height="804" />
     </state>
     <state x="344" y="30" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1579200114803" />
     <state x="300" y="26" key="CommitChangelistDialog2/0.23.1440.798@0.23.1440.798" timestamp="1579432026167" />
     <state x="300" y="29" key="CommitChangelistDialog2/0.23.1440.801@0.23.1440.801" timestamp="1579432415518" />
-    <state x="344" y="32" key="CommitChangelistDialog2/0.23.1440.804@0.23.1440.804" timestamp="1579538539111" />
-    <state x="344" y="36" width="752" height="793" key="CommitChangelistDialog2/0.23.1440.806@0.23.1440.806" timestamp="1579626888206" />
+    <state x="344" y="32" key="CommitChangelistDialog2/0.23.1440.804@0.23.1440.804" timestamp="1579634571998" />
+    <state x="344" y="36" width="752" height="793" key="CommitChangelistDialog2/0.23.1440.806@0.23.1440.806" timestamp="1579627466611" />
     <state x="300" y="29" key="CommitChangelistDialog2/0.23.1440.808@0.23.1440.808" timestamp="1579626319358" />
     <state x="344" y="50" key="CommitChangelistDialog2/0.23.1440.812@0.23.1440.812" timestamp="1578844108648" />
     <state x="344" y="50" width="752" height="661" key="CommitChangelistDialog2/0.23.1440.822@0.23.1440.822" timestamp="1578839739060" />
-    <state x="144" y="103" width="1152" height="642" key="DiffContextDialog" timestamp="1579431958617">
-      <screen x="0" y="23" width="1440" height="798" />
+    <state x="144" y="103" width="1152" height="642" key="DiffContextDialog" timestamp="1579634414271">
+      <screen x="0" y="23" width="1440" height="804" />
     </state>
     <state x="144" y="103" key="DiffContextDialog/0.23.1440.798@0.23.1440.798" timestamp="1579431958616" />
     <state x="144" y="103" key="DiffContextDialog/0.23.1440.801@0.23.1440.801" timestamp="1579119530852" />
-    <state x="144" y="104" width="1152" height="642" key="DiffContextDialog/0.23.1440.804@0.23.1440.804" timestamp="1579200571398" />
-    <state x="144" y="104" width="1152" height="643" key="DiffContextDialog/0.23.1440.806@0.23.1440.806" timestamp="1579118942979" />
+    <state x="144" y="103" width="1152" height="642" key="DiffContextDialog/0.23.1440.804@0.23.1440.804" timestamp="1579634414271" />
+    <state x="144" y="104" width="1152" height="643" key="DiffContextDialog/0.23.1440.806@0.23.1440.806" timestamp="1579627605463" />
     <state x="144" y="90" width="1152" height="718" key="DiffContextDialog/0.23.1440.808@0.23.1440.808" timestamp="1578937372572" />
     <state x="144" y="106" key="DiffContextDialog/0.23.1440.822@0.23.1440.822" timestamp="1578839729592" />
     <state x="523" y="393" key="Github.CreateGistDialog" timestamp="1579117268039">
@@ -439,23 +449,23 @@
     <state x="208" y="23" key="SettingsEditor/0.23.1440.801@0.23.1440.801" timestamp="1579283324805" />
     <state x="208" y="23" key="SettingsEditor/0.23.1440.808@0.23.1440.808" timestamp="1578841656781" />
     <state x="208" y="23" key="SettingsEditor/0.23.1440.822@0.23.1440.822" timestamp="1578838145091" />
-    <state x="320" y="216" key="Vcs.Push.Dialog.v2" timestamp="1579538565698">
+    <state x="320" y="216" key="Vcs.Push.Dialog.v2" timestamp="1579634347121">
       <screen x="0" y="23" width="1440" height="804" />
     </state>
     <state x="320" y="216" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1579200151776" />
     <state x="320" y="215" key="Vcs.Push.Dialog.v2/0.23.1440.801@0.23.1440.801" timestamp="1579432431557" />
-    <state x="320" y="216" key="Vcs.Push.Dialog.v2/0.23.1440.804@0.23.1440.804" timestamp="1579538565698" />
-    <state x="320" y="216" key="Vcs.Push.Dialog.v2/0.23.1440.806@0.23.1440.806" timestamp="1578946742651" />
+    <state x="320" y="216" key="Vcs.Push.Dialog.v2/0.23.1440.804@0.23.1440.804" timestamp="1579634347121" />
+    <state x="320" y="216" key="Vcs.Push.Dialog.v2/0.23.1440.806@0.23.1440.806" timestamp="1579627355204" />
     <state x="320" y="217" key="Vcs.Push.Dialog.v2/0.23.1440.808@0.23.1440.808" timestamp="1579442858041" />
     <state x="320" y="220" key="Vcs.Push.Dialog.v2/0.23.1440.822@0.23.1440.822" timestamp="1578838482243" />
-    <state x="397" y="311" key="com.intellij.ide.util.TipDialog" timestamp="1579624269798">
-      <screen x="0" y="23" width="1440" height="808" />
+    <state x="397" y="310" key="com.intellij.ide.util.TipDialog" timestamp="1579635004781">
+      <screen x="0" y="23" width="1440" height="806" />
     </state>
     <state x="397" y="321" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1579027698746" />
     <state x="397" y="308" key="com.intellij.ide.util.TipDialog/0.23.1440.798@0.23.1440.798" timestamp="1579283077435" />
     <state x="397" y="309" key="com.intellij.ide.util.TipDialog/0.23.1440.801@0.23.1440.801" timestamp="1579322709614" />
     <state x="397" y="310" key="com.intellij.ide.util.TipDialog/0.23.1440.804@0.23.1440.804" timestamp="1579537751263" />
-    <state x="397" y="310" key="com.intellij.ide.util.TipDialog/0.23.1440.806@0.23.1440.806" timestamp="1579288024284" />
+    <state x="397" y="310" key="com.intellij.ide.util.TipDialog/0.23.1440.806@0.23.1440.806" timestamp="1579635004781" />
     <state x="397" y="311" key="com.intellij.ide.util.TipDialog/0.23.1440.808@0.23.1440.808" timestamp="1579624269798" />
     <state x="397" y="314" key="com.intellij.ide.util.TipDialog/0.23.1440.816@0.23.1440.816" timestamp="1578827807088" />
     <state x="424" y="385" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1579626038692">
