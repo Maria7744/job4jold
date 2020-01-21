@@ -1,4 +1,4 @@
-package ru.job4j.generic;
+package ru.job4j.generici;
 
 public class RoleStore extends BaseStore<Role> {
 

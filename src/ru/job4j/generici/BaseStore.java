@@ -1,5 +1,5 @@
-package ru.job4j.generic;
-import ru.job4j.generic.SimpleArray;
+package ru.job4j.generici;
+
 public class BaseStore <T extends Base> implements Store<T> {
 
 

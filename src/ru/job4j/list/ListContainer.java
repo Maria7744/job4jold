@@ -1,4 +1,4 @@
-package ru.job4j.generic.list;
+package ru.job4j.list;
 
 public abstract class ListContainer<E> implements Iterable<E> {
         /**

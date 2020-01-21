@@ -1,4 +1,4 @@
-package ru.job4j.generic.list;
+package ru.job4j.list;
 //223221 5.3.4
 public class Cycle  {
     public boolean hasCycle(Node first) {

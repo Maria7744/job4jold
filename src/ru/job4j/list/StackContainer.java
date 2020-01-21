@@ -1,4 +1,4 @@
-package ru.job4j.generic.list;
+package ru.job4j.list;
 //223217 5.3.3
 public class StackContainer<E> extends LinkedContainer<E> {
     /**
