@@ -4,9 +4,7 @@ package src.ru.list;
 import java.util.EmptyStackException;
 
 public class SimpleStack<T> {
-    /**
-     * List container.
-     */
+
     public ListContainer<T> list = new ListContainer<>();
 
     /**

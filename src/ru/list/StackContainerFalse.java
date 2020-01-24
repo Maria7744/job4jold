@@ -1,6 +1,6 @@
 package ru.job4j.list;
 //223217 5.3.3
-public class StackContainer<E> extends LinkedContainer<E> {
+public class StackContainerFalse<E> extends LinkedContainer<E> {
     /**
      * Количество элементов в очереди.
      */
@@ -9,7 +9,7 @@ public class StackContainer<E> extends LinkedContainer<E> {
     /**
      * Пустой конструктор
      */
-    public StackContainer() {
+    public StackContainerFalse() {
     }
 
     /**
