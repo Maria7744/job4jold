@@ -1,10 +1,8 @@
 package src.ru.set;
 
-import java.util.Iterator;
+public class SimpleListSet {}//<T> implements SimpleSet<T> {
 
-public class SimpleListSet <T> implements SimpleSet<T> {
-
-    private ListContainer<T> list;
+    /*private ListContainer<T> list;
 
     public SimpleListSet() {
         this.list = new ListContainer<>();
@@ -35,5 +33,5 @@ public class SimpleListSet <T> implements SimpleSet<T> {
     public Iterator<T> iterator() {
         return this.list.iterator();
     }
-}
+}*/
 
