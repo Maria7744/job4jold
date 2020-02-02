@@ -12,9 +12,7 @@ import static org.junit.Assert.assertThat;
 
 public class ArrayListTest {
 
-    /**
-     * Test add Integer to container and get it.
-     */
+
     @Test
     public void whenAddIntegerToArrayContainerThenGetItIn() {
         SimpleIterable<Integer> arr = new ArrayList<>();
