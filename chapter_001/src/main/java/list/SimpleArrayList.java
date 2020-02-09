@@ -3,6 +3,7 @@ package list;
 public class SimpleArrayList<E> {
 
     private int size;
+
     private Node<E> first;
 
     /**
@@ -29,11 +30,6 @@ public class SimpleArrayList<E> {
         first = first.next;
         return (E) temp;
     }
-
-
-
-
-
 
 
     /**
@@ -63,6 +59,7 @@ public class SimpleArrayList<E> {
         Node<E> next;
 
         Node(E data) {
+
             this.data = data;
         }
     }
