@@ -1,12 +1,6 @@
-package src.ru.list;
+package list;
 
-import jdk.jfr.StackTrace;
-import org.junit.Before;
-import org.junit.Test;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-
-public class SimpleArrayList <E> {
+public class SimpleArrayList<E> {
 
     private int size;
     private Node<E> first;
@@ -22,15 +16,24 @@ public class SimpleArrayList <E> {
     }
 
     /**
-     * Реализовать метод удаления первого элемент в списке.
+     * Реализовать метод удаления первого элемент в списке и проверяет пуст ли список если
+     * пуст выкидывает ошибку
      */
-    public E delete() {
+    public E delete() throws NullPointerException {
+
+        if (first == null) {
+            throw new NullPointerException("список пуст");
+        }
         Node<E> temp = first;
         first = first.next;
-
-
         return (E) temp;
     }
+
+
+
+
+
+
 
     /**
      * Метод получения элемента по индексу.
