@@ -4,6 +4,7 @@ public class SimpleArrayList<E> {
 
     private int size;
 
+
     private Node<E> first;
 
     /**
