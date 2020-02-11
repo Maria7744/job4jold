@@ -22,19 +22,13 @@ public class SimpleQueueTest {
     public void whenPushThenStoreHasItem() {
         assertThat(list.poll(), is(1));
     }
-
-    @Test
+//Вот так?
+    @Test(except = Exception.class)
     public void whenPollThenException() {
         assertThat(list.poll(), is(1));
         assertThat(list.poll(), is(2));
         assertThat(list.poll(), is(3));
-        boolean flag = false;
-        try {
-            list.poll();
-        } catch (NoSuchElementException e) {
-            flag = true;
-        }
-        assert (flag);
+
     }
 
     @Test
