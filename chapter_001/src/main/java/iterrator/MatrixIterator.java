@@ -1,7 +1,13 @@
-package ru.job4j.iterator;
+package iterrator;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 public class MatrixIterator<T> implements Iterable<T> {
+    /**
+     * Двумерный массив.
+     */
+    private final T[][] values;
     /**
      * Счетчик строк масисва.
      */
@@ -10,10 +16,6 @@ public class MatrixIterator<T> implements Iterable<T> {
      * Счетчик столбцов массива.
      */
     private int col = 0;
-    /**
-     * Двумерный массив.
-     */
-    private final T[][] values;
 
     /**
      * Конструктор для инициализации массива.
@@ -42,6 +44,15 @@ public class MatrixIterator<T> implements Iterable<T> {
              */
             @Override
             public boolean hasNext() {
+                T value;
+                if (this.hasNext()) {
+                    value = values[row][col++];
+                } else {
+                    col = 0;
+                    value = values[++row][col++];
+                }
+
+
                 return values[row].length != col;
             }
 
@@ -55,15 +66,23 @@ public class MatrixIterator<T> implements Iterable<T> {
              */
             @Override
             public T next() {
-                T value;
-                if (this.hasNext()) {
-                    value = values[row][col++];
-                } else {
-                    col = 0;
-                    value = values[++row][col++];
+                if (!hasNext()) {
+
+                    throw new NoSuchElementException();
+
                 }
-                return value;
+
+                return next();
             }
-        }
+        };
     }
 }
+
+
+
+
+
+
+
+
+
