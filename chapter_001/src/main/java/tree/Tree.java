@@ -49,7 +49,7 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
      * @return - ненулевой узел.
      */
     @Override
-    public boolean add(E parent, E child) {
+    public boolean add(E parent, E child)  {
         boolean flag = false;
         Optional<Node<E>> par = this.findBy(parent);
         if (par.isPresent()) {
@@ -58,7 +58,7 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
                 e.add(new Node<>(child));
                 flag = true;
             }
-        } else {
+
             throw new InvalidRootException("Такого родителя нет в дереве.");
         }
         return flag;
