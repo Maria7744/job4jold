@@ -1,11 +1,12 @@
-package src.ru.iterrator;
+package iterrator;
+
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class ConvertIterator {
 
 
-        public Iterator<Integer> convert(Iterator<Iterator<Integer>> it) {
+    public Iterator<Integer> convert(Iterator<Iterator<Integer>> it) {
         return new Iterator<Integer>() {
             /**
              * Текущий итератор.
@@ -17,12 +18,12 @@ public class ConvertIterator {
              *
              * @return - true если есть очередной итератор
              */
+
             @Override
             public boolean hasNext() {
                 boolean flag = false;
-                if (this.current.hasNext()) {
-                    flag = true;
-                } else {
+                while (this.current.hasNext()) {
+
                     if (it.hasNext()) {
                         this.current = it.next();
                         flag = this.hasNext();
@@ -50,6 +51,6 @@ public class ConvertIterator {
         };
     }
 
-    }
+}
 
 
