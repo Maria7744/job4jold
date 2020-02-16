@@ -5,7 +5,9 @@ public interface SimpleSet<T> extends Iterable<T> {
     int size();
 
 
-    void add(T element);
+    boolean add(T element);
+    boolean contains(Object value);
+
 }
 
 

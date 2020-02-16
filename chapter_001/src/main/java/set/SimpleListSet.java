@@ -1,39 +1,69 @@
 package set;
 
-public class SimpleListSet {
-}
-/*<T> implements SimpleSet<T> {
+import list.ListContainer;
 
-    /*private ListContainer<T> list;
+import java.util.Iterator;
+import java.util.Objects;
+
+public class SimpleListSet<T> implements SimpleSet<T> {
+
+    private ListContainer<T> list;
 
     public SimpleListSet() {
-        this.list = new ListContainer<>();
+        this.list = new ListContainer<>() {
+            @Override
+            public Iterator<T> iterator() {
+                return null;
+            }
+
+            @Override
+            public T remove(int i) {
+                return null;
+            }
+        };
     }
 
 
     @Override
     public int size() {
+
         return this.list.size();
     }
 
-    @Override
-    public void add(T element) {
-        boolean exists = false;
-        for (T elem : this.list) {
-            if (elem.equals(element)) {
-                exists = true;
-                break;
+    public boolean contains(Object value) {
+        boolean result = false;
+        int size = list.size();
+        if (size != 0) {
+            for (Object temp : list) {
+                if (Objects.equals(temp, value)) {
+                    result = true;
+                    break;
+                }
             }
         }
-        if (!exists) {
-            list.add(element);
-        }
+        return result;
     }
+
+
+    @Override
+    public boolean add(T elem) {
+
+        boolean result = false;
+        if (!contains(elem)) {
+            this.list.add(elem);
+            result = true;
+        }
+
+        return result;
+    }
+
+
+    /**/
 
 
     @Override
     public Iterator<T> iterator() {
         return this.list.iterator();
     }
-}*/
+}
 
