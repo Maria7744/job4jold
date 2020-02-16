@@ -71,8 +71,7 @@ public class MatrixIterator<T> implements Iterable<T> {
                     throw new NoSuchElementException();
 
                 }
-
-                return next();
+                return values[row++][col++];
             }
         };
     }
