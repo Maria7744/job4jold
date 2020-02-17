@@ -64,6 +64,25 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
         return flag;
     }
 
+    public boolean addChild( E child)  {
+        boolean flag = false;
+        Optional<Node<E>> childEi = this.findBy(child);
+        if (!childEi.isPresent()) {
+            Node<E> e = childEi.get();
+            if (!e.leaves().contains(child)) {
+                e.add(new Node<>(child));
+
+
+                flag = true;
+            }
+
+            throw new InvalidRootException("Такого ребенок уже есть.");
+        }
+        return flag;
+    }
+
+
+
     /**
      * Возвращает true если дерево бинарное.
      *
