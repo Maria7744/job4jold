@@ -22,5 +22,9 @@ public class SimpleStack<T> {
     public int size() {
         return this.size;
     }
+
+    public boolean isEmpty() {
+return size==0;
+    }
 }
 

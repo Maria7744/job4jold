@@ -2,8 +2,6 @@ package list;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.NoSuchElementException;
-
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -22,8 +20,8 @@ public class SimpleQueueTest {
     public void whenPushThenStoreHasItem() {
         assertThat(list.poll(), is(1));
     }
-//Вот так?
-    @Test(except = Exception.class)
+
+    @Test
     public void whenPollThenException() {
         assertThat(list.poll(), is(1));
         assertThat(list.poll(), is(2));
