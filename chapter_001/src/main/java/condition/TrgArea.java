@@ -1,4 +1,4 @@
-package condition.condition;
+package condition;
 
 public class TrgArea {
 

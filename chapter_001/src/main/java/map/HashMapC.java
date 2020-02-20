@@ -1,20 +1,10 @@
-package src.ru.job4j.map;
+package map;
 
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class HashMapC <K, V> implements Iterable<K> {
-    /**
-     * Ассоциативный массив, хранящий пары типа "ключ - значение"
-     */
-    private Entry<K, V>[] table;
-    /**
-     * Количество элементов в массиве.
-     */
-    private int size;
-
-    private int modCount;
+public class HashMapC<K, V> implements Iterable<K> {
     /**
      * Степень загрузки, для определения момента расширения
      * массива.
@@ -24,6 +14,15 @@ public class HashMapC <K, V> implements Iterable<K> {
      * Размер массива при инициализации.
      */
     private static final int CAPACITY = 16;
+    /**
+     * Ассоциативный массив, хранящий пары типа "ключ - значение"
+     */
+    private Entry<K, V>[] table;
+    /**
+     * Количество элементов в массиве.
+     */
+    private int size;
+    private int modCount;
     /**
      * При достижении заполнения массива этому параметру
      * происходит его расширение.
@@ -276,21 +275,21 @@ public class HashMapC <K, V> implements Iterable<K> {
      */
     public class Entry<K, V> {
         /**
-         * Хэш-код ключа.
-         */
-        private int hash;
-        /**
          * Значение ключа.
          */
         final private K key;
         /**
-         * Пара ключу - значение
-         */
-        private V value;
-        /**
          * Указатель на следующий элемент связного списка.
          */
         Entry<K, V> next;
+        /**
+         * Хэш-код ключа.
+         */
+        private int hash;
+        /**
+         * Пара ключу - значение
+         */
+        private V value;
 
         /**
          * Конструктор для инициализации.

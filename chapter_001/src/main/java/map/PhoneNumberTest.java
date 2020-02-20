@@ -1,4 +1,5 @@
-package src.ru.job4j.map;
+package map;
+
 /*
 Главным условием, которое нарушается, если вы не переопределили hashCode,
         является второе: равные объекты должны иметь одинаковый хэш-код. Если вы не
@@ -7,10 +8,13 @@ package src.ru.job4j.map;
         это всего лишь два объекта, не имеющие между собой ничего общего. Поэтому метод hashCode,
         скорее всего, возвратит для этих объектов два случайных числа, а не о
         динаковых, как того требует контракт.*/
- public final class PhoneNumber {
-     private final short areaCode;
-     private final short prefix;
-     private final short lineNumber;
+public final class PhoneNumberTest {
+
+}
+   /* private final short areaCode;
+    private final short prefix;
+    private final short lineNumber;
+
     public PhoneNumber(int areaCode, int prefix, int lineNumber) {
         rangeCheck(areaCode, 999, "area code");
         rangeCheck(prefix, 999, "prefix");
@@ -19,24 +23,33 @@ package src.ru.job4j.map;
         this.prefix = (short) prefix;
         this.lineNumber = (short) lineNumber;
     }
+
     private static void rangeCheck(int arg, int max, String name) {
-        if (arg < 0 || arg > max)
-        throw new IllegalArgumentException(name + ": " + arg);
+        if (arg < 0 || arg > max) {
+            throw new IllegalArgumentException(name + ": " + arg);
+        }
     }
     @Override
-    public boolean equals(Object o) { if (o == this)
-        return true;
-        if (!(o instanceof PhoneNumber))
-            return false;
-        PhoneNumber pn = (PhoneNumber) o;
-        return pn.lineNumber == lineNumber && pn.prefix == prefix
-                && pn.areaCode == areaCode;
+    public boolean equals(Object o) {
+        if (o == this) {
+            return true;
+
+            if (!(o instanceof PhoneNumber)) {
+                return false;
+                PhoneNumber pn = (PhoneNumber) o;
+                return pn.lineNumber == lineNumber && pn.prefix == prefix
+                        && pn.areaCode == areaCode;
+            }
+        }
     }
-    @Override public int hashCode() {
+
+   /* @Override
+    public int hashCode() {
         int result = 17;
         result = 31 * result + areaCode;
         result = 31 * result + prefix;
         result = 31 * result + lineNumber;
         return result;
     }
-}
+}*/
+

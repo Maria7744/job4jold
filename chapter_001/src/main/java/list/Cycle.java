@@ -1,20 +1,21 @@
-package ru.job4j.list;
+package list;
+
 //223221 5.3.4
-public class Cycle  {
+public class Cycle {
     public boolean hasCycle(Node first) {
-    boolean flag = false;
-    Node fast = first;
-    Node slow = first;
-    while (fast != null && fast.next != null) {
-        slow = slow.next;
-        fast = fast.next.next;
-        if (slow == fast) {
-            flag = true;
-            break;
+        boolean flag = false;
+        Node fast = first;
+        Node slow = first;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                flag = true;
+                break;
+            }
         }
+        return flag;
     }
-    return flag;
-}
 }
 
 /**

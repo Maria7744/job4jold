@@ -1,4 +1,4 @@
-package condition.condition;
+package condition;
 
 
 class SqArea {

@@ -1,8 +1,8 @@
-package src.ru.job4j.generici.simplearray;
+package generici;
 
 import java.util.Iterator;
 
-public class SimpleArray <T> implements Iterable<T> {
+public class SimpleArray<T> implements Iterable<T> {
 
     private int index;
 
@@ -10,11 +10,13 @@ public class SimpleArray <T> implements Iterable<T> {
 
 
     public SimpleArray(int size) {
+
         this.array = new Object[size];
     }
 
 
     public void add(T model) {
+
         this.array[index++] = model;
     }
 
@@ -31,6 +33,7 @@ public class SimpleArray <T> implements Iterable<T> {
 
 
     public T get(int index) {
+
         return (T) this.array[index];
     }
 
@@ -48,16 +51,19 @@ public class SimpleArray <T> implements Iterable<T> {
                 return pos != array.length;
             }
 
+
             @Override
             public T next() {
 
                 return (T) array[pos++];
             }
-        }
+        };
 
     }
 
 
+    public void update(int pos, T model) {
+    }
 }
 
  

@@ -1,23 +1,19 @@
-package src.ru.job4j.map;
-
-import java.util.Calendar;
+package map;
 
 public class User {
-   private String name;
-   private int children;
-    private Calendar birthday;
+    private String name;
+    private int children;
+    private String birthday;
 
 
-
-    public User(String name,int children,Calendar birthday) {
+    public User(String name, int children, String birthday) {
         this.name = name;
         this.children = children;
         this.birthday = birthday;
     }
+}
 
-
-
-    @Override
+   /* @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -37,7 +33,7 @@ public class User {
         return birthday != null ? birthday.equals(user.birthday) : user.birthday == null;
     }
 
-    @Override
+   /* @Override
     public int hashCode() {
         int result = name != null ? name.hashCode() : 0;
         result = 31 * result + children;
@@ -46,4 +42,4 @@ public class User {
     }
 
 
-}
+}*/
