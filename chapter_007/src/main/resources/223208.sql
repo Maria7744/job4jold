@@ -69,13 +69,13 @@ LEFT OUTER JOIN car_body c_b ON c.id_car_body=c_b.id;
 SELECT t.type
 FROM car as c
 RIGHT OUTER JOIN transmission as t ON c.id_transmission=t.id
-WHERE c.id IS NULL
-	UNION
+WHERE c.id IS NULL;
+
 	SELECT e.name
 	FROM car as c
 	RIGHT OUTER JOIN engine as e ON c.id_engine=e.id
-	WHERE c.id IS NULL
-		UNION
+	WHERE c.id IS NULL;
+
 		SELECT c_b.name
 		FROM car c
 
@@ -85,4 +85,4 @@ WHERE c.id IS NULL
 		SELECT t.type
                 FROM transmission as t
                 LEFT OUTER JOIN car_body as c_b ON c_b.id_transmission=t.id
-                WHERE c_b.id IS NULL
+                WHERE c_b.id IS NULL;
