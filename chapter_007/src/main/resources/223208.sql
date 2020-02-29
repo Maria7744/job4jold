@@ -78,5 +78,11 @@ WHERE c.id IS NULL
 		UNION
 		SELECT c_b.name
 		FROM car c
+
 		RIGHT OUTER JOIN car_body c_b ON c.id_car_body=c_b.id
 		WHERE c.id IS NULL;
+//детали трансмиссии которые не используються в кузове
+		SELECT t.type
+                FROM transmission as t
+                LEFT OUTER JOIN car_body as c_b ON c_b.id_transmission=t.id
+                WHERE c_b.id IS NULL

@@ -60,9 +60,9 @@ public class BinaryTree<E extends Comparable<E>> {
     class TreeNode<E> {
 
         private E value;
-
+//левый потомок
         private TreeNode<E> left;
-
+//правый потомок
         private TreeNode<E> right;
 
 
