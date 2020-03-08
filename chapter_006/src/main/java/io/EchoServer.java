@@ -7,8 +7,8 @@ import java.net.Socket;
 public class EchoServer {
 
     public static void main(String[] args) throws IOException {
-      
-        ServerSocket server = new ServerSocket(9000) ;
+
+        ServerSocket server = new ServerSocket( 9000) ;
             while (true) {
                 Socket clientSocket = server.accept();
                 BufferedWriter out  = new BufferedWriter( new OutputStreamWriter (clientSocket.getOutputStream()));
@@ -18,22 +18,22 @@ public class EchoServer {
                     while (!(str = in.readLine()).isEmpty()) {
                         System.out.println(str);
                     }
-                    String question =in.readLine();
+                     str =in.readLine();
 
-                    if ("bye".equals(question)) {
-                         str="http://localhost:9000/?msg=Exit";
-                        out.write(str);
+                    if ("bye".equals(str)) {
+                        String answer="http://localhost:9000/?msg=Exit";
+                        out.write(answer);
                         out.newLine();
                         out.flush();
                         out.close();
-                    } else if ("hellow".equals(question)) {
-                          str="http://localhost:9000/?msg=hellow";
-                        out.write(str);
+                        server.close();
+                    } else if ("hellow".equals(str)) {
+                         String answer="http://localhost:9000/?msg=hellow";
+                        out.write(answer);
                         out.newLine();
-
-
                     }else{
-                        out.write("http://localhost:9000/?msg=What");
+                        String answer="http://localhost:9000/?msg=What";
+                        out.write(answer);
                     out.flush();
                     out.close();
                     in.close();
