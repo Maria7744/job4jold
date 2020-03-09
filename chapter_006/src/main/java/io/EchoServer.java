@@ -27,10 +27,13 @@ public class EchoServer {
                         out.flush();
                         out.close();
                         server.close();
-                    } else if ("hellow".equals(str)) {
+                    } else if (str.equals("hellow")) {
                          String answer="http://localhost:9000/?msg=hellow";
                         out.write(answer);
                         out.newLine();
+                    } else if (str.equals("exit")) {
+
+                        break;
                     }else{
                         String answer="http://localhost:9000/?msg=What";
                         out.write(answer);

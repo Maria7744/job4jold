@@ -6,7 +6,7 @@ import java.net.Socket;
 public class Client {
 
     public static void main(String[] args) throws IOException {
-        // int count =0;
+
         Socket clientSocket = new Socket("",9000) ;
         BufferedWriter out  = new BufferedWriter( new OutputStreamWriter (clientSocket.getOutputStream()));
                  BufferedReader in = new BufferedReader(
