@@ -7,7 +7,7 @@ public class Client {
 
     public static void main(String[] args) throws IOException {
 
-        Socket clientSocket = new Socket("",9000) ;
+        Socket clientSocket = new Socket("localhost",5432) ;
         BufferedWriter out  = new BufferedWriter( new OutputStreamWriter (clientSocket.getOutputStream()));
                  BufferedReader in = new BufferedReader(
                          new InputStreamReader(clientSocket.getInputStream())) ;
@@ -16,11 +16,6 @@ public class Client {
                            out.newLine();
                 String answer =in.readLine();
             System.out.println(answer);
-
-
-
-
-
                 out.flush();
                 out.close();
                 in.close();
