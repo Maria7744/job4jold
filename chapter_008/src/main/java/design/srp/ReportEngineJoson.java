@@ -17,7 +17,7 @@ public class ReportEngineJoson implements Reports{
         for (var worker : store.findBy(filter)) {
             answer.append(" {").append(System.lineSeparator())
                     .append("{").append(worker.getName()).append("<}").append(System.lineSeparator())
-                    .append("{ \"name\":\"John\", \"Hired\":30, \"Fired\":67,\"Salary\":" +
+                    .append("{ \"name\":\"John\", \"Hired\":35, \"Fired\":67,\"Salary\":" +
                             "56 }").append(worker.getHired()).append("}").append(System.lineSeparator());
 
 

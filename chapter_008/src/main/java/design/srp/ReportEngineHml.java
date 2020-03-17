@@ -27,7 +27,7 @@ public class ReportEngineHml implements Reports{
         for (var worker : store.findBy(filter)) {
             answer.append(" <company>").append(System.lineSeparator())
                     .append("employees").append(worker.getName()).append("<employee>").append(System.lineSeparator())
-                    .append("<employee name=\"Maksim\\\" Hired=\\\"4\\\" Fired=\\\"6\\\" Salary=\\\"$\\\">\">").append(worker.getHired()).append("</a>").append(System.lineSeparator())
+                    .append("<employee name=\"Maksim\\\" Hired=\\\"7\\\" Fired=\\\"6\\\" Salary=\\\"$\\\">\">").append(worker.getHired()).append("</a>").append(System.lineSeparator())
 
                     .append("</office>").append(System.lineSeparator())
                     .append("</company>").append(System.lineSeparator());
