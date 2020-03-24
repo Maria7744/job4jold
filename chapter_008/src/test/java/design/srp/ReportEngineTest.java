@@ -9,7 +9,7 @@ public class ReportEngineTest {
 
    @Test
     public void whenGeneratedReportEngine() {
-       MemStore store = new MemStore();
+         MemStore store = new MemStore();
         Calendar now = Calendar.getInstance();
         Employer worker = new Employer("Olla", now, now, 100);
         store.add(worker);
@@ -92,7 +92,7 @@ public class ReportEngineTest {
         MemStore store = new MemStore();
         Calendar now = Calendar.getInstance();
         Employer workOne = new Employer("Petr", now, now, 100);
-        Employer workTwo = new Employer("Seva", now, now, 50);
+        Employer workTwo = new Employer("Serii", now, now, 50);
         store.add(workTwo);
         store.add(workOne);
         Reports engine = new HRReportEngine(store);
