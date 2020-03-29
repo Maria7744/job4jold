@@ -17,6 +17,7 @@ public class MemoryUser {
 
 
 
+
     public static void main(String[] args) {
         System.out.println("Start");
      User user = new User("test");
