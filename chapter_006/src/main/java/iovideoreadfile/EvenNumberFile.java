@@ -17,7 +17,7 @@ public class EvenNumberFile {
            for (String number : numbersString) {
                numbers[counter++] = Integer.parseInt(number);
                if (counter %2 ==0) {
-                   System.out.println(Arrays.toString(numbers) + "четное");
+                   System.out.println(Arrays.toString(numbers) + " четное");
                }else {
                    System.out.println(Arrays.toString(numbers) + "нечетное");
                }
