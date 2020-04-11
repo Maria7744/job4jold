@@ -20,9 +20,15 @@ after_success:
   CODECOV_TOKEN="2979ef04-73db-424c-95a3-5ab35a5dbabe"
 # Отправлять уведомление на почту pola7744@mail.ru (Изменить на свою) если сборка упала
 notifications:
+
   email:
     recipients:
       -pola7744@mail.ru
     on_success: never # default: change
     on_failure: always # default: always
 
+# safelist
+branches:
+  only:
+    - hotfix
+    - master
