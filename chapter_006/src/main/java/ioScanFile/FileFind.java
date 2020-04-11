@@ -8,7 +8,7 @@ public class FileFind {
 
     public static void main(String[] args) throws IOException {
         Path directory = Paths.get(".");
-        String fileNameToFind = ".gs";
+        String fileNameToFind = "js";
 
         try {
 
