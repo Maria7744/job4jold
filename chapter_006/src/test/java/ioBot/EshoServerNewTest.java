@@ -9,7 +9,7 @@ import java.io.IOException;
 
 import static org.mockito.Mockito.mock;
 
-public class EshoServerTest {
+public class EshoServerNewTest {
     private static final String LN = System.getProperty("line.separator");
 
     @Test
@@ -21,20 +21,20 @@ public class EshoServerTest {
     public void whenAskHellow() throws IOException{
         this.testEchoServer(
                 Joiner.on(LN).join(
-                        "hellow",
+                        "Hello",
                         "exit"
                 ),
-                String.format("http://localhost:9000/?msg=hellow,dear",LN,LN)
+                String.format("http://localhost:9000/?msg=Hellow",LN,LN)
         );
     }
     @Test
     public void whenASkWhat() throws IOException{
         this.testEchoServer(
                 Joiner.on(LN).join(
-                        "What",
+                        "Any",
                         "exit"
                 ),
-                String.format("http://localhost:9000/?msg=What...",LN,LN)
+                String.format("http://localhost:9000/?msg=Any...",LN,LN)
         );
     }
 
@@ -44,5 +44,4 @@ public class EshoServerTest {
         ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes()
         );
     }
-
 }
