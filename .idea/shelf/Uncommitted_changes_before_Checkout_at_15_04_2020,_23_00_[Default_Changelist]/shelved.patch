@@ -1,0 +1,352 @@
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n         xmlns=\"http://maven.apache.org/POM/4.0.0\"\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\">\n    <modelVersion>4.0.0</modelVersion>\n    <groupId>org.example</groupId>\n    <artifactId>job4j</artifactId>\n    <packaging>pom</packaging>\n    <version>3.0</version>\n    <profiles>\n        <profile>\n            <id>test</id>\n            <properties>\n                <db.url>jdbc:postgresql://127.0.0.1:5432/tracker</db.url>\n                <db.username>postgres</db.username>\n                <db.password>password</db.password>\n                <db.driver>org.postgresql.Driver</db.driver>\n            </properties>\n        </profile>\n        <profile>\n            <id>production</id>\n            <properties>\n                <db.url>jdbc:postgresql://127.0.0.1:5432/tracker</db.url>\n                <db.username>postgres</db.username>\n                <db.password>password</db.password>\n                <db.driver>org.postgresql.Driver</db.driver>\n            </properties>\n        </profile>\n        <profile>\n            <id>travis</id>\n            <activation>\n                <activeByDefault>true</activeByDefault>\n            </activation>\n            <properties>\n                <db.url>jdbc:postgresql://localhost/tracker</db.url>\n                <db.username>postgres</db.username>\n                <db.password></db.password>\n                <db.driver>org.postgresql.Driver</db.driver>\n            </properties>\n        </profile>\n    </profiles>\n    <modules>\n        <module>chapter_001</module>\n        <module>chapter_002</module>\n        <module>chapter_003</module>\n        <module>chapter_004</module>\n        <module>chapter_005</module>\n        <module>chapter_006</module>\n        <module>chapter_007</module>\n        <module>chapter_008</module>\n        <module>chapter_005</module>\n\n    </modules>\n    <properties>\n        <maven.compiler.source>11</maven.compiler.source>\n        <maven.compiler.target>11</maven.compiler.target>\n        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>\n    </properties>\n    <dependencies>\n        <dependency>\n            <groupId>org.hamcrest</groupId>\n            <artifactId>hamcrest-all</artifactId>\n            <version>1.3</version>\n            <scope>test</scope>\n        </dependency>\n        <dependency>\n            <groupId>junit</groupId>\n            <artifactId>junit</artifactId>\n            <version>4.12</version>\n            <scope>test</scope>\n        </dependency>\n        <dependency>\n            <groupId>org.apache.logging.log4j</groupId>\n            <artifactId>log4j-api</artifactId>\n            <version>2.11.1</version>\n        </dependency>\n        <dependency>\n            <groupId>org.apache.logging.log4j</groupId>\n            <artifactId>log4j-core</artifactId>\n            <version>2.11.1</version>\n        </dependency>\n        <dependency>\n            <groupId>org.xerial</groupId>\n            <artifactId>sqlite-jdbc</artifactId>\n            <version>3.21.0.1</version>\n        </dependency>\n        <dependency>\n            <groupId>org.telegram</groupId>\n            <artifactId>telegrambots</artifactId>\n            <version>3.5</version>\n        </dependency>\n    </dependencies>\n    <build>\n        <plugins>\n            <plugin>\n                <groupId>org.apache.maven.plugins</groupId>\n                <artifactId>maven-checkstyle-plugin</artifactId>\n                <version>3.0.0</version>\n                <executions>\n                    <execution>\n                        <id>validate</id>\n                        <phase>validate</phase>\n                        <configuration>\n                            <configLocation>checkstyle.xml</configLocation>\n                            <encoding>UTF-8</encoding>\n                            <consoleOutput>true</consoleOutput>\n                            <failsOnError>true</failsOnError>\n                            <includeTestSourceDirectory>true</includeTestSourceDirectory>\n                        </configuration>\n                        <goals>\n                            <goal>check</goal>\n                        </goals>\n                    </execution>\n                </executions>\n            </plugin>\n            <plugin>\n                <groupId>org.jacoco</groupId>\n                <artifactId>jacoco-maven-plugin</artifactId>\n                <version>0.8.4</version>\n                <executions>\n                    <execution>\n                        <goals>\n                            <goal>prepare-agent</goal>\n                        </goals>\n                    </execution>\n                    <execution>\n                        <id>report</id>\n                        <phase>test</phase>\n                        <goals>\n                            <goal>report</goal>\n                        </goals>\n                    </execution>\n                </executions>\n            </plugin>\n        </plugins>\n    </build>\n\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- pom.xml	(revision 0d42f1d02a1d1d2b6cf7ac42f7de5a570dcf7559)
++++ pom.xml	(date 1586957231480)
+@@ -48,7 +48,7 @@
+         <module>chapter_006</module>
+         <module>chapter_007</module>
+         <module>chapter_008</module>
+-        <module>chapter_005</module>
++        <module>chapter_009</module>
+ 
+     </modules>
+     <properties>
+@@ -70,14 +70,20 @@
+             <scope>test</scope>
+         </dependency>
+         <dependency>
+-            <groupId>org.apache.logging.log4j</groupId>
+-            <artifactId>log4j-api</artifactId>
+-            <version>2.11.1</version>
++            <groupId>org.mockito</groupId>
++            <artifactId>mockito-all</artifactId>
++            <version>1.10.19</version>
++            <scope>test</scope>
+         </dependency>
+         <dependency>
+-            <groupId>org.apache.logging.log4j</groupId>
+-            <artifactId>log4j-core</artifactId>
+-            <version>2.11.1</version>
++            <groupId>com.google.guava</groupId>
++            <artifactId>guava</artifactId>
++            <version>19.0</version>
++        </dependency>
++        <dependency>
++            <groupId>org.slf4j</groupId>
++            <artifactId>slf4j-log4j12</artifactId>
++            <version>1.7.30</version>
+         </dependency>
+         <dependency>
+             <groupId>org.xerial</groupId>
+Index: chapter_008/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\"\n         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\">\n    <modelVersion>4.0.0</modelVersion>\n\n    <groupId>org.example</groupId>\n    <artifactId>chapter_008</artifactId>\n    <version>3.0</version>\n    <build>\n        <plugins>\n            <plugin>\n                <groupId>org.apache.maven.plugins</groupId>\n                <artifactId>maven-compiler-plugin</artifactId>\n                <configuration>\n                    <source>11</source>\n                    <target>11</target>\n                </configuration>\n            </plugin>\n                <plugin>\n                    <groupId>org.liquibase</groupId>\n                    <artifactId>liquibase-maven-plugin</artifactId>\n                    <version>3.8.1</version>\n                    <configuration>\n                        <changeLogFile>${basedir}/db/master.xml</changeLogFile>\n                        <url>jdbc:postgresql://127.0.0.1:5432</url>\n                        <driver>org.postgresql.Driver</driver>\n                        <username>postgres</username>\n                        <password>password</password>\n                    </configuration>\n                    <executions>\n                        <execution>\n                            <phase>process-resources</phase>\n                            <goals>\n                                <goal>update</goal>\n                            </goals>\n                        </execution>\n                    </executions>\n                </plugin>\n            </plugins>\n    </build>\n    <dependencies>\n    <dependency>\n        <groupId>org.example</groupId>\n        <artifactId>chapter_002</artifactId>\n        <version>3.0</version>\n    </dependency>\n        <dependency>\n            <groupId>org.apache.logging.log4j</groupId>\n            <artifactId>log4j-api</artifactId>\n            <version>2.11.1</version>\n        </dependency>\n        <dependency>\n            <groupId>org.apache.logging.log4j</groupId>\n            <artifactId>log4j-core</artifactId>\n            <version>2.11.1</version>\n        </dependency>\n        <dependency>\n            <groupId>org.slf4j</groupId>\n            <artifactId>slf4j-log4j12</artifactId>\n            <version>1.7.30</version>\n        </dependency>\n        <dependency>\n            <groupId>junit</groupId>\n            <artifactId>junit</artifactId>\n            <version>4.12</version>\n            <scope>test</scope>\n        </dependency>\n\n    </dependencies>\n\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_008/pom.xml	(revision 0d42f1d02a1d1d2b6cf7ac42f7de5a570dcf7559)
++++ chapter_008/pom.xml	(date 1586957424058)
+@@ -45,27 +45,6 @@
+         <artifactId>chapter_002</artifactId>
+         <version>3.0</version>
+     </dependency>
+-        <dependency>
+-            <groupId>org.apache.logging.log4j</groupId>
+-            <artifactId>log4j-api</artifactId>
+-            <version>2.11.1</version>
+-        </dependency>
+-        <dependency>
+-            <groupId>org.apache.logging.log4j</groupId>
+-            <artifactId>log4j-core</artifactId>
+-            <version>2.11.1</version>
+-        </dependency>
+-        <dependency>
+-            <groupId>org.slf4j</groupId>
+-            <artifactId>slf4j-log4j12</artifactId>
+-            <version>1.7.30</version>
+-        </dependency>
+-        <dependency>
+-            <groupId>junit</groupId>
+-            <artifactId>junit</artifactId>
+-            <version>4.12</version>
+-            <scope>test</scope>
+-        </dependency>
+ 
+     </dependencies>
+ 
+Index: chapter_006/target/223199.sql
+===================================================================
+--- chapter_006/target/223199.sql	(revision 0d42f1d02a1d1d2b6cf7ac42f7de5a570dcf7559)
++++ chapter_006/target/223199.sql	(revision 0d42f1d02a1d1d2b6cf7ac42f7de5a570dcf7559)
+@@ -1,56 +0,0 @@
+-CREATE TABLE company
+-(
+-id integer NOT NULL,
+-name character varying,
+-CONSTRAINT company_pkey PRIMARY KEY (id)
+-);
+-
+-CREATE TABLE person
+-(
+-id integer NOT NULL,
+-name character varying,
+-company_id integer,
+-CONSTRAINT person_pkey PRIMARY KEY (id)
+-);
+-INSERT INTO company (id, name) VALUES
+-(1, 'sber'),
+-(2, 'prima'),
+-(3, 'toy'),
+-(4, 'go'),
+-(5, 'google');
+-
+-INSERT INTO person (id, name, company_id) VALUES
+-(1, 'Ivan', 1),
+-(2, 'Roy', 1),
+-(3, 'Alex', 2),
+-(4, 'Fedor', 2),
+-(5, 'Lena', 2),
+-(6, 'Anna', 3),
+-(7, 'Yan', 3),
+-(8, 'Kata', 4),
+-(9, 'Boby', 4),
+-(10, 'Sergey', 5);
+---1) Retrieve in a single query:
+--- names of all persons that are NOT in the company with id = 5
+-SELECT person.name, company.name FROM person
+-  LEFT JOIN company ON person.company_id = company.id
+-  WHERE company.id <>5;
+-  --или второй вариант:
+-  SELECT person.name, company.name FROM person
+-  LEFT JOIN company ON person.company_id = company.id
+- WHERE NOT company.id = 5;
+---// - company name for each person
+-SELECT *
+-FROM company as c
+-LEFT OUTER JOIN person as p
+-ON c.id=p.id;
+---2) Select the name of the company with the maximum number of
+--- persons + number of persons i
+-SELECT company.name, SUM(1) as persons FROM company
+-  LEFT JOIN person ON company.id = person.company_id
+-  GROUP BY (company.name) ORDER BY persons DESC LIMIT 1;
+---этот почему-то не проходит
+---2) Select the name of the company with the maximum number of persons + number of persons in this company
+-SELECT * FROM company as c
+-WHERE c.number person = (SELECT MAX(c.number person) FROM company c );
+-
+Index: chapter_008/src/main/java/design/srp/MemStore.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package design.srp;\n\n\nimport java.util.ArrayList;\nimport java.util.List;\nimport java.util.function.Predicate;\nimport java.util.stream.Collectors;\npublic class MemStore implements Store {\n    StringBuilder text = new StringBuilder();\n    private final List<Employer> employers = new ArrayList<>();\n\n\n    public void add(Employer em) {\n        employers.add(em);\n    }\n\n\n    @Override\n    public List<Employer> findBy(Predicate<Employer> filter) {\n        return employers.stream().filter(filter).collect(Collectors.toList());\n    }\n\n\n}\n\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_008/src/main/java/design/srp/MemStore.java	(revision 0d42f1d02a1d1d2b6cf7ac42f7de5a570dcf7559)
++++ chapter_008/src/main/java/design/srp/MemStore.java	(date 1586952034440)
+@@ -21,6 +21,10 @@
+     }
+ 
+ 
++    @Override
++    public List<Employer> findBy(javax.sql.rowset.Predicate<Employer> filter) {
++        return null;
++    }
+ }
+ 
+ 
+Index: README.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># I want to find a new job,I want to become a java developer\n[![Build Status](https://travis-ci.org/Maria7744/job4j.svg?branch=hotfix)]\n(https://travis-ci.org/Maria7744/job4j)\n[![codecov](https://codecov.io/gh/Maria7744/job4j/branch/master/graph/badge.svg)]\n(https://codecov.io/gh/Maria7744/job4j)
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- README.md	(revision 0d42f1d02a1d1d2b6cf7ac42f7de5a570dcf7559)
++++ README.md	(date 1586952034453)
+@@ -2,4 +2,4 @@
+ [![Build Status](https://travis-ci.org/Maria7744/job4j.svg?branch=hotfix)]
+ (https://travis-ci.org/Maria7744/job4j)
+ [![codecov](https://codecov.io/gh/Maria7744/job4j/branch/master/graph/badge.svg)]
+-(https://codecov.io/gh/Maria7744/job4j)
+\ No newline at end of file
++(https://codecov.io/gh/Maria7744/job4j)
+Index: chapter_008/src/test/java/tracker/TrackerSQLTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package tracker;\n\n\nimport org.junit.Test;\n\nimport java.io.InputStream;\nimport java.sql.Connection;\nimport java.sql.DriverManager;\nimport java.sql.SQLException;\nimport java.util.Properties;\n\nimport static org.hamcrest.core.Is.is;\nimport static org.junit.Assert.assertThat;\npublic class TrackerSQLTest {\n    public Connection init() {\n        try (InputStream in = TrackerSQL.class.getClassLoader().getResourceAsStream(\"app.properties\")) {\n            Properties config = new Properties();\n            config.load(in);\n            Class.forName(config.getProperty(\"driver-class-name\"));\n            return DriverManager.getConnection(\n                    config.getProperty(\"url\"),\n                    config.getProperty(\"username\"),\n                    config.getProperty(\"password\")\n\n            );\n        } catch (Exception e) {\n            throw new IllegalStateException(e);\n        }\n    }\n\n    @Test\n    public void createItem() throws SQLException {\n        try (TrackerSQL tracker = new TrackerSQL(ConnectionRollback.create(this.init()))) {\n            tracker.add(new Item(\"name\", \"desc\"));\n            assertThat(tracker.findByName(\"name\").length, is(1));\n        } catch (Exception e) {\n            e.printStackTrace();\n        }\n    }\n}\n\n\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_008/src/test/java/tracker/TrackerSQLTest.java	(revision 0d42f1d02a1d1d2b6cf7ac42f7de5a570dcf7559)
++++ chapter_008/src/test/java/tracker/TrackerSQLTest.java	(date 1586952034406)
+@@ -1,17 +1,8 @@
+ package tracker;
+ 
+ 
+-import org.junit.Test;
+-
+-import java.io.InputStream;
+-import java.sql.Connection;
+-import java.sql.DriverManager;
+-import java.sql.SQLException;
+-import java.util.Properties;
+-
+-import static org.hamcrest.core.Is.is;
+-import static org.junit.Assert.assertThat;
+-public class TrackerSQLTest {
++public class TrackerSQLTest {}
++/*
+     public Connection init() {
+         try (InputStream in = TrackerSQL.class.getClassLoader().getResourceAsStream("app.properties")) {
+             Properties config = new Properties();
+@@ -37,7 +28,7 @@
+             e.printStackTrace();
+         }
+     }
+-}
++}*/
+ 
+ 
+ 
+Index: chapter_008/src/test/java/warehouseProduct/ControllQualityTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package warehouseProduct;\n\nimport org.apache.logging.log4j.core.parser.ParseException;\nimport org.junit.Before;\nimport org.junit.Test;\n\nimport java.text.SimpleDateFormat;\nimport java.util.*;\n\nimport static org.junit.Assert.assertEquals;\n\n\npublic class ControllQualityTest {\n\n    private StorageProduct warehouse = new WareHouse();\n    private StorageProduct shop = new Shop();\n    private StorageProduct trash = new Trash();\n    private SimpleDateFormat dateFormat = new SimpleDateFormat(\"dd.MM.yyyy\");\n    private Date creation;\n    private Date expairation;\n\n\n    @Before\n    public void beforeAct() throws ParseException, java.text.ParseException {\n        creation = dateFormat.parse(\"15.09.2019\");\n        expairation = dateFormat.parse(\"25.05.2020\");\n        shop.push(new Potato(\"Potato\", \"15.09.2019\", \"25.05.2020\", 100, 0));\n        creation = dateFormat.parse(\"29.02.2020\");\n        expairation = dateFormat.parse(\"25.03.2020\");\n        shop.push(new Milk(\"Milk\", \"29.02.2020\", \"25.03.2020\", 100, 0));\n    }\n\n    @Test\n    public void test() throws ParseException {\n        Set<StorageProduct> act = new HashSet<StorageProduct>(Set.of(warehouse, shop, trash));\n        ControllQuality qual = new ControllQuality(act);\n        List<Food> temp = new ArrayList<>();\n        temp = qual.prepareList();\n        qual.addAll(temp);\n        qual.resort();\n        assertEquals(\"Potato\", trash.get().getName());\n        assertEquals(\"Milk\", warehouse.get().getName());\n\n    }\n}\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_008/src/test/java/warehouseProduct/ControllQualityTest.java	(revision 0d42f1d02a1d1d2b6cf7ac42f7de5a570dcf7559)
++++ chapter_008/src/test/java/warehouseProduct/ControllQualityTest.java	(date 1586952034413)
+@@ -1,16 +1,7 @@
+ package warehouseProduct;
+ 
+-import org.apache.logging.log4j.core.parser.ParseException;
+-import org.junit.Before;
+-import org.junit.Test;
+-
+-import java.text.SimpleDateFormat;
+-import java.util.*;
+-
+-import static org.junit.Assert.assertEquals;
+-
+-
+-public class ControllQualityTest {
++public class ControllQualityTest {}
++/*
+ 
+     private StorageProduct warehouse = new WareHouse();
+     private StorageProduct shop = new Shop();
+@@ -42,5 +33,5 @@
+         assertEquals("Milk", warehouse.get().getName());
+ 
+     }
+-}
++}*/
+ 
+Index: chapter_002/src/main/java/tracker/ITracker.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_002/src/main/java/tracker/ITracker.java	(date 1586952034471)
++++ chapter_002/src/main/java/tracker/ITracker.java	(date 1586952034471)
+@@ -0,0 +1,4 @@
++package tracker;
++
++public interface ITracker {
++}
+Index: chapter_008/src/test/java/design/srp/ReportEngineTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package design.srp;\n\nimport org.junit.Assert;\nimport org.junit.Test;\n\nimport java.util.Calendar;\n\npublic class ReportEngineTest {\n\n   @Test\n    public void whenGeneratedReportEngine() {\n         MemStore store = new MemStore();\n        Calendar now = Calendar.getInstance();\n        Employer worker = new Employer(\"Olla\", now, now, 100);\n        store.add(worker);\n        Reports engine = new ReportEngine(store);\n        StringBuilder expect = new StringBuilder()\n                .append(\"Name; Hired; Fired; Salary;\")\n                .append(System.lineSeparator())\n                .append(worker.getName()).append(\";\")\n                .append(worker.getHired()).append(\";\")\n                .append(worker.getFired()).append(\";\")\n                .append(worker.getSalary()).append(\";\")\n                .append(System.lineSeparator());\n        Assert.assertEquals(expect.toString(), engine.generate(em -> true));\n    }\n\n    @Test\n    public void whenGeneretedForProgrammersWithHTML() {\n        MemStore store = new MemStore();\n        Calendar now = Calendar.getInstance();\n        Employer workOne = new Employer(\"Olla\", now, now, 100);\n        Employer workTwo = new Employer(\"Anna\", now, now, 50);\n        store.add(workOne);\n        store.add(workTwo);\n        Reports engine = new ReportEngineForProgammer(store);\n        StringBuilder expect = new StringBuilder()\n                .append(\"<head>\").append(System.lineSeparator())\n                .append(\"<title>  Report for Programmer</title>\").append(System.lineSeparator())\n                .append(\"</head>\").append(System.lineSeparator())\n                .append(\"<body>\").append(System.lineSeparator())\n                .append(\"<table class= \\\"reportTable\\\">\").append(System.lineSeparator())\n                .append(\"<tr>\").append(System.lineSeparator())\n                .append(\"<th> Name </th>\").append(System.lineSeparator())\n                .append(\"<th> Hired </th>\").append(System.lineSeparator())\n                .append(\"<th> Fired </th>\").append(System.lineSeparator())\n                .append(\"<th> Salary </th>\").append(System.lineSeparator())\n                .append(\"</tr>\").append(System.lineSeparator())\n                .append(\"<tr>\").append(System.lineSeparator())\n                .append(\"<td  =\\\"name\\\"><a>\").append(workOne.getName()).append(\"</a>\").append(System.lineSeparator())\n                .append(\"<td  =\\\"hired\\\"><a>\").append(workOne.getHired()).append(\"</a>\").append(System.lineSeparator())\n                .append(\"<td  =\\\"fired\\\"><a>\").append(workOne.getFired()).append(\"</a>\").append(System.lineSeparator())\n                .append(\"<td  =\\\"salary\\\"><a>\").append(workOne.getSalary()).append(\"</a>\").append(System.lineSeparator())\n                .append(\"</tr>\").append(System.lineSeparator())\n                .append(\"<tr>\").append(System.lineSeparator())\n                .append(\"<td =\\\"name\\\"><a>\").append(workTwo.getName()).append(\"</a>\").append(System.lineSeparator())\n                .append(\"<td  =\\\"hired\\\"><a>\").append(workTwo.getHired()).append(\"</a>\").append(System.lineSeparator())\n                .append(\"<td  =\\\"fired\\\"><a>\").append(workTwo.getFired()).append(\"</a>\").append(System.lineSeparator())\n                .append(\"<td  =\\\"salary\\\"><a>\").append(workTwo.getSalary()).append(\"</a>\").append(System.lineSeparator())\n                .append(\"</tr>\").append(System.lineSeparator())\n        .append(\"</body>\").append(System.lineSeparator());\n        Assert.assertEquals(expect.toString(), engine.generate(em -> true));\n    }\n\n    @Test\n    public void whenGeneretedForAccountingsAnotherSalaryFormat() {\n        MemStore store = new MemStore();\n        Calendar now = Calendar.getInstance();\n        Employer workOne = new Employer(\"Ivan\", now, now, 100);\n        Employer workTwo = new Employer(\"Anna\", now, now, 50);\n        store.add(workOne);\n        store.add(workTwo);\n        Reports engine =  new ReportEngineForAccounting(store);\n        StringBuilder expect = new StringBuilder()\n                .append(\"Name; Hired; Fired; Salary;\")\n                .append(System.lineSeparator())\n                .append(workOne.getName()).append(\";\")\n                .append(workOne.getHired()).append(\";\")\n                .append(workOne.getFired()).append(\";\")\n                .append(String.format(\"|%100a|\", workOne.getSalary())).append(\";\")\n                .append(System.lineSeparator())\n                .append(workTwo.getName()).append(\";\")\n                .append(workTwo.getHired()).append(\";\")\n                .append(workTwo.getFired()).append(\";\")\n                .append(String.format(\"|%10.00|\", workTwo.getSalary())).append(\";\")\n                .append(System.lineSeparator());\n        Assert.assertEquals(expect.toString(), engine.generate(em -> true));\n    }\n\n    @Test\n    public void whenGeneretedForHR() {\n        MemStore store = new MemStore();\n        Calendar now = Calendar.getInstance();\n        Employer workOne = new Employer(\"Petr\", now, now, 100);\n        Employer workTwo = new Employer(\"Serii\", now, now, 50);\n        store.add(workTwo);\n        store.add(workOne);\n        Reports engine = new HRReportEngine(store);\n        StringBuilder expect = new StringBuilder()\n                .append(\"Name; Salary;\").append(System.lineSeparator())\n                .append(workOne.getName()).append(\";\")\n                .append(workOne.getSalary()).append(\";\")\n                .append(System.lineSeparator())\n                .append(workTwo.getName()).append(\";\")\n                .append(workTwo.getSalary()).append(\";\")\n                .append(System.lineSeparator());\n        Assert.assertEquals(expect.toString(), engine.generate(em -> true));\n    }\n}\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_008/src/test/java/design/srp/ReportEngineTest.java	(revision 0d42f1d02a1d1d2b6cf7ac42f7de5a570dcf7559)
++++ chapter_008/src/test/java/design/srp/ReportEngineTest.java	(date 1586952034420)
+@@ -1,12 +1,7 @@
+ package design.srp;
+ 
+-import org.junit.Assert;
+-import org.junit.Test;
+-
+-import java.util.Calendar;
+-
+-public class ReportEngineTest {
+-
++public class ReportEngineTest {}
++/*
+    @Test
+     public void whenGeneratedReportEngine() {
+          MemStore store = new MemStore();
+@@ -107,4 +102,4 @@
+         Assert.assertEquals(expect.toString(), engine.generate(em -> true));
+     }
+ }
+-
++*/
+Index: chapter_008/src/test/java/generator/SimpleGeneratorTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package generator;\nimport org.junit.Test;\n\nimport java.util.Map;\n\nimport static org.hamcrest.CoreMatchers.is;\nimport static org.junit.Assert.*;\n\npublic class SimpleGeneratorTest {\n\n    @Test\n    public void whenGeneratotGetString() {\n        String template = \"I am a ${name}, Who are ${subject}?\";\n        Map<String, String> values = Map.of(\"name\", \"Petr\", \"subject\", \"you\");\n        String expected = \"I am a Petr, Who are you?\";\n        assertThat(SimpleGenerator.formatString(template, values), is(expected));\n    }\n\n\n    @Test(expected = RuntimeException.class)\n    public void whenKeysExceptions() {\n        String template = \"I am a ${name}, Who are ${subject}?\";\n        Map<String, String> values = Map.of(\"name\", \"Petr\");\n        String expected = \"I am Petr, Who are you?\";\n        assertThat(SimpleGenerator.formatString(template, values), is(expected));\n    }\n\n    @Test(expected = RuntimeException.class)\n    public void whenMoreKeysExceptions() {\n        String template = \"I am a ${name}, Who are you?\";\n        Map<String, String> values = Map.of(\"name\", \"Petr\", \"subject\", \"you\");\n        String expected = \"I am Petr, Who are you?\";\n        assertThat(SimpleGenerator.formatString(template, values), is(expected));\n    }\n\n\n}\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_008/src/test/java/generator/SimpleGeneratorTest.java	(revision 0d42f1d02a1d1d2b6cf7ac42f7de5a570dcf7559)
++++ chapter_008/src/test/java/generator/SimpleGeneratorTest.java	(date 1586952034426)
+@@ -1,12 +1,6 @@
+ package generator;
+-import org.junit.Test;
+-
+-import java.util.Map;
+-
+-import static org.hamcrest.CoreMatchers.is;
+-import static org.junit.Assert.*;
+-
+-public class SimpleGeneratorTest {
++public class SimpleGeneratorTest {}
++/*
+ 
+     @Test
+     public void whenGeneratotGetString() {
+@@ -35,4 +29,4 @@
+ 
+ 
+ }
+-
++*/
+Index: chapter_008/src/main/java/princeple_004/UsageLog4j1.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_008/src/main/java/princeple_004/UsageLog4j1.java	(date 1586953238986)
++++ chapter_008/src/main/java/princeple_004/UsageLog4j1.java	(date 1586953238986)
+@@ -0,0 +1,19 @@
++package princeple_004;
++
++
++
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
++
++public class UsageLog4j1 {
++
++    private static final Logger LOG = LoggerFactory.getLogger(UsageLog4j1.class.getName());
++
++    public static void main(String[] args) {
++        LOG.trace("trace message");
++        LOG.debug("debug message");
++        LOG.info("info message");
++        LOG.warn("warn message");
++        LOG.error("error message");
++    }
++}
+\ No newline at end of file

@@ -1,0 +1,19 @@
+Index: chapter_008/src/main/java/princeple_003/ExJob.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package princeple_003;\nimport org.apache.logging.log4j.Logger;\nimport org.apache.logging.log4j.LogManager;\npublic class ExJob {\n\n   private static final Logger LOG = LogManager.getLogger(ExJob.class.getName());\n\n    public static void main(String[] args) {\n        int version = 1;\n        LOG.trace(\"trace message {}\", version);\n        LOG.debug(\"trace message {}\", version);\n        LOG.info(\"trace message {}\", version);\n        LOG.warn(\"trace message {}\", version);\n        LOG.error(\"trace message {}\", version);\n    }\n}\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_008/src/main/java/princeple_003/ExJob.java	(revision 37b8f11694f54e69d9cf8af1de61de55573f1f7e)
++++ chapter_008/src/main/java/princeple_003/ExJob.java	(date 1586983985444)
+@@ -1,6 +1,8 @@
+ package princeple_003;
+-import org.apache.logging.log4j.Logger;
++
+ import org.apache.logging.log4j.LogManager;
++import org.apache.logging.log4j.Logger;
++
+ public class ExJob {
+ 
+    private static final Logger LOG = LogManager.getLogger(ExJob.class.getName());

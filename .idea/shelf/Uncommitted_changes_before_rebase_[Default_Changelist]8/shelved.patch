@@ -1,0 +1,18 @@
+Index: chapter_008/src/main/java/princeple_004/UsageLog4j.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package princeple_004;\n\nimport org.slf4j.Logger;\nimport org.slf4j.LoggerFactory;\n\npublic class UsageLog4j {\n    private static final Logger LOG = LoggerFactory.getLogger(UsageLog4j.class.getName());\n\n    public static void main(String[] args) {\n        String name = \"Petr Arsentev\";\n        int age = 33;\n        Double  height = 1.78;\n        char sex = 'm';\n        int id = 567456;\n        double weight = 78.5;\n        String socialStatus = \"married\";\n        Boolean job = true;\n        LOG.debug(\"User info name : {}, age : {}, height :{}, sex :{}, id :{}, socialStatus:{}, job :{}\", name, age, height,\n                sex, id, weight, socialStatus,job );\n    }\n}\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_008/src/main/java/princeple_004/UsageLog4j.java	(revision ed9d4c5496db317c9cac0824dac7426f753662b2)
++++ chapter_008/src/main/java/princeple_004/UsageLog4j.java	(date 1587017105347)
+@@ -7,7 +7,7 @@
+     private static final Logger LOG = LoggerFactory.getLogger(UsageLog4j.class.getName());
+ 
+     public static void main(String[] args) {
+-        String name = "Petr Arsentev";
++        String name = "Petr Arsen";
+         int age = 33;
+         Double  height = 1.78;
+         char sex = 'm';

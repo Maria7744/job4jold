@@ -1,0 +1,138 @@
+Index: chapter_006/src/main/java/ioBot/EchoServerNew.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ioBot;\nimport java.io.*;\nimport java.net.ServerSocket;\nimport java.net.Socket;\n\npublic class EchoServerNew {\n    private static final int port = 9000;\n    private final Socket socket;\n\n    public EchoServerNew(Socket socket) {\n        this.socket= socket;\n    }\n\n    public void start() throws IOException {\n        PrintWriter out = new PrintWriter(this.socket.getOutputStream(), true);\n        BufferedReader in = new BufferedReader(\n                new InputStreamReader(this.socket.getInputStream()));\n        String ask ;\n        do {\n            System.out.println(\"ВВедите вопрос\");\n            ask = in.readLine();\n            System.out.println(ask);\n            if (\"Hello\".equals(ask)) {\n                out.println(\"http://localhost:9000/?msg=Hello\");\n                out.println();\n            } else if (\"Any\".equals(ask)) {\n                out.write(\"http://localhost:9000/?msg=Any...\");\n                out.println();\n            } else if (\"exit\".equals(ask)) {\n                out.println(\" \");\n                break;\n            }\n        }\n        while (!(\"exit\".equals(ask)));\n    }\n\n    public static void main(String[] args) throws IOException {\n        try (\n                final Socket socket = new ServerSocket(9000).accept()) {\n            new EchoServerNew(socket);\n        }\n    }\n}\n\n\n\n\n\n\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_006/src/main/java/ioBot/EchoServerNew.java	(revision db95605945590b92b3cec4b48f3f9a76bfb4cfc1)
++++ chapter_006/src/main/java/ioBot/EchoServerNew.java	(date 1587123735413)
+@@ -46,5 +46,3 @@
+ 
+ 
+ 
+-
+-
+Index: chapter_008/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\"\n         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\">\n    <modelVersion>4.0.0</modelVersion>\n\n    <groupId>org.example</groupId>\n    <artifactId>chapter_008</artifactId>\n    <version>3.0</version>\n    <build>\n        <plugins>\n            <plugin>\n                <groupId>org.apache.maven.plugins</groupId>\n                <artifactId>maven-compiler-plugin</artifactId>\n                <configuration>\n                    <source>11</source>\n                    <target>11</target>\n                </configuration>\n            </plugin>\n                <plugin>\n                    <groupId>org.liquibase</groupId>\n                    <artifactId>liquibase-maven-plugin</artifactId>\n                    <version>3.8.1</version>\n                    <configuration>\n                        <changeLogFile>${basedir}/db/master.xml</changeLogFile>\n                        <url>jdbc:postgresql://127.0.0.1:5432</url>\n                        <driver>org.postgresql.Driver</driver>\n                        <username>postgres</username>\n                        <password>password</password>\n                    </configuration>\n                    <executions>\n                        <execution>\n                            <phase>process-resources</phase>\n                            <goals>\n                                <goal>update</goal>\n                            </goals>\n                        </execution>\n                    </executions>\n                </plugin>\n            </plugins>\n    </build>\n    <dependencies>\n    <dependency>\n        <groupId>org.example</groupId>\n        <artifactId>chapter_002</artifactId>\n        <version>3.0</version>\n    </dependency>\n\n        <dependency>\n            <groupId>log4j</groupId>\n            <artifactId>log4j</artifactId>\n            <version>1.2.17</version>\n        </dependency>\n        <dependency>\n            <groupId>org.slf4j</groupId>\n            <artifactId>slf4j-log4j12</artifactId>\n            <version>1.7.30</version>\n        </dependency>\n        <dependency>\n            <groupId>junit</groupId>\n            <artifactId>junit</artifactId>\n            <version>4.12</version>\n            <scope>test</scope>\n        </dependency>\n\n    </dependencies>\n\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_008/pom.xml	(revision db95605945590b92b3cec4b48f3f9a76bfb4cfc1)
++++ chapter_008/pom.xml	(date 1587124016071)
+@@ -46,23 +46,14 @@
+         <version>3.0</version>
+     </dependency>
+ 
+-        <dependency>
+-            <groupId>log4j</groupId>
+-            <artifactId>log4j</artifactId>
+-            <version>1.2.17</version>
+-        </dependency>
+         <dependency>
+             <groupId>org.slf4j</groupId>
+-            <artifactId>slf4j-log4j12</artifactId>
++            <artifactId>slf4j-api</artifactId>
+             <version>1.7.30</version>
+-        </dependency>
+-        <dependency>
+-            <groupId>junit</groupId>
+-            <artifactId>junit</artifactId>
+-            <version>4.12</version>
+-            <scope>test</scope>
++            <scope>compile</scope>
+         </dependency>
+ 
++
+     </dependencies>
+ 
+ </project>
+\ No newline at end of file
+Index: chapter_008/src/main/java/princeple_004/UsageLog4j.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package princeple_004;\n\nimport org.slf4j.Logger;\nimport org.slf4j.LoggerFactory;\n\npublic class UsageLog4j {\n    private static final Logger LOG = LoggerFactory.getLogger(UsageLog4j.class.getName());\n\n    public static void main(String[] args) {\n        String name = \"Petr Arsentev\";\n        int age = 33;\n        Double  height = 1.78;\n        char sex = 'm';\n        int id = 567456;\n        double weight = 79.5;\n        String socialStatus = \"married\";\n        Boolean job = true;\n        LOG.debug(\"User info name : {}, age : {}, height :{}, sex :{}, id :{}, socialStatus:{}, job :{}\", name, age, height,\n                sex, id, weight, socialStatus,job );\n    }\n}\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_008/src/main/java/princeple_004/UsageLog4j.java	(revision db95605945590b92b3cec4b48f3f9a76bfb4cfc1)
++++ chapter_008/src/main/java/princeple_004/UsageLog4j.java	(date 1587123523635)
+@@ -4,7 +4,8 @@
+ import org.slf4j.LoggerFactory;
+ 
+ public class UsageLog4j {
+-    private static final Logger LOG = LoggerFactory.getLogger(UsageLog4j.class.getName());
++
++    private static final Logger LOG = LoggerFactory.getLogger(UsageLog4j1.class.getName());
+ 
+     public static void main(String[] args) {
+         String name = "Petr Arsentev";
+@@ -15,7 +16,8 @@
+         double weight = 79.5;
+         String socialStatus = "married";
+         Boolean job = true;
+-        LOG.debug("User info name : {}, age : {}, height :{}, sex :{}, id :{}, socialStatus:{}, job :{}", name, age, height,
++        LOG.debug("User info name : {}, age : {}," +
++                        " height :{}, sex :{}, id :{}, socialStatus:{}, job :{}", name, age, height,
+                 sex, id, weight, socialStatus,job );
+     }
+ }
+Index: out/production/job4j/ru/job4j/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\"\n         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\">\n    <modelVersion>4.0.0</modelVersion>\n\n    <groupId>org.example</groupId>\n    <artifactId>ru.job4j</artifactId>\n    <version>3.6.3</version>\n\n\n</project>
+===================================================================
+--- out/production/job4j/ru/job4j/pom.xml	(revision db95605945590b92b3cec4b48f3f9a76bfb4cfc1)
++++ chapter_002/pom.xml	(date 1587067388056)
+@@ -5,8 +5,8 @@
+     <modelVersion>4.0.0</modelVersion>
+ 
+     <groupId>org.example</groupId>
+-    <artifactId>ru.job4j</artifactId>
+-    <version>3.6.3</version>
++    <artifactId>chapter_002</artifactId>
++    <version>3.0</version>
+ 
+-
+-</project>
+\ No newline at end of file
++    
++</project>
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n         xmlns=\"http://maven.apache.org/POM/4.0.0\"\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\">\n    <modelVersion>4.0.0</modelVersion>\n    <groupId>org.example</groupId>\n    <artifactId>job4j</artifactId>\n    <packaging>pom</packaging>\n    <version>3.0</version>\n    <profiles>\n        <profile>\n            <id>test</id>\n            <properties>\n                <db.url>jdbc:postgresql://127.0.0.1:5432/tracker</db.url>\n                <db.username>postgres</db.username>\n                <db.password>password</db.password>\n                <db.driver>org.postgresql.Driver</db.driver>\n            </properties>\n        </profile>\n        <profile>\n            <id>production</id>\n            <properties>\n                <db.url>jdbc:postgresql://127.0.0.1:5432/tracker</db.url>\n                <db.username>postgres</db.username>\n                <db.password>password</db.password>\n                <db.driver>org.postgresql.Driver</db.driver>\n            </properties>\n        </profile>\n        <profile>\n            <id>travis</id>\n            <activation>\n                <activeByDefault>true</activeByDefault>\n            </activation>\n            <properties>\n                <db.url>jdbc:postgresql://localhost/tracker</db.url>\n                <db.username>postgres</db.username>\n                <db.password></db.password>\n                <db.driver>org.postgresql.Driver</db.driver>\n            </properties>\n        </profile>\n    </profiles>\n    <modules>\n        <module>chapter_001</module>\n        <module>chapter_002</module>\n        <module>chapter_003</module>\n        <module>chapter_004</module>\n        <module>chapter_005</module>\n        <module>chapter_006</module>\n        <module>chapter_007</module>\n        <module>chapter_008</module>\n        <module>chapter_005</module>\n\n    </modules>\n    <properties>\n        <maven.compiler.source>11</maven.compiler.source>\n        <maven.compiler.target>11</maven.compiler.target>\n        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>\n    </properties>\n    <dependencies>\n        <dependency>\n            <groupId>org.hamcrest</groupId>\n            <artifactId>hamcrest-all</artifactId>\n            <version>1.3</version>\n            <scope>test</scope>\n        </dependency>\n        <dependency>\n            <groupId>junit</groupId>\n            <artifactId>junit</artifactId>\n            <version>4.12</version>\n            <scope>test</scope>\n        </dependency>\n        <dependency>\n            <groupId>org.apache.logging.log4j</groupId>\n            <artifactId>log4j-api</artifactId>\n            <version>2.11.1</version>\n        </dependency>\n        <dependency>\n            <groupId>org.apache.logging.log4j</groupId>\n            <artifactId>log4j-core</artifactId>\n            <version>2.11.1</version>\n        </dependency>\n        <dependency>\n            <groupId>org.xerial</groupId>\n            <artifactId>sqlite-jdbc</artifactId>\n            <version>3.21.0.1</version>\n        </dependency>\n        <dependency>\n            <groupId>org.telegram</groupId>\n            <artifactId>telegrambots</artifactId>\n            <version>3.5</version>\n        </dependency>\n    </dependencies>\n    <build>\n        <plugins>\n            <plugin>\n                <groupId>org.apache.maven.plugins</groupId>\n                <artifactId>maven-checkstyle-plugin</artifactId>\n                <version>3.0.0</version>\n                <executions>\n                    <execution>\n                        <id>validate</id>\n                        <phase>validate</phase>\n                        <configuration>\n                            <configLocation>checkstyle.xml</configLocation>\n                            <encoding>UTF-8</encoding>\n                            <consoleOutput>true</consoleOutput>\n                            <failsOnError>true</failsOnError>\n                            <includeTestSourceDirectory>true</includeTestSourceDirectory>\n                        </configuration>\n                        <goals>\n                            <goal>check</goal>\n                        </goals>\n                    </execution>\n                </executions>\n            </plugin>\n            <plugin>\n                <groupId>org.jacoco</groupId>\n                <artifactId>jacoco-maven-plugin</artifactId>\n                <version>0.8.4</version>\n                <executions>\n                    <execution>\n                        <goals>\n                            <goal>prepare-agent</goal>\n                        </goals>\n                    </execution>\n                    <execution>\n                        <id>report</id>\n                        <phase>test</phase>\n                        <goals>\n                            <goal>report</goal>\n                        </goals>\n                    </execution>\n                </executions>\n            </plugin>\n        </plugins>\n    </build>\n\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- pom.xml	(revision db95605945590b92b3cec4b48f3f9a76bfb4cfc1)
++++ pom.xml	(date 1587124062697)
+@@ -48,7 +48,7 @@
+         <module>chapter_006</module>
+         <module>chapter_007</module>
+         <module>chapter_008</module>
+-        <module>chapter_005</module>
++        <module>chapter_009</module>
+ 
+     </modules>
+     <properties>
+@@ -70,14 +70,9 @@
+             <scope>test</scope>
+         </dependency>
+         <dependency>
+-            <groupId>org.apache.logging.log4j</groupId>
+-            <artifactId>log4j-api</artifactId>
+-            <version>2.11.1</version>
+-        </dependency>
+-        <dependency>
+-            <groupId>org.apache.logging.log4j</groupId>
+-            <artifactId>log4j-core</artifactId>
+-            <version>2.11.1</version>
++            <groupId>org.slf4j</groupId>
++            <artifactId>slf4j-log4j12</artifactId>
++            <version>1.7.30</version>
+         </dependency>
+         <dependency>
+             <groupId>org.xerial</groupId>

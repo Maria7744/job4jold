@@ -1,0 +1,1469 @@
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n         xmlns=\"http://maven.apache.org/POM/4.0.0\"\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\">\n    <modelVersion>4.0.0</modelVersion>\n    <groupId>org.example</groupId>\n    <artifactId>job4j</artifactId>\n    <packaging>pom</packaging>\n    <version>3.0</version>\n    <profiles>\n        <profile>\n            <id>test</id>\n            <properties>\n                <db.url>jdbc:postgresql://127.0.0.1:5432/tracker</db.url>\n                <db.username>postgres</db.username>\n                <db.password>password</db.password>\n                <db.driver>org.postgresql.Driver</db.driver>\n            </properties>\n        </profile>\n        <profile>\n            <id>production</id>\n            <properties>\n                <db.url>jdbc:postgresql://127.0.0.1:5432/tracker</db.url>\n                <db.username>postgres</db.username>\n                <db.password>password</db.password>\n                <db.driver>org.postgresql.Driver</db.driver>\n            </properties>\n        </profile>\n        <profile>\n            <id>travis</id>\n            <activation>\n                <activeByDefault>true</activeByDefault>\n            </activation>\n            <properties>\n                <db.url>jdbc:postgresql://localhost/tracker</db.url>\n                <db.username>postgres</db.username>\n                <db.password></db.password>\n                <db.driver>org.postgresql.Driver</db.driver>\n            </properties>\n        </profile>\n    </profiles>\n    <modules>\n        <module>chapter_001</module>\n        <module>chapter_002</module>\n        <module>chapter_003</module>\n        <module>chapter_004</module>\n        <module>chapter_005</module>\n        <module>chapter_006</module>\n        <module>chapter_007</module>\n        <module>chapter_008</module>\n        <module>chapter_005</module>\n\n    </modules>\n    <properties>\n        <maven.compiler.source>11</maven.compiler.source>\n        <maven.compiler.target>11</maven.compiler.target>\n        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>\n    </properties>\n    <dependencies>\n        <dependency>\n            <groupId>org.hamcrest</groupId>\n            <artifactId>hamcrest-all</artifactId>\n            <version>1.3</version>\n            <scope>test</scope>\n        </dependency>\n        <dependency>\n            <groupId>junit</groupId>\n            <artifactId>junit</artifactId>\n            <version>4.12</version>\n            <scope>test</scope>\n        </dependency>\n        <dependency>\n            <groupId>org.apache.logging.log4j</groupId>\n            <artifactId>log4j-api</artifactId>\n            <version>2.11.1</version>\n        </dependency>\n        <dependency>\n            <groupId>org.apache.logging.log4j</groupId>\n            <artifactId>log4j-core</artifactId>\n            <version>2.11.1</version>\n        </dependency>\n        <dependency>\n            <groupId>org.xerial</groupId>\n            <artifactId>sqlite-jdbc</artifactId>\n            <version>3.21.0.1</version>\n        </dependency>\n        <dependency>\n            <groupId>org.telegram</groupId>\n            <artifactId>telegrambots</artifactId>\n            <version>3.5</version>\n        </dependency>\n    </dependencies>\n    <build>\n        <plugins>\n            <plugin>\n                <groupId>org.apache.maven.plugins</groupId>\n                <artifactId>maven-checkstyle-plugin</artifactId>\n                <version>3.0.0</version>\n                <executions>\n                    <execution>\n                        <id>validate</id>\n                        <phase>validate</phase>\n                        <configuration>\n                            <configLocation>checkstyle.xml</configLocation>\n                            <encoding>UTF-8</encoding>\n                            <consoleOutput>true</consoleOutput>\n                            <failsOnError>true</failsOnError>\n                            <includeTestSourceDirectory>true</includeTestSourceDirectory>\n                        </configuration>\n                        <goals>\n                            <goal>check</goal>\n                        </goals>\n                    </execution>\n                </executions>\n            </plugin>\n            <plugin>\n                <groupId>org.jacoco</groupId>\n                <artifactId>jacoco-maven-plugin</artifactId>\n                <version>0.8.4</version>\n                <executions>\n                    <execution>\n                        <goals>\n                            <goal>prepare-agent</goal>\n                        </goals>\n                    </execution>\n                    <execution>\n                        <id>report</id>\n                        <phase>test</phase>\n                        <goals>\n                            <goal>report</goal>\n                        </goals>\n                    </execution>\n                </executions>\n            </plugin>\n        </plugins>\n    </build>\n\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- pom.xml	(revision 4b1d4d8e662fbefca963ba47932e27cead076b32)
++++ pom.xml	(date 1586605969367)
+@@ -49,6 +49,7 @@
+         <module>chapter_007</module>
+         <module>chapter_008</module>
+         <module>chapter_005</module>
++        <module>chapter_009</module>
+ 
+     </modules>
+     <properties>
+@@ -68,6 +69,29 @@
+             <artifactId>junit</artifactId>
+             <version>4.12</version>
+             <scope>test</scope>
++        </dependency>
++        <dependency>
++            <groupId>org.mockito</groupId>
++            <artifactId>mockito-all</artifactId>
++            <version>1.10.19</version>
++            <scope>test</scope>
++        </dependency>
++        <dependency>
++            <groupId>com.google.guava</groupId>
++            <artifactId>guava</artifactId>
++            <version>19.0</version>
++            <scope>test</scope>
++        </dependency>
++        <dependency>
++            <groupId>org.slf4j</groupId>
++            <artifactId>slf4j-api</artifactId>
++            <version>1.7.30</version>
++        </dependency>
++        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12 -->
++        <dependency>
++            <groupId>org.slf4j</groupId>
++            <artifactId>slf4j-log4j12</artifactId>
++            <version>1.7.30</version>
+         </dependency>
+         <dependency>
+             <groupId>org.apache.logging.log4j</groupId>
+@@ -88,6 +112,11 @@
+             <groupId>org.telegram</groupId>
+             <artifactId>telegrambots</artifactId>
+             <version>3.5</version>
++        </dependency>
++        <dependency>
++            <groupId>org.quartz-scheduler</groupId>
++            <artifactId>quartz</artifactId>
++            <version>2.3.2</version>
+         </dependency>
+     </dependencies>
+     <build>
+Index: chapter_008/src/test/java/design/srp/ReportEngineTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package design.srp;\n\nimport org.junit.Assert;\nimport org.junit.Test;\n\nimport java.util.Calendar;\n\npublic class ReportEngineTest {\n\n   @Test\n    public void whenGeneratedReportEngine() {\n         MemStore store = new MemStore();\n        Calendar now = Calendar.getInstance();\n        Employer worker = new Employer(\"Olla\", now, now, 100);\n        store.add(worker);\n        Reports engine = new ReportEngine(store);\n        StringBuilder expect = new StringBuilder()\n                .append(\"Name; Hired; Fired; Salary;\")\n                .append(System.lineSeparator())\n                .append(worker.getName()).append(\";\")\n                .append(worker.getHired()).append(\";\")\n                .append(worker.getFired()).append(\";\")\n                .append(worker.getSalary()).append(\";\")\n                .append(System.lineSeparator());\n        Assert.assertEquals(expect.toString(), engine.generate(em -> true));\n    }\n\n    @Test\n    public void whenGeneretedForProgrammersWithHTML() {\n        MemStore store = new MemStore();\n        Calendar now = Calendar.getInstance();\n        Employer workOne = new Employer(\"Olla\", now, now, 100);\n        Employer workTwo = new Employer(\"Anna\", now, now, 50);\n        store.add(workOne);\n        store.add(workTwo);\n        Reports engine = new ReportEngineForProgammer(store);\n        StringBuilder expect = new StringBuilder()\n                .append(\"<head>\").append(System.lineSeparator())\n                .append(\"<title>  Report for Programmer</title>\").append(System.lineSeparator())\n                .append(\"</head>\").append(System.lineSeparator())\n                .append(\"<body>\").append(System.lineSeparator())\n                .append(\"<table class= \\\"reportTable\\\">\").append(System.lineSeparator())\n                .append(\"<tr>\").append(System.lineSeparator())\n                .append(\"<th> Name </th>\").append(System.lineSeparator())\n                .append(\"<th> Hired </th>\").append(System.lineSeparator())\n                .append(\"<th> Fired </th>\").append(System.lineSeparator())\n                .append(\"<th> Salary </th>\").append(System.lineSeparator())\n                .append(\"</tr>\").append(System.lineSeparator())\n                .append(\"<tr>\").append(System.lineSeparator())\n                .append(\"<td  =\\\"name\\\"><a>\").append(workOne.getName()).append(\"</a>\").append(System.lineSeparator())\n                .append(\"<td  =\\\"hired\\\"><a>\").append(workOne.getHired()).append(\"</a>\").append(System.lineSeparator())\n                .append(\"<td  =\\\"fired\\\"><a>\").append(workOne.getFired()).append(\"</a>\").append(System.lineSeparator())\n                .append(\"<td  =\\\"salary\\\"><a>\").append(workOne.getSalary()).append(\"</a>\").append(System.lineSeparator())\n                .append(\"</tr>\").append(System.lineSeparator())\n                .append(\"<tr>\").append(System.lineSeparator())\n                .append(\"<td =\\\"name\\\"><a>\").append(workTwo.getName()).append(\"</a>\").append(System.lineSeparator())\n                .append(\"<td  =\\\"hired\\\"><a>\").append(workTwo.getHired()).append(\"</a>\").append(System.lineSeparator())\n                .append(\"<td  =\\\"fired\\\"><a>\").append(workTwo.getFired()).append(\"</a>\").append(System.lineSeparator())\n                .append(\"<td  =\\\"salary\\\"><a>\").append(workTwo.getSalary()).append(\"</a>\").append(System.lineSeparator())\n                .append(\"</tr>\").append(System.lineSeparator())\n        .append(\"</body>\").append(System.lineSeparator());\n        Assert.assertEquals(expect.toString(), engine.generate(em -> true));\n    }\n\n    @Test\n    public void whenGeneretedForAccountingsAnotherSalaryFormat() {\n        MemStore store = new MemStore();\n        Calendar now = Calendar.getInstance();\n        Employer workOne = new Employer(\"Ivan\", now, now, 100);\n        Employer workTwo = new Employer(\"Anna\", now, now, 50);\n        store.add(workOne);\n        store.add(workTwo);\n        Reports engine =  new ReportEngineForAccounting(store);\n        StringBuilder expect = new StringBuilder()\n                .append(\"Name; Hired; Fired; Salary;\")\n                .append(System.lineSeparator())\n                .append(workOne.getName()).append(\";\")\n                .append(workOne.getHired()).append(\";\")\n                .append(workOne.getFired()).append(\";\")\n                .append(String.format(\"|%100a|\", workOne.getSalary())).append(\";\")\n                .append(System.lineSeparator())\n                .append(workTwo.getName()).append(\";\")\n                .append(workTwo.getHired()).append(\";\")\n                .append(workTwo.getFired()).append(\";\")\n                .append(String.format(\"|%10.00|\", workTwo.getSalary())).append(\";\")\n                .append(System.lineSeparator());\n        Assert.assertEquals(expect.toString(), engine.generate(em -> true));\n    }\n\n    @Test\n    public void whenGeneretedForHR() {\n        MemStore store = new MemStore();\n        Calendar now = Calendar.getInstance();\n        Employer workOne = new Employer(\"Petr\", now, now, 100);\n        Employer workTwo = new Employer(\"Serii\", now, now, 50);\n        store.add(workTwo);\n        store.add(workOne);\n        Reports engine = new HRReportEngine(store);\n        StringBuilder expect = new StringBuilder()\n                .append(\"Name; Salary;\").append(System.lineSeparator())\n                .append(workOne.getName()).append(\";\")\n                .append(workOne.getSalary()).append(\";\")\n                .append(System.lineSeparator())\n                .append(workTwo.getName()).append(\";\")\n                .append(workTwo.getSalary()).append(\";\")\n                .append(System.lineSeparator());\n        Assert.assertEquals(expect.toString(), engine.generate(em -> true));\n    }\n}\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_008/src/test/java/design/srp/ReportEngineTest.java	(revision 4b1d4d8e662fbefca963ba47932e27cead076b32)
++++ chapter_008/src/test/java/design/srp/ReportEngineTest.java	(date 1586605969364)
+@@ -1,13 +1,8 @@
+ package design.srp;
+ 
+-import org.junit.Assert;
+-import org.junit.Test;
+-
+-import java.util.Calendar;
++public class ReportEngineTest {}
+ 
+-public class ReportEngineTest {
+-
+-   @Test
++ /*  @Test
+     public void whenGeneratedReportEngine() {
+          MemStore store = new MemStore();
+         Calendar now = Calendar.getInstance();
+@@ -106,5 +101,5 @@
+                 .append(System.lineSeparator());
+         Assert.assertEquals(expect.toString(), engine.generate(em -> true));
+     }
+-}
++}*/
+ 
+Index: chapter_008/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\"\n         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\">\n    <modelVersion>4.0.0</modelVersion>\n\n    <groupId>org.example</groupId>\n    <artifactId>chapter_008</artifactId>\n    <version>3.0</version>\n    <build>\n        <plugins>\n            <plugin>\n                <groupId>org.apache.maven.plugins</groupId>\n                <artifactId>maven-compiler-plugin</artifactId>\n                <configuration>\n                    <source>11</source>\n                    <target>11</target>\n                </configuration>\n            </plugin>\n                <plugin>\n                    <groupId>org.liquibase</groupId>\n                    <artifactId>liquibase-maven-plugin</artifactId>\n                    <version>3.8.1</version>\n                    <configuration>\n                        <changeLogFile>${basedir}/db/master.xml</changeLogFile>\n                        <url>jdbc:postgresql://127.0.0.1:5432</url>\n                        <driver>org.postgresql.Driver</driver>\n                        <username>postgres</username>\n                        <password>password</password>\n                    </configuration>\n                    <executions>\n                        <execution>\n                            <phase>process-resources</phase>\n                            <goals>\n                                <goal>update</goal>\n                            </goals>\n                        </execution>\n                    </executions>\n                </plugin>\n            </plugins>\n    </build>\n    <dependencies>\n    <dependency>\n        <groupId>org.example</groupId>\n        <artifactId>chapter_002</artifactId>\n        <version>3.0</version>\n    </dependency>\n        <dependency>\n            <groupId>org.apache.logging.log4j</groupId>\n            <artifactId>log4j-api</artifactId>\n            <version>2.11.1</version>\n        </dependency>\n        <dependency>\n            <groupId>org.apache.logging.log4j</groupId>\n            <artifactId>log4j-core</artifactId>\n            <version>2.11.1</version>\n        </dependency>\n        <dependency>\n            <groupId>junit</groupId>\n            <artifactId>junit</artifactId>\n            <version>4.12</version>\n            <scope>test</scope>\n        </dependency>\n\n    </dependencies>\n\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_008/pom.xml	(revision 4b1d4d8e662fbefca963ba47932e27cead076b32)
++++ chapter_008/pom.xml	(date 1586605969361)
+@@ -61,6 +61,12 @@
+             <version>4.12</version>
+             <scope>test</scope>
+         </dependency>
++        <dependency>
++            <groupId>com.google.guava</groupId>
++            <artifactId>guava</artifactId>
++            <version>19.0</version>
++            <scope>compile</scope>
++        </dependency>
+ 
+     </dependencies>
+ 
+Index: chapter_006/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\"\n         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\">\n    <parent>\n        <artifactId>job4j</artifactId>\n        <groupId>org.example</groupId>\n        <version>3.0</version>\n    </parent>\n    <modelVersion>4.0.0</modelVersion>\n\n    <artifactId>chapter_006</artifactId>\n\n\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_006/pom.xml	(revision 4b1d4d8e662fbefca963ba47932e27cead076b32)
++++ chapter_006/pom.xml	(date 1586605969357)
+@@ -10,6 +10,20 @@
+     <modelVersion>4.0.0</modelVersion>
+ 
+     <artifactId>chapter_006</artifactId>
++    <dependencies>
++        <dependency>
++            <groupId>org.example</groupId>
++            <artifactId>chapter_002</artifactId>
++            <version>3.0</version>
++            <scope>compile</scope>
++        </dependency>
++        <dependency>
++            <groupId>org.example</groupId>
++            <artifactId>chapter_002</artifactId>
++            <version>3.0</version>
++            <scope>compile</scope>
++        </dependency>
++    </dependencies>
+ 
+ 
+ </project>
+\ No newline at end of file
+Index: chapter_008/src/main/java/warehouseProduct/ControllQuality.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package warehouseProduct;\nimport org.apache.logging.log4j.LogManager;\nimport org.apache.logging.log4j.Logger;\n\nimport java.util.*;\npublic class ControllQuality {\n    private static final Logger LOG = LogManager.getLogger(ControllQuality.class.getName());\n\n    private Set<StorageProduct> listStorage;\n    private LinkedList<Food> base = new LinkedList<>();\n    ControllQuality(Set<StorageProduct> listStorage) {\n        this.listStorage = listStorage;\n    }\n\n\n\n    public List<Food> prepareList() {\n        List<Food> answer = new ArrayList<>();\n        for (var e : listStorage) {\n            while (e.hasNext()) {\n                answer.add(e.get());\n            }\n        }\n        return answer;\n    }\n\n\n    public void add(Food e) {\n        Calendar cal = Calendar.getInstance();\n        cal.add(Calendar.DATE, 0);\n        Date today = cal.getTime();\n        double check = ((double) (e.getCreateDate().getTime() - today.getTime()))\n                / ((double) (e.getCreateDate().getTime() - e.getExpaireDate().getTime()));\n        for (var str : listStorage) {\n            if (str.accept(check)) {\n                if (check > 0.75 && check < 1.0) {\n                    e.setDisscount(check);\n                }\n                else if (check<0.75 && check>0.25){\n                    e.Shop.push( check);\n\n                }else\n                str.push(e);\n            }\n        }\n    }\n\n    public void addAll(List<Food> list) {\n        for (var e : list) {\n            add(e);\n        }\n    }\n\n\n    public void resort() {\n        List<Food> tempList = prepareList();\n        addAll(tempList);\n    }\n}\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_008/src/main/java/warehouseProduct/ControllQuality.java	(revision 4b1d4d8e662fbefca963ba47932e27cead076b32)
++++ chapter_008/src/main/java/warehouseProduct/ControllQuality.java	(date 1586605969363)
+@@ -1,4 +1,5 @@
+ package warehouseProduct;
++import design.srp.Store;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ 
+@@ -23,7 +24,13 @@
+         }
+         return answer;
+     }
+-
++//Store.check : boolean
++//
++//Store.add
++//
++//for (Store store : stores) {
++//    if (store.check(food)) {
++//       store.add(food)
+ 
+     public void add(Food e) {
+         Calendar cal = Calendar.getInstance();
+@@ -31,9 +38,11 @@
+         Date today = cal.getTime();
+         double check = ((double) (e.getCreateDate().getTime() - today.getTime()))
+                 / ((double) (e.getCreateDate().getTime() - e.getExpaireDate().getTime()));
+-        for (var str : listStorage) {
+-            if (str.accept(check)) {
+-                if (check > 0.75 && check < 1.0) {
++        Store.check:boolean;
++        Store.add;
++        for (Store store : stores) {
++            if (store.check(food)) {
++                if (store.check > 0.75 && check < 1.0) {
+                     e.setDisscount(check);
+                 }
+                 else if (check<0.75 && check>0.25){
+Index: chapter_001/src/main/java/list/Slovo.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package list;\n\nimport java.util.Objects;\n\npublic class Slovo implements Comparable<Slovo> {\n    //  private String mama;\n    // private String amam;\n    private String slovo1;\n\n    public Slovo(String slovo1) {\n        this.slovo1 = slovo1;\n        //  this.mama = mama;\n        //  this.amam = amam;\n    }\n\n    /*  public int  compareTo(Slovo o) {\n          //boolean rslStr;\n          //   mama = \"Mama\";\n          //  amam = \"Amam\";\n  //    }\n          int rsl = new Slovo(\"Mama\")\n                  .compareTo(\n                          new Slovo(\"Amam\")\n                  );\n          return rsl;\n      }\n      //    System.out.println(rslStr);\n    //  }*/\n    @Override\n    public boolean equals(Object o) {\n        if (this == o) return true;\n        if (o == null || getClass() != o.getClass()) return false;\n        Slovo slovo = (Slovo) o;\n        return\n                Objects.equals(slovo1, slovo.slovo1);\n    }\n\n    @Override\n    public int hashCode() {\n        return Objects.hash(slovo1);\n    }\n\n    @Override\n    public int compareTo(Slovo o) {\n        return 0;\n    }\n}\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_001/src/main/java/list/Slovo.java	(revision 4b1d4d8e662fbefca963ba47932e27cead076b32)
++++ chapter_001/src/main/java/list/Slovo.java	(date 1586605969351)
+@@ -1,48 +1,42 @@
+ package list;
+ 
+-import java.util.Objects;
++public class Slovo {}
++   /* public static boolean anagram(String left, String right) {
++    for(Integer i :new HashMap<Integer, Integer>() {
++
++
++            for (int s : left.toCharArray()) put(s, getOrDefault(s, 0) + 1);
+ 
+-public class Slovo implements Comparable<Slovo> {
+-    //  private String mama;
+-    // private String amam;
+-    private String slovo1;
++            for (int s : right.toCharArray()) put(s, getOrDefault(s, 0) - 1);
+ 
+-    public Slovo(String slovo1) {
+-        this.slovo1 = slovo1;
+-        //  this.mama = mama;
+-        //  this.amam = amam;
+     }
+ 
+-    /*  public int  compareTo(Slovo o) {
+-          //boolean rslStr;
+-          //   mama = "Mama";
+-          //  amam = "Amam";
+-  //    }
+-          int rsl = new Slovo("Mama")
+-                  .compareTo(
+-                          new Slovo("Amam")
+-                  );
+-          return rsl;
+-      }
+-      //    System.out.println(rslStr);
+-    //  }*/
+-    @Override
+-    public boolean equals(Object o) {
+-        if (this == o) return true;
+-        if (o == null || getClass() != o.getClass()) return false;
+-        Slovo slovo = (Slovo) o;
+-        return
+-                Objects.equals(slovo1, slovo.slovo1);
++    } values())if(i !=0)return false;
++}
++        return true;
++}
++
++    /*public static int anagram(String left, String right) {
++        // left = "Mama";
++        // right = "Amam";
++        // Slovo compare = new Slovo();
++        // int rst = compare.compare(
++        //  "Mama",
++        //  "Amam";
++        // return rst;
++        // }
++        int rsl = left.compareTo(right);
++        //return rslStr;
++
++        System.out.println(rsl);
++
++          //return rslStr;
++        return rsl;
+     }
+ 
+     @Override
+-    public int hashCode() {
+-        return Objects.hash(slovo1);
+-    }
+-
+-    @Override
+-    public int compareTo(Slovo o) {
++    public int compare(String o1, String o2) {
+         return 0;
+     }
+-}
++}*/
+ 
+Index: chapter_001/src/test/java/list/SlovoTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package list;\nimport org.junit.Test;\n\nimport java.util.*;\n\nimport static org.hamcrest.Matchers.greaterThan;\nimport static org.hamcrest.core.Is.is;\nimport static org.junit.Assert.assertThat;\n\npublic class SlovoTest {\n\n\n    @Test\n    public void whenAsc() {\n        ArrayList<Slovo> slovo = new ArrayList<>();\n        slovo.add(new Slovo(\"Mama\"));\n        slovo.add(new Slovo(\"Amam\"));\n        Iterator<Slovo> it = slovo.iterator();\n        assertThat(it.next(), is(new Slovo(\"Mama\")));\n        assertThat(it.next(), is(new Slovo(\"Amam\")));\n    }\n\n    @Test\n    public void whenCompareMamVithAmam() {\n        int rsl = new Slovo(\"Mama\")\n                .compareTo(\n                        new Slovo(\"Amam\")\n                );\n        assertThat(rsl, greaterThan(0));\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_001/src/test/java/list/SlovoTest.java	(revision 4b1d4d8e662fbefca963ba47932e27cead076b32)
++++ chapter_001/src/test/java/list/SlovoTest.java	(date 1586605969355)
+@@ -1,16 +1,8 @@
+ package list;
+-import org.junit.Test;
+-
+-import java.util.*;
++public class SlovoTest {}
+ 
+-import static org.hamcrest.Matchers.greaterThan;
+-import static org.hamcrest.core.Is.is;
+-import static org.junit.Assert.assertThat;
+ 
+-public class SlovoTest {
+-
+-
+-    @Test
++  /*  @Test
+     public void whenAsc() {
+         ArrayList<Slovo> slovo = new ArrayList<>();
+         slovo.add(new Slovo("Mama"));
+@@ -18,14 +10,20 @@
+         Iterator<Slovo> it = slovo.iterator();
+         assertThat(it.next(), is(new Slovo("Mama")));
+         assertThat(it.next(), is(new Slovo("Amam")));
+-    }
++    }*/
+ 
+-    @Test
++  /*  @Test
+     public void whenCompareMamVithAmam() {
++
++        int rsl = Slovo.anagram("Mama","Amam");
+         int rsl = new Slovo("Mama")
+                 .compareTo(
+                         new Slovo("Amam")
+                 );
+-        assertThat(rsl, greaterThan(0));
+-    }
+-}
++
++
++        assertThat(rsl, is("Amam"));
++        //assertThat(rsl, greaterThan(0));
++
++  }}
++*/
+Index: chapter_008/src/test/java/warehouseProduct/ControllQualityTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package warehouseProduct;\n\nimport org.apache.logging.log4j.core.parser.ParseException;\nimport org.junit.Before;\nimport org.junit.Test;\n\nimport java.text.SimpleDateFormat;\nimport java.util.*;\n\nimport static org.junit.Assert.assertEquals;\n\n\npublic class ControllQualityTest {\n\n    private StorageProduct warehouse = new WareHouse();\n    private StorageProduct shop = new Shop();\n    private StorageProduct trash = new Trash();\n    private SimpleDateFormat dateFormat = new SimpleDateFormat(\"dd.MM.yyyy\");\n    private Date creation;\n    private Date expairation;\n\n\n    @Before\n    public void beforeAct() throws ParseException, java.text.ParseException {\n        creation = dateFormat.parse(\"15.09.2019\");\n        expairation = dateFormat.parse(\"25.05.2020\");\n        shop.push(new Potato(\"Potato\", \"15.09.2019\", \"25.05.2020\", 100, 0));\n        creation = dateFormat.parse(\"29.02.2020\");\n        expairation = dateFormat.parse(\"25.03.2020\");\n        shop.push(new Milk(\"Milk\", \"29.02.2020\", \"25.03.2020\", 100, 0));\n    }\n\n    @Test\n    public void test() throws ParseException {\n        Set<StorageProduct> act = new HashSet<StorageProduct>(Set.of(warehouse, shop, trash));\n        ControllQuality qual = new ControllQuality(act);\n        List<Food> temp = new ArrayList<>();\n        temp = qual.prepareList();\n        qual.addAll(temp);\n        qual.resort();\n        assertEquals(\"Potato\", trash.get().getName());\n        assertEquals(\"Milk\", warehouse.get().getName());\n\n    }\n}\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_008/src/test/java/warehouseProduct/ControllQualityTest.java	(revision 4b1d4d8e662fbefca963ba47932e27cead076b32)
++++ chapter_008/src/test/java/warehouseProduct/ControllQualityTest.java	(date 1586605969365)
+@@ -1,24 +1,22 @@
+ package warehouseProduct;
+ 
+-import org.apache.logging.log4j.core.parser.ParseException;
+-import org.junit.Before;
+-import org.junit.Test;
+-
+-import java.text.SimpleDateFormat;
+-import java.util.*;
+-
+-import static org.junit.Assert.assertEquals;
+-
++public class ControllQualityTest {}
+ 
+-public class ControllQualityTest {
+-
+-    private StorageProduct warehouse = new WareHouse();
++   /*private StorageProduct warehouse = new WareHouse();
+     private StorageProduct shop = new Shop();
+     private StorageProduct trash = new Trash();
+     private SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+     private Date creation;
+     private Date expairation;
+-
++//Store.check : boolean
++//
++//Store.add
++//
++//for (Store store : stores) {
++//    if (store.check(food)) {
++//       store.add(food)
++//
++//поправь.
+ 
+     @Before
+     public void beforeAct() throws ParseException, java.text.ParseException {
+@@ -42,5 +40,5 @@
+         assertEquals("Milk", warehouse.get().getName());
+ 
+     }
+-}
++}*/
+ 
+Index: chapter_008/src/test/java/tracker/TrackerSQLTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package tracker;\n\n\nimport org.junit.Test;\n\nimport java.io.InputStream;\nimport java.sql.Connection;\nimport java.sql.DriverManager;\nimport java.sql.SQLException;\nimport java.util.Properties;\n\nimport static org.hamcrest.core.Is.is;\nimport static org.junit.Assert.assertThat;\npublic class TrackerSQLTest {\n    public Connection init() {\n        try (InputStream in = TrackerSQL.class.getClassLoader().getResourceAsStream(\"app.properties\")) {\n            Properties config = new Properties();\n            config.load(in);\n            Class.forName(config.getProperty(\"driver-class-name\"));\n            return DriverManager.getConnection(\n                    config.getProperty(\"url\"),\n                    config.getProperty(\"username\"),\n                    config.getProperty(\"password\")\n\n            );\n        } catch (Exception e) {\n            throw new IllegalStateException(e);\n        }\n    }\n\n    @Test\n    public void createItem() throws SQLException {\n        try (TrackerSQL tracker = new TrackerSQL(ConnectionRollback.create(this.init()))) {\n            tracker.add(new Item(\"name\", \"desc\"));\n            assertThat(tracker.findByName(\"name\").length, is(1));\n        } catch (Exception e) {\n            e.printStackTrace();\n        }\n    }\n}\n\n\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_008/src/test/java/tracker/TrackerSQLTest.java	(revision 4b1d4d8e662fbefca963ba47932e27cead076b32)
++++ chapter_008/src/test/java/tracker/TrackerSQLTest.java	(date 1586605969365)
+@@ -3,29 +3,36 @@
+ 
+ import org.junit.Test;
+ 
++import java.io.IOException;
+ import java.io.InputStream;
+ import java.sql.Connection;
+ import java.sql.DriverManager;
+ import java.sql.SQLException;
+ import java.util.Properties;
+ 
++//import static org.hamcrest.MatcherAssert.assertThat;
+ import static org.hamcrest.core.Is.is;
+ import static org.junit.Assert.assertThat;
++
+ public class TrackerSQLTest {
+-    public Connection init() {
+-        try (InputStream in = TrackerSQL.class.getClassLoader().getResourceAsStream("app.properties")) {
+-            Properties config = new Properties();
+-            config.load(in);
+-            Class.forName(config.getProperty("driver-class-name"));
+-            return DriverManager.getConnection(
+-                    config.getProperty("url"),
+-                    config.getProperty("username"),
+-                    config.getProperty("password")
++   public Connection init() {
++       try (InputStream in = TrackerSQL.class.getClassLoader().getResourceAsStream("app.properties")) {
++           Properties config = new Properties();
++           config.load(in);
++           Class.forName(config.getProperty("driver-class-name"));
++           return DriverManager.getConnection(
++                   config.getProperty("url"),
++                   config.getProperty("username"),
++                   config.getProperty("password")
+ 
+-            );
+-        } catch (Exception e) {
+-            throw new IllegalStateException(e);
+-        }
++           );
++       } catch (IOException e) {
++           throw new IllegalStateException(e);
++       } catch (ClassNotFoundException e) {
++           throw new IllegalStateException(e);
++       } catch (SQLException e) {
++           throw new IllegalStateException(e);
++       }
+     }
+ 
+     @Test
+Index: chapter_009/src/main/java/gc/MemoryUser.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package gc;\n//Добиться состояния, когда виртуальная машины вызывает сборщик мусора самостоятельно. За счет ключей xmx.\npublic class MemoryUser {\n    public static class User {\n        private final String name;\n\n        public User(String name) {\n            this.name = name;\n        }\n\n        @Override\n        protected void finalize()throws Throwable {\n            super.finalize();\n            System.out.println(String.format(\"destory object user\", this.name));\n        }\n    }\n\n\n\n\n    public static void main(String[] args) {\n        System.out.println(\"Start\");\n     User user = new User(\"test\");\n\n        System.out.println(user);\n        user = null;\n        System.gc();\n        System.out.println(\"finish\");\n\n\n\n\n\n    }\n\n    public static void info() {\n        int mb = 1024*1024;\n        Runtime runtime = Runtime.getRuntime();\n        System.out.println(String.format(\" ###memory %s mB\", runtime.totalMemory() / mb));\n    }\n\n\n\n}\n\n\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_009/src/main/java/gc/MemoryUser.java	(revision 4b1d4d8e662fbefca963ba47932e27cead076b32)
++++ chapter_009/src/main/java/gc/MemoryUser.java	(date 1586605969366)
+@@ -36,7 +36,8 @@
+     public static void info() {
+         int mb = 1024*1024;
+         Runtime runtime = Runtime.getRuntime();
+-        System.out.println(String.format(" ###memory %s mB", runtime.totalMemory() / mb));
++        System.out.println("Free memory: " + runtime.freeMemory() / mb);
++        System.out.println(String.format(" total memory %s mB", runtime.totalMemory() / mb));
+     }
+ 
+ 
+Index: chapter_001/src/main/java/set/SimpleListSet.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package set;\n\nimport list.ListContainer;\n\nimport java.util.Iterator;\nimport java.util.Objects;\n\npublic class SimpleListSet<T> implements SimpleSet<T> {\n\n    private ListContainer<T> list;\n\n    public SimpleListSet() {\n        this.list = new ListContainer<>() {\n            @Override\n            public Iterator<T> iterator() {\n                return null;\n            }\n\n            @Override\n            public T remove(int i) {\n                return null;\n            }\n        };\n    }\n\n\n    @Override\n    public int size() {\n\n        return this.list.size();\n    }\n\n    public boolean contains(Object value) {\n        boolean result = false;\n        int size = list.size();\n        if (size != 0) {\n            for (Object temp : list) {\n                if (Objects.equals(temp, value)) {\n                    result = true;\n                    break;\n                }\n            }\n        }\n        return result;\n    }\n\n\n    @Override\n    public boolean add(T elem) {\n\n        boolean result = false;\n        if (!contains(elem)) {\n            this.list.add(elem);\n            result = true;\n        }\n\n        return result;\n    }\n\n\n    /**/\n\n\n    @Override\n    public Iterator<T> iterator() {\n        return this.list.iterator();\n    }\n}\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_001/src/main/java/set/SimpleListSet.java	(revision 4b1d4d8e662fbefca963ba47932e27cead076b32)
++++ chapter_001/src/main/java/set/SimpleListSet.java	(date 1586605969353)
+@@ -1,11 +1,6 @@
+ package set;
+ 
+-import list.ListContainer;
+-
+-import java.util.Iterator;
+-import java.util.Objects;
+-
+-public class SimpleListSet<T> implements SimpleSet<T> {
++public class SimpleListSet<T> {}/*implements SimpleSet<T> {
+ 
+     private ListContainer<T> list;
+ 
+@@ -61,9 +56,9 @@
+     /**/
+ 
+ 
+-    @Override
++   /*@Override
+     public Iterator<T> iterator() {
+         return this.list.iterator();
+     }
+-}
++}*/
+ 
+Index: chapter_008/src/main/java/tracker/TrackerSQL.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package tracker;\n\nimport java.io.InputStream;\nimport java.sql.*;\nimport java.util.ArrayList;\nimport java.util.List;\nimport java.util.Properties;\nimport java.util.Random;\nimport java.util.logging.ErrorManager;\n\npublic class TrackerSQL implements ITracker, AutoCloseable {\n    private static final ErrorManager LOG = null;\n    private Connection connection;\n    //private void item;\n\n    public TrackerSQL(Connection connection){\n    this.connection = connection;\n}\n    public boolean init() {\n        try (InputStream in = TrackerSQL.class.getClassLoader().getResourceAsStream(\"app.properties\")) {\n            Properties config = new Properties();\n            config.load(in);\n            Class.forName(config.getProperty(\"driver-class-name\"));\n            this.connection = DriverManager.getConnection(\n                    config.getProperty(\"url\"),\n                    config.getProperty(\"username\"),\n                    config.getProperty(\"password\")\n            );\n        } catch (Exception e) {\n            throw new IllegalStateException(e);\n        }\n        return this.connection != null;\n    }\n\n\n        @Override\n        public Item add(Item item) {\n            String temp = \"\";\n            try (PreparedStatement st =  this.connection\n                    .prepareStatement(\"insert into items (id, item_name) values (?, ?)\")) {\n                temp = generateId();\n                st.setString(1, temp);\n                st.setString(2, item.getName());\n                st.execute();\n            } catch (SQLException r) {\n                r.printStackTrace();\n            }\n            item.setId(temp);\n            return item;\n        }\n\n        @Override\n        public boolean replace(String id, Item item) {\n            boolean answer = false;\n            try (PreparedStatement st = connection\n                    .prepareStatement(\"update items set item_name = ? where id = ?\")) {\n                st.setString(1, item.getName());\n                st.setString(2, id);\n                answer = st.executeUpdate() > 0;\n            } catch (SQLException r) {\n                r.error(\"Replace item error\", r);\n            }\n            return answer;\n        }\n\n        @Override\n        public boolean delete(String id) {\n            boolean answer = false;\n            try (PreparedStatement st = connection.prepareStatement(\"delete from items where id = ?\")) {\n                st.setString(1, id);\n                answer = st.executeUpdate() > 0;\n            } catch (SQLException r) {\n                r.error(\"Delete item error\", r);\n            }\n            return answer;\n        }\n\n        @Override\n        public Item[] findAll() {\n            List<Item> temp = new ArrayList<>();\n            try (Statement st = connection.createStatement();\n                 ResultSet anwer = st.executeQuery(\"select * from items\")) {\n                while (anwer.next()) {\n                    Item tempItem = new Item(\"name\", anwer.getString(\"item_name\"));\n                    tempItem.setId(anwer.getString(\"id\"));\n                    temp.add(tempItem);\n                }\n            } catch (SQLException r) {\n                LOG.error(\"FindAll item error\", r);\n            }\n            Item[] tempArray = new Item[temp.size()];\n            temp.toArray(tempArray);\n            return tempArray;\n\n        }\n\n        @Override\n        public Item[] findByName(String key) {\n            List<Item> temp = new ArrayList<>();\n            try (PreparedStatement st = connection\n                    .prepareStatement(\"select * from items where item_name =?\")) {\n                st.setString(1, key);\n                try (ResultSet anwer = st.executeQuery()) {\n                    while (anwer.next()) {\n                        Item tempItem = new Item(\"name\", anwer.getString(\"item_name\"));\n                        tempItem.setId(anwer.getString(\"id\"));\n                        temp.add(tempItem);\n                    }\n                }\n            } catch (SQLException r) {\n                LOG.error(\"findByName item error\", r);\n            }\n\n            Item[] tempArray = new Item[temp.size()];\n            temp.toArray(tempArray);\n            return tempArray;\n        }\n\n        @Override\n        public Item findById(String id) {\n            Item tempItem;\n            try (PreparedStatement st = connection.prepareStatement(\"select * from items where id =?\")) {\n                st.setString(1, id);\n                try (ResultSet anwer = st.executeQuery()) {\n                    while (anwer.next()) {\n                        tempItem = new Item(\"name\", anwer.getString(\"item_name\"));\n                        tempItem.setId(anwer.getString(\"id\"));\n                        return tempItem;\n                    }\n                }\n            } catch (SQLException r) {\n                LOG.error(\"FindByName item error\", r);\n            }\n            return null;\n        }\n\n        @Override\n        public void close() throws Exception {\n            connection.close();\n        }\n\n        private String generateId() {\n            Random korea = new Random();\n            return String.valueOf(System.currentTimeMillis() + korea.nextLong());\n        }\n    }\n\n\n\n\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_008/src/main/java/tracker/TrackerSQL.java	(revision 4b1d4d8e662fbefca963ba47932e27cead076b32)
++++ chapter_008/src/main/java/tracker/TrackerSQL.java	(date 1586605969362)
+@@ -1,21 +1,31 @@
+ package tracker;
+ 
++import org.apache.logging.log4j.LogManager;
++import org.apache.logging.log4j.Logger;
++
+ import java.io.InputStream;
+ import java.sql.*;
+ import java.util.ArrayList;
+ import java.util.List;
+ import java.util.Properties;
+ import java.util.Random;
+-import java.util.logging.ErrorManager;
++
+ 
+ public class TrackerSQL implements ITracker, AutoCloseable {
+-    private static final ErrorManager LOG = null;
++    private static final Logger LOG = LogManager.getLogger(TrackerSQL.class.getName());
++
+     private Connection connection;
+-    //private void item;
++
++    public TrackerSQL() {
++        init();
++        table();
++    }
+ 
+-    public TrackerSQL(Connection connection){
+-    this.connection = connection;
+-}
++    public TrackerSQL(Connection connection) {
++        this.connection = connection;
++        table();
++    }
++
+     public boolean init() {
+         try (InputStream in = TrackerSQL.class.getClassLoader().getResourceAsStream("app.properties")) {
+             Properties config = new Properties();
+@@ -26,126 +36,140 @@
+                     config.getProperty("username"),
+                     config.getProperty("password")
+             );
++            Statement st = connection.createStatement();
++            st.execute("SELECT 'CREATE DATABASE tracker'"
++                    + " WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'tracker')");
+         } catch (Exception e) {
+             throw new IllegalStateException(e);
+         }
+         return this.connection != null;
+     }
+ 
++    private void table() {
++        try {
++            Statement st = connection.createStatement();
++            st.execute("create table if not exists items ("
++                    + "id varchar(80) primary key,"
++                    + "item_name varchar(100))");
++        } catch (SQLException r) {
++            LOG.error("Table creating error", r);
++        }
++    }
++
+ 
+-        @Override
+-        public Item add(Item item) {
+-            String temp = "";
+-            try (PreparedStatement st =  this.connection
+-                    .prepareStatement("insert into items (id, item_name) values (?, ?)")) {
+-                temp = generateId();
+-                st.setString(1, temp);
+-                st.setString(2, item.getName());
+-                st.execute();
+-            } catch (SQLException r) {
+-                r.printStackTrace();
+-            }
+-            item.setId(temp);
+-            return item;
+-        }
++    @Override
++    public Item add(Item item) {
++        String temp = "";
++        try (PreparedStatement st = connection
++                .prepareStatement("insert into items (id, item_name) values (?, ?)")) {
++            temp = generateId();
++            st.setString(1, temp);
++            st.setString(2, item.getName());
++            st.execute();
++        } catch (SQLException r) {
++            LOG.error("Item adding error", r);
++        }
++        item.setId(temp);
++        return item;
++    }
+ 
+-        @Override
+-        public boolean replace(String id, Item item) {
+-            boolean answer = false;
+-            try (PreparedStatement st = connection
+-                    .prepareStatement("update items set item_name = ? where id = ?")) {
+-                st.setString(1, item.getName());
+-                st.setString(2, id);
+-                answer = st.executeUpdate() > 0;
+-            } catch (SQLException r) {
+-                r.error("Replace item error", r);
+-            }
+-            return answer;
+-        }
++    @Override
++    public boolean replace(String id, Item item) {
++        var answer = false;
++        try (PreparedStatement st = connection
++                .prepareStatement("update items set item_name = ? where id = ?")) {
++            st.setString(1, item.getName());
++            st.setString(2, id);
++            answer = st.executeUpdate() > 0;
++        } catch (SQLException r) {
++            LOG.error("Replace item error", r);
++        }
++        return answer;
++    }
+ 
+-        @Override
+-        public boolean delete(String id) {
+-            boolean answer = false;
+-            try (PreparedStatement st = connection.prepareStatement("delete from items where id = ?")) {
+-                st.setString(1, id);
+-                answer = st.executeUpdate() > 0;
+-            } catch (SQLException r) {
+-                r.error("Delete item error", r);
+-            }
+-            return answer;
+-        }
++    @Override
++    public boolean delete(String id) {
++        var answer = false;
++        try (PreparedStatement st = connection.prepareStatement("delete from items where id = ?")) {
++            st.setString(1, id);
++            answer = st.executeUpdate() > 0;
++        } catch (SQLException r) {
++            LOG.error("Delete item error", r);
++        }
++        return answer;
++    }
+ 
+-        @Override
+-        public Item[] findAll() {
+-            List<Item> temp = new ArrayList<>();
+-            try (Statement st = connection.createStatement();
+-                 ResultSet anwer = st.executeQuery("select * from items")) {
+-                while (anwer.next()) {
+-                    Item tempItem = new Item("name", anwer.getString("item_name"));
+-                    tempItem.setId(anwer.getString("id"));
+-                    temp.add(tempItem);
+-                }
+-            } catch (SQLException r) {
+-                LOG.error("FindAll item error", r);
+-            }
+-            Item[] tempArray = new Item[temp.size()];
+-            temp.toArray(tempArray);
+-            return tempArray;
++    @Override
++    public Item[] findAll() {
++        List<Item> temp = new ArrayList<>();
++        try (Statement st = connection.createStatement();
++             ResultSet anwer = st.executeQuery("select * from items")) {
++            while (anwer.next()) {
++                Item tempItem = new Item(anwer.getString("item_name"));
++                tempItem.setId(anwer.getString("id"));
++                temp.add(tempItem);
++            }
++        } catch (SQLException r) {
++            LOG.error("FindAll item error", r);
++        }
++        Item[] tempArray = new Item[temp.size()];
++        temp.toArray(tempArray);
++        return tempArray;
+ 
+-        }
+-
+-        @Override
+-        public Item[] findByName(String key) {
+-            List<Item> temp = new ArrayList<>();
+-            try (PreparedStatement st = connection
+-                    .prepareStatement("select * from items where item_name =?")) {
+-                st.setString(1, key);
+-                try (ResultSet anwer = st.executeQuery()) {
+-                    while (anwer.next()) {
+-                        Item tempItem = new Item("name", anwer.getString("item_name"));
+-                        tempItem.setId(anwer.getString("id"));
+-                        temp.add(tempItem);
+-                    }
+-                }
+-            } catch (SQLException r) {
+-                LOG.error("findByName item error", r);
+-            }
++    }
++    @Override
++    public Item[] findByName(String key) {
++        List<Item> temp = new ArrayList<>();
++        try (PreparedStatement st = connection
++                .prepareStatement("select * from items where item_name =?")) {
++            st.setString(1, key);
++            try (ResultSet anwer = st.executeQuery()) {
++                while (anwer.next()) {
++                    Item tempItem = new Item(anwer.getString("item_name"));
++                    tempItem.setId(anwer.getString("id"));
++                    temp.add(tempItem);
++                }
++            }
++        } catch (SQLException r) {
++            LOG.error("findByName item error", r);
++        }
+ 
+-            Item[] tempArray = new Item[temp.size()];
+-            temp.toArray(tempArray);
+-            return tempArray;
+-        }
++        Item[] tempArray = new Item[temp.size()];
++        temp.toArray(tempArray);
++        return tempArray;
++    }
+ 
+-        @Override
+-        public Item findById(String id) {
+-            Item tempItem;
+-            try (PreparedStatement st = connection.prepareStatement("select * from items where id =?")) {
+-                st.setString(1, id);
+-                try (ResultSet anwer = st.executeQuery()) {
+-                    while (anwer.next()) {
+-                        tempItem = new Item("name", anwer.getString("item_name"));
+-                        tempItem.setId(anwer.getString("id"));
+-                        return tempItem;
+-                    }
+-                }
+-            } catch (SQLException r) {
+-                LOG.error("FindByName item error", r);
+-            }
+-            return null;
+-        }
++    @Override
++    public Item findById(String id) {
++        Item tempItem;
++        try (PreparedStatement st = connection.prepareStatement("select * from items where id =?")) {
++            st.setString(1, id);
++            try (ResultSet anwer = st.executeQuery()) {
++                while (anwer.next()) {
++                    tempItem = new Item(anwer.getString("item_name"));
++                    tempItem.setId(anwer.getString("id"));
++                    return tempItem;
++                }
++            }
++        } catch (SQLException r) {
++            LOG.error("FindByName item error", r);
++        }
++        return null;
++    }
+ 
+-        @Override
+-        public void close() throws Exception {
+-            connection.close();
+-        }
++    @Override
++    public void close() throws Exception {
++        connection.close();
++    }
+ 
+-        private String generateId() {
+-            Random korea = new Random();
+-            return String.valueOf(System.currentTimeMillis() + korea.nextLong());
+-        }
+-    }
++    private String generateId() {
++        Random korea = new Random();
++        return String.valueOf(System.currentTimeMillis() + korea.nextLong());
++    }
++}
+ 
+ 
+ 
+ 
+ 
++
+Index: chapter_006/src/main/java/io/SearchFileCond.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_006/src/main/java/io/SearchFileCond.java	(date 0)
++++ chapter_006/src/main/java/io/SearchFileCond.java	(date 0)
+@@ -0,0 +1,78 @@
++package io;
++import java.util.HashMap;
++import java.util.Map;
++import java.util.regex.Pattern;
++public class SearchFileCond {
++
++
++    /*
++     Программа должна собираться в jar и запускаться через java -jar find.jar -d c:/ -n *.txt -m -o log.txt
++Ключи
++-d - директория в которая начинать поиск.
++-n - имя файл, маска, либо регулярное выражение.
++-m - искать по макс, либо -f - полное совпадение имени. -r регулярное выражение.
++-o - результат записать в файл.
++     */
++
++        private Pattern pattern;
++        private Map<String, String> base = new HashMap<>();
++
++        public void get(String[] args) {
++            String key = "";
++            for (var e : args) {
++                if (e.matches("^-.+$")) {
++                    key = e;
++                }
++                base.put(key, e);
++
++            }
++            makePattern();
++        }
++
++        private void makePattern() {
++            String temp = base.get("-n");
++            int x = 0;
++            if (base.get("-m") != null) {
++                if (temp.startsWith("*")) {
++                    temp = "." + temp;
++                }
++                if (temp.endsWith("*")) {
++                    temp = temp.substring(0, temp.length() - 1) + ".*";
++                }
++                pattern = Pattern.compile(temp);
++                x++;
++            }
++            if (base.get("-f") != null) {
++                pattern = Pattern.compile("^" + temp + "$");
++                x++;
++            }
++            if (base.get("-r") != null) {
++                pattern = Pattern.compile(temp);
++                x++;
++            }
++            if (x > 1 || x == 0) {
++                pattern = Pattern.compile(".*");
++            }
++        }
++
++        public String getDirectory() {
++            String temp = base.get("-d");
++            if (temp == null) {
++                temp = "c:/";
++            }
++            return temp;
++        }
++
++        public String getResult() {
++            String temp = base.get("-o");
++            if (temp == null) {
++                temp = "result.txt";
++            }
++            return temp;
++        }
++
++        public Pattern getPattern() {
++            return pattern;
++        }
++    }
++
+Index: chapter_006/src/test/java/io/SearchFileCondTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_006/src/test/java/io/SearchFileCondTest.java	(date 0)
++++ chapter_006/src/test/java/io/SearchFileCondTest.java	(date 0)
+@@ -0,0 +1,49 @@
++package io;
++import org.junit.Assert;
++import org.junit.Test;
++public class SearchFileCondTest {
++
++
++
++
++        @Test
++        public void whenAllWrittenCorrectly() {
++            String[] args = "-d c:/ -n *.txt -m -o log.txt".split(" ");
++            SearchFileCond temp = new SearchFileCond();
++            temp.get(args);
++            Assert.assertEquals("c:/", temp.getDirectory());
++            Assert.assertEquals(".*.txt", temp.getPattern().toString());
++            Assert.assertEquals("log.txt", temp.getResult());
++        }
++
++        @Test
++        public void whenPatternHasMistakes() {
++            String[] args = "-d c:/ -n *.txt -m -r -o log.txt".split(" ");
++            SearchFileCond temp = new SearchFileCond();
++            temp.get(args);
++            Assert.assertEquals("c:/", temp.getDirectory());
++            Assert.assertEquals(".*", temp.getPattern().toString());
++            Assert.assertEquals("log.txt", temp.getResult());
++        }
++
++        @Test
++        public void whenthereIsntResultName() {
++            String[] args = "-d c:/ -n *.txt -m -r ".split(" ");
++            SearchFileCond temp = new SearchFileCond();
++            temp.get(args);
++            Assert.assertEquals("c:/", temp.getDirectory());
++            Assert.assertEquals(".*", temp.getPattern().toString());
++            Assert.assertEquals("result.txt", temp.getResult());
++        }
++
++        @Test
++        public void whenAlsoThereIsntdirectory() {
++            String[] args = "c:/ -n *.txt -m -r ".split(" ");
++            SearchFileCond temp = new SearchFileCond();
++            temp.get(args);
++            Assert.assertEquals("c:/", temp.getDirectory());
++            Assert.assertEquals(".*", temp.getPattern().toString());
++            Assert.assertEquals("result.txt", temp.getResult());
++        }
++    }
++
+Index: chapter_008/src/main/java/design/srp/Store.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_008/src/main/java/design/srp/Store.java	(date 0)
++++ chapter_008/src/main/java/design/srp/Store.java	(date 0)
+@@ -0,0 +1,17 @@
++package design.srp;
++
++import java.util.List;
++import java.util.function.Predicate;
++
++public interface Store {
++    Object add =
++            ;
++
++    List<Employer> findBy(Predicate<Employer> filter);
++
++
++}
++
++
++
++
+Index: chapter_006/src/main/java/ioBot/InetAddress.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_006/src/main/java/ioBot/InetAddress.java	(date 0)
++++ chapter_006/src/main/java/ioBot/InetAddress.java	(date 0)
+@@ -0,0 +1,4 @@
++package ioBot;
++
++public class InetAddress {
++}
+Index: chapter_006/src/main/java/ioScanFile/Conditions.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_006/src/main/java/ioScanFile/Conditions.java	(date 0)
++++ chapter_006/src/main/java/ioScanFile/Conditions.java	(date 0)
+@@ -0,0 +1,4 @@
++package ioScanFile;
++
++public class Conditions {
++}
+\ No newline at end of file
+Index: chapter_002/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_002/pom.xml	(date 0)
++++ chapter_002/pom.xml	(date 0)
+@@ -0,0 +1,32 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project xmlns="http://maven.apache.org/POM/4.0.0"
++         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
++    <modelVersion>4.0.0</modelVersion>
++
++    <groupId>org.example</groupId>
++    <artifactId>chapter_002</artifactId>
++    <version>3.0</version>
++    <build>
++        <plugins>
++            <plugin>
++                <groupId>org.apache.maven.plugins</groupId>
++                <artifactId>maven-compiler-plugin</artifactId>
++                <configuration>
++                    <source>11</source>
++                    <target>11</target>
++                </configuration>
++            </plugin>
++        </plugins>
++    </build>
++    <dependencies>
++        <dependency>
++            <groupId>junit</groupId>
++            <artifactId>junit</artifactId>
++            <version>4.12</version>
++            <scope>test</scope>
++        </dependency>
++    </dependencies>
++
++
++</project>
+\ No newline at end of file
+Index: chapter_008/src/main/java/warehouseProduct/Biscwit.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_008/src/main/java/warehouseProduct/Biscwit.java	(date 0)
++++ chapter_008/src/main/java/warehouseProduct/Biscwit.java	(date 0)
+@@ -0,0 +1,4 @@
++package warehouseProduct;
++
++public class Biscwit {
++}
+Index: even.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- even.txt	(date 0)
++++ even.txt	(date 0)
+@@ -0,0 +1,4 @@
++1
++4
++15
++17
+\ No newline at end of file
+Index: chapter_006/src/main/java/ioScanFile/Searchstar.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_006/src/main/java/ioScanFile/Searchstar.java	(date 0)
++++ chapter_006/src/main/java/ioScanFile/Searchstar.java	(date 0)
+@@ -0,0 +1,44 @@
++package ioScanFile;
++
++//Здесь используется класс Path, а не File.
++// Path - это усовершенствованная модель File. Используйте Path.
++public class Searchstar {}/*
++
++    List<Path> tempList = new ArrayList<>();
++
++
++    public static void main(String[] args) throws IOException {
++
++        Path start = Paths.get(".js");
++        for (Path path : Files.walkFileTree(start, (FileVisitor<? super Path>) new PrintFiles())) {
++
++        }
++
++
++
++    }
++    public static List<String> search(Path start, String ext) {
++        return start.getName( ).substring(start.getName().lastIndexOf(".js") + 1);
++    }
++
++public List<Path> start(Conditions temp) {
++        Pattern tempPattern = temp.getPattern();
++       List<Path> tempList = new ArrayList<>();
++       System.out.println("Начата проверка файловой системы");
++       try {
++           Path path = Files.walkFileTree(new File(temp.getDirectory()).toPath(), new FileVisitor<Path>() {
++               @Override
++               public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
++
++
++                   return FileVisitResult.CONTINUE;
++               }
++           }
++       }catch (IOException e) {
++           e.printStackTrace();
++       }*/
++
++
++
++
++
+Index: answers.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- answers.txt	(date 0)
++++ answers.txt	(date 0)
+@@ -0,0 +1,5 @@
++"Привет",
++                "что делаещь?",
++                "Возможно",
++                "встретимся",
++                "я читаю занят"
+\ No newline at end of file
+Index: chapter_009/src/main/java/gcSSilki/Cache2.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_009/src/main/java/gcSSilki/Cache2.java	(date 0)
++++ chapter_009/src/main/java/gcSSilki/Cache2.java	(date 0)
+@@ -0,0 +1,24 @@
++package gcSSilki;
++
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
++
++import java.lang.ref.SoftReference;
++import java.lang.ref.WeakReference;
++
++public class Cache2 {
++    private static final Logger Log = LoggerFactory.getLogger(Cache2.class);
++
++    public static void main(String[] args) {
++
++        WeakReference<User> weakUser = new WeakReference<User>(new User("test"));
++        SoftReference<User> softUser = new SoftReference<User>(new User("test"));
++
++        System.gc();
++
++        System.out.println(weakUser.get());
++        System.out.println(softUser.get());
++    }
++
++}
++
+Index: chapter_009/src/main/java/gcSSilki/Cache.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_009/src/main/java/gcSSilki/Cache.java	(date 0)
++++ chapter_009/src/main/java/gcSSilki/Cache.java	(date 0)
+@@ -0,0 +1,22 @@
++package gcSSilki;
++
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
++
++import java.lang.ref.WeakReference;
++
++
++public class Cache {
++    private static final Logger Log = LoggerFactory.getLogger(Cache.class);
++
++    public static void main(String[] args) {
++        User user = new User("test");
++        WeakReference<User>weakUser = new WeakReference<User>(user);
++        user = null;
++        System.gc();
++        System.out.println(user);
++        System.out.println(weakUser.get());
++
++    }
++
++}
+Index: log.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- log.txt	(date 0)
++++ log.txt	(date 0)
+@@ -0,0 +1,1 @@
++1", "2", "3", "стоп
+\ No newline at end of file
+Index: chapter_006/src/test/java/io/SearchOldTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_006/src/test/java/io/SearchOldTest.java	(date 0)
++++ chapter_006/src/test/java/io/SearchOldTest.java	(date 0)
+@@ -0,0 +1,49 @@
++package io;
++
++public class SearchOldTest {}
++ /*   @Test
++    public void whenWeTryFindTXT() throws Exception {
++        File parent = new File(System.getProperty("java.io.tmpdir") + "/parent");
++        parent.mkdir();
++        File sun = new File(parent.getAbsolutePath() + "/sun");
++        sun.mkdir();
++
++        new File(parent.getAbsolutePath() + "r/text.java").createNewFile();
++        new File(parent.getAbsolutePath() + "r/text.exe").createNewFile();
++        new File(parent.getAbsolutePath() + "r/text.data").createNewFile();
++        new File(sun.getAbsolutePath() + "h/text.sql").createNewFile();
++        new File(sun.getAbsolutePath() + "h/text.exe").createNewFile();
++        new File(sun.getAbsolutePath() + "j/text.data").createNewFile();
++        List<File> files1 = new SearchOld().files(parent.getAbsolutePath(), new ArrayList<>(
++                List.of("java", "sql")));
++        assertEquals(2, files1.size());
++
++    }
++    @Rule
++    public TemporaryFolder folder = new TemporaryFolder();
++
++    @Test
++    public void printFiles() throws IOException {
++        String path = System.getProperty("java.io.tmpdir");
++        folder.newFile("file1.abc");
++        folder.newFile("file2.abc");
++        folder.newFile("file3.deb");
++        SearchOld search = new SearchOld();
++        File sourceFile = new File(path);
++        List<File> expected = search.files(sourceFile.getAbsolutePath(), s -> s.e(".abc"));
++        String listFiles = "";
++        for (File f : expected) {
++            listFiles = listFiles + f.getName() + " ";
++        }
++        assertEquals(listFiles, "file1.abc file2.abc ");
++    }
++}*/
++
++
++
++
++
++
++
++
++
+Index: chapter_005/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_005/pom.xml	(date 0)
++++ chapter_005/pom.xml	(date 0)
+@@ -0,0 +1,15 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project xmlns="http://maven.apache.org/POM/4.0.0"
++         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
++    <parent>
++        <artifactId>job4j</artifactId>
++        <groupId>org.example</groupId>
++        <version>3.0</version>
++    </parent>
++    <modelVersion>4.0.0</modelVersion>
++
++    <artifactId>chapter_005</artifactId>
++
++
++</project>
+\ No newline at end of file
+Index: chapter_006/src/main/java/io/EchoServer1.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_006/src/main/java/io/EchoServer1.java	(date 0)
++++ chapter_006/src/main/java/io/EchoServer1.java	(date 0)
+@@ -0,0 +1,61 @@
++package io;
++
++import java.io.BufferedReader;
++import java.io.IOException;
++import java.io.InputStreamReader;
++import java.io.OutputStream;
++import java.net.ServerSocket;
++import java.net.Socket;
++
++public class EchoServer1 {
++    public static void main(String[] args) throws IOException {
++       //Сначала нам нужно создать сервер.
++        try (ServerSocket server = new ServerSocket(9000)) {
++            //Зачем тут нужен вечный цикл?
++           // метод ассеpt принимает один запрос от клиента, чтобы о
++            // тправить второй, программа должна снова получить объект socket.
++            while (true) {
++                //ServerSocket создает сервер. Чтобы клиент мог узнать, где находится сервер ему нужен адрес и порт. По аналогии с людьми мы обращаемся по имени, чтобы начать разговор.
++                //9000 - это порт. По умолчанию адрес будет localhost.
++                Socket socket = server.accept();
++                //server.acсept - ожидает, когда к нему обратиться клиент. Программа переходит в
++                // режим ожидания.
++                // Когда клиент обратился к серверу программа получает входной поток и может отправить
++                // данные в выходной поток.
++                try (OutputStream out = socket.getOutputStream();
++                     BufferedReader in = new BufferedReader(
++                             new InputStreamReader(socket.getInputStream()))) {
++                    //В программе читается весь входной поток.
++                    String str;
++                    while (!(str = in.readLine()).isEmpty()) {
++                        System.out.println(str);
++                    }
++                    // //В ответ мы записываем строчку.
++                    //Программа curl отправляет запросы через протокл TCP/IP. Для передачи текстовых сообщений этот фортам передачи не удобен.
++                    //Протокол HTTP - это удобная обёртка над протоколом TCP/IP. Наша программа сразу работает с этим протоколом.
++                    //Давайте добавь ответ клиенту.
++                   // public static String answer( String question) { //IDEA жалуеться при анализе, private-puиlic
++
++                    String question =in.readLine();
++                    if ("bye".equals(question)) {
++
++                        out.write("http://localhost:9000/?msg=Exit".getBytes());
++                    } else if ("hellow".equals(question)) {
++                        out.write("http://localhost:9000/?msg=hellow".getBytes());
++
++
++                        }else
++                            out.write("http://localhost:9000/?msg=What".getBytes());
++
++
++                    }
++
++
++
++                }
++            }
++        }
++
++
++}
++
+Index: chapter_006/src/main/java/io/consol/ConsolChat.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_006/src/main/java/io/consol/ConsolChat.java	(date 0)
++++ chapter_006/src/main/java/io/consol/ConsolChat.java	(date 0)
+@@ -0,0 +1,68 @@
++package io.consol;
++
++
++import java.util.function.Consumer;
++
++public class ConsolChat implements Input {
++    @Override
++    public String ask(String question, Consumer<String> consumer) {
++        return null;
++    }
++}
++/*
++    private static final String STOP = "стоп";
++    private static final String SEP = System.getProperty("line.separator");
++//
++
++    public List<String> upload(String path) throws IOException {
++        List<String> answer = new ArrayList<>(200);
++        try (BufferedReader temp = new BufferedReader(new FileReader(path + "/answers.txt"))) {
++            temp.lines().forEach(answer::add);
++            return answer;
++        }
++    }
++
++
++    public void saveLog(List<String> log, String path) throws IOException {
++        try (BufferedWriter out = new BufferedWriter(new FileWriter(path + "/log.txt"))) {
++            for (var e : log) {
++                out.write(e);
++                out.write(SEP);
++            }
++        }
++
++    }
++
++
++    public void start(String base, Input asker, Consumer<String> consumer) {
++        try {
++            List<String> answers = upload(base);
++            List<String> log = new LinkedList<>();
++            String temp = "";
++            while (!temp.equalsIgnoreCase(STOP)) {
++                temp = answers.get((int) (Math.random() * answers.size()));
++                log.add(temp);
++                //temp = asker.ask(temp, consumer);
++                log.add(temp);
++            }
++            saveLog(log, base);
++        } catch (IOException e) {
++            e.printStackTrace();
++        }
++
++    }
++
++
++    @Override
++    public String ask(String question, Consumer<String> consumer) throws IOException {
++        consumer.accept(question);
++        try (BufferedReader reader = new BufferedReader((new InputStreamReader(System.in)))) {
++            return reader.readLine();
++        }
++    }
++}*/
++
++
++
++
++
+Index: chapter_002/src/main/java/tracker/ITracker.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_002/src/main/java/tracker/ITracker.java	(date 0)
++++ chapter_002/src/main/java/tracker/ITracker.java	(date 0)
+@@ -0,0 +1,11 @@
++package tracker;
++
++public interface ITracker {
++    Item add(Item item);
++    boolean replace(String id, Item item);
++    boolean delete(String id);
++    Item[] findAll();
++    Item[] findByName(String key);
++    Item findById(String id);
++}
++
+Index: chapter_007/src/main/resources/223208.sql
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>CREATE DATABASE TABLECar;\n\nCREATE TABLE if NOT EXISTS transmission (\n\tid SERIAL PRIMARY KEY NOT NULL,\n\ttype VARCHAR (200) NOT NULL\n);\n\nCREATE TABLE if NOT EXISTS engine (\n\tid SERIAL PRIMARY KEY NOT NULL,\n\tname VARCHAR (200) NOT NULL\n);\n\nCREATE TABLE if NOT EXISTS car_body (\n\tid SERIAL PRIMARY KEY NOT NULL,\n\tname VARCHAR (100) NOT NULL\n);\n\nCREATE TABLE if NOT EXISTS car (\n\tid SERIAL PRIMARY KEY NOT NULL,\n\tname VARCHAR (100) NOT NULL,\n\tid_transmission INT REFERENCES transmission(id) NOT NULL,\n  id_engine INT REFERENCES engine(id) NOT NULL,\n  id_car_body INT REFERENCES car_body(id) NOT NULL\n);\n\nINSERT INTO transmission(type) VALUES ('manual');\nINSERT INTO transmission(type) VALUES ('robot');\nINSERT INTO transmission(type) VALUES ('automatic');\nINSERT INTO transmission(type) VALUES ('cvt');\n\nINSERT INTO engine(name) VALUES ('gas');\nINSERT INTO engine(name) VALUES ('diesel');\nINSERT INTO engine(name) VALUES ('bensin');\n\nINSERT INTO car_body(name) VALUES ('universal');\nINSERT INTO car_body(name) VALUES ('picap');\nINSERT INTO car_body(name) VALUES ('sedan');\nINSERT INTO car_body(name) VALUES ('krosover');\nINSERT INTO car_body(name) VALUES ('lefbec');\n\nINSERT INTO car(name, id_transmission, id_engine, id_car_body)\nVALUES ('granta', 1, 2, 1);\nINSERT INTO car(name, id_transmission, id_engine, id_car_body)\nVALUES ('porshe', 3, 2, 1);\nINSERT INTO car(name, id_transmission, id_engine, id_car_body)\nVALUES ('ford', 1, 2, 1);\nINSERT INTO car(name, id_transmission, id_engine, id_car_body)\nVALUES ('mersedes', 1, 3, 2);\nINSERT INTO car(name, id_transmission, id_engine, id_car_body)\nVALUES ('bmv', 1, 3, 2);\n\nINSERT INTO car(name, id_transmission, id_engine, id_car_body)\nVALUES ('lada vesta', 2, 3, 3);\nINSERT INTO car(name, id_transmission, id_engine, id_car_body)\nVALUES ('mazda3', 3, 3, 3);\nINSERT INTO car(name, id_transmission, id_engine, id_car_body)\nVALUES ('toyota corolla', 3, 3, 3);\nINSERT INTO car(name, id_transmission, id_engine, id_car_body)\nVALUES ('volkswagen passat', 3, 2, 3);\n\n-- Вывести список всех машин и все привязанные к ним детали.\nSELECT c.name, t.type, e.name, c_b.name\nFROM car as c\nLEFT OUTER JOIN transmission as t ON c.id_transmission=t.id\nLEFT OUTER JOIN engine e ON c.id_engine=e.id\nLEFT OUTER JOIN car_body c_b ON c.id_car_body=c_b.id;\n\n-- Вывести отдельно детали, которые не используются в машине, кузова, двигатели, коробки передач.\nSELECT t.type\nFROM car as c\nRIGHT OUTER JOIN transmission as t ON c.id_transmission=t.id\nWHERE c.id IS NULL;\n\n\tSELECT e.name\n\tFROM car as c\n\tRIGHT OUTER JOIN engine as e ON c.id_engine=e.id\n\tWHERE c.id IS NULL;\n\n\t\tSELECT c_b.name\n\t\tFROM car c\n\n\t\tRIGHT OUTER JOIN car_body c_b ON c.id_car_body=c_b.id\n\t\tWHERE c.id IS NULL;\n//детали трансмиссии которые не используються в кузове\n\t\tSELECT t.type\n                FROM transmission as t\n                LEFT OUTER JOIN car_body as c_b ON c_b.id_transmission=t.id\n                WHERE c_b.id IS NULL;\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_007/src/main/resources/223208.sql	(revision 4b1d4d8e662fbefca963ba47932e27cead076b32)
++++ chapter_007/src/main/resources/223208.sql	(date 1586605969360)
+@@ -86,3 +86,7 @@
+                 FROM transmission as t
+                 LEFT OUTER JOIN car_body as c_b ON c_b.id_transmission=t.id
+                 WHERE c_b.id IS NULL;
++select carbody.typecar, engine.engine, transmission.transmission  from carlist full outer join carbody on carlist.typecar = carbody.id
++						  full outer join engine on carlist.engine = engine.id
++						  full outer join transmission on carlist.transmission = transmission.id
++						  where carlist.modek_name is null;
+Index: chapter_006/src/main/java/io/consol/Input.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_006/src/main/java/io/consol/Input.java	(date 0)
++++ chapter_006/src/main/java/io/consol/Input.java	(date 0)
+@@ -0,0 +1,14 @@
++package io.consol;
++
++import java.util.function.Consumer;
++
++public interface Input {
++    String ask(String question, Consumer<String> consumer);
++}
++  /*  static Object getBytes() {
++    }
++    ret
++
++    String ask(String question, Consumer<String> consumer) throws IOException;
++}*/
++
+diff --git chapter_008/src/main/resources/rabbit.properties chapter_008/src/main/resources/rabbit.properties
+new file mode 100644

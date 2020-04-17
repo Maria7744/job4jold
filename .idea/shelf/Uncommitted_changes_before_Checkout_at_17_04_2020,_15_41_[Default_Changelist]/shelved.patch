@@ -1,0 +1,312 @@
+Index: chapter_008/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\"\n         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\">\n    <modelVersion>4.0.0</modelVersion>\n\n    <groupId>org.example</groupId>\n    <artifactId>chapter_008</artifactId>\n    <version>3.0</version>\n    <build>\n        <plugins>\n            <plugin>\n                <groupId>org.apache.maven.plugins</groupId>\n                <artifactId>maven-compiler-plugin</artifactId>\n                <configuration>\n                    <source>11</source>\n                    <target>11</target>\n                </configuration>\n            </plugin>\n                <plugin>\n                    <groupId>org.liquibase</groupId>\n                    <artifactId>liquibase-maven-plugin</artifactId>\n                    <version>3.8.1</version>\n                    <configuration>\n                        <changeLogFile>${basedir}/db/master.xml</changeLogFile>\n                        <url>jdbc:postgresql://127.0.0.1:5432</url>\n                        <driver>org.postgresql.Driver</driver>\n                        <username>postgres</username>\n                        <password>password</password>\n                    </configuration>\n                    <executions>\n                        <execution>\n                            <phase>process-resources</phase>\n                            <goals>\n                                <goal>update</goal>\n                            </goals>\n                        </execution>\n                    </executions>\n                </plugin>\n            </plugins>\n    </build>\n    <dependencies>\n    <dependency>\n        <groupId>org.example</groupId>\n        <artifactId>chapter_002</artifactId>\n        <version>3.0</version>\n    </dependency>\n\n        <dependency>\n            <groupId>log4j</groupId>\n            <artifactId>log4j</artifactId>\n            <version>1.2.17</version>\n        </dependency>\n        <dependency>\n            <groupId>org.slf4j</groupId>\n            <artifactId>slf4j-log4j12</artifactId>\n            <version>1.7.30</version>\n        </dependency>\n        <dependency>\n            <groupId>junit</groupId>\n            <artifactId>junit</artifactId>\n            <version>4.12</version>\n            <scope>test</scope>\n        </dependency>\n\n    </dependencies>\n\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_008/pom.xml	(revision db95605945590b92b3cec4b48f3f9a76bfb4cfc1)
++++ chapter_008/pom.xml	(date 1587127175169)
+@@ -47,22 +47,18 @@
+     </dependency>
+ 
+         <dependency>
+-            <groupId>log4j</groupId>
+-            <artifactId>log4j</artifactId>
+-            <version>1.2.17</version>
++            <groupId>org.slf4j</groupId>
++            <artifactId>slf4j-api</artifactId>
++            <version>1.7.30</version>
+         </dependency>
+         <dependency>
+             <groupId>org.slf4j</groupId>
+             <artifactId>slf4j-log4j12</artifactId>
+             <version>1.7.30</version>
+-        </dependency>
+-        <dependency>
+-            <groupId>junit</groupId>
+-            <artifactId>junit</artifactId>
+-            <version>4.12</version>
+-            <scope>test</scope>
++            <scope>compile</scope>
+         </dependency>
+ 
++
+     </dependencies>
+ 
+ </project>
+\ No newline at end of file
+Index: chapter_006/src/main/java/ioBot/ClientNew.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ioBot;\nimport java.io.BufferedReader;\nimport java.io.IOException;\nimport java.io.InputStreamReader;\nimport java.io.PrintWriter;\nimport java.net.InetAddress;\nimport java.net.Socket;\nimport java.util.Scanner;\n\npublic class ClientNew {\n    private static  int port = 9000;\n    private  static String ip;\n\n    public ClientNew(String ip,int port) {\n        this.ip = ip;\n        this.port = port;\n    }\n\n    public void start2()  throws IOException{\n        Socket socket = new Socket(InetAddress.getByName(null), port) ;\n        PrintWriter out  = new PrintWriter( socket.getOutputStream(),true);\n        BufferedReader in = new BufferedReader(\n                new InputStreamReader(socket.getInputStream())) ;\n        Scanner console = new Scanner(System.in);\n        String regueste ;\n        String response ;\n        do{\n            regueste = console.nextLine();\n            out.println(regueste);\n            if (\"Exit\".equals(regueste)){\n                while (!(response = in.readLine()).isEmpty()){\n                    System.out.println(response);\n                    out.flush();\n                    out.close();\n                    in.close();\n                    socket.close();\n                }\n            }\n        }\n                while (!(\"Exit\".equals(regueste)));\n            }\n\n            public static void main(String[] args) throws IOException {\n                new ClientNew(\"localhost\", 9000);\n            }\n    }\n\n\n\n\n\n\n\n\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_006/src/main/java/ioBot/ClientNew.java	(revision db95605945590b92b3cec4b48f3f9a76bfb4cfc1)
++++ chapter_006/src/main/java/ioBot/ClientNew.java	(date 1587127205669)
+@@ -1,4 +1,7 @@
+ package ioBot;
++
++//import com.google.common.net.InetAddresses;
++
+ import java.io.BufferedReader;
+ import java.io.IOException;
+ import java.io.InputStreamReader;
+@@ -8,27 +11,21 @@
+ import java.util.Scanner;
+ 
+ public class ClientNew {
+-    private static  int port = 9000;
+-    private  static String ip;
+-
+-    public ClientNew(String ip,int port) {
+-        this.ip = ip;
+-        this.port = port;
+-    }
+-
+-    public void start2()  throws IOException{
++    public ClientNew(String ip,int port) throws IOException{
++       // Socket socket = new Socket(InetAddress.getByName(ip),port) ;
+         Socket socket = new Socket(InetAddress.getByName(null), port) ;
+         PrintWriter out  = new PrintWriter( socket.getOutputStream(),true);
+         BufferedReader in = new BufferedReader(
+                 new InputStreamReader(socket.getInputStream())) ;
+         Scanner console = new Scanner(System.in);
+-        String regueste ;
+-        String response ;
++        String regueste = null;//str
++        String response = null;
+         do{
+             regueste = console.nextLine();
+             out.println(regueste);
+             if ("Exit".equals(regueste)){
+                 while (!(response = in.readLine()).isEmpty()){
++
+                     System.out.println(response);
+                     out.flush();
+                     out.close();
+@@ -39,10 +36,11 @@
+         }
+                 while (!("Exit".equals(regueste)));
+             }
+-
+             public static void main(String[] args) throws IOException {
+                 new ClientNew("localhost", 9000);
+             }
++
++
+     }
+ 
+ 
+Index: chapter_008/src/main/java/princeple_004/UsageLog4j.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package princeple_004;\n\nimport org.slf4j.Logger;\nimport org.slf4j.LoggerFactory;\n\npublic class UsageLog4j {\n    private static final Logger LOG = LoggerFactory.getLogger(UsageLog4j.class.getName());\n\n    public static void main(String[] args) {\n        String name = \"Petr Arsentev\";\n        int age = 33;\n        Double  height = 1.78;\n        char sex = 'm';\n        int id = 567456;\n        double weight = 79.5;\n        String socialStatus = \"married\";\n        Boolean job = true;\n        LOG.debug(\"User info name : {}, age : {}, height :{}, sex :{}, id :{}, socialStatus:{}, job :{}\", name, age, height,\n                sex, id, weight, socialStatus,job );\n    }\n}\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_008/src/main/java/princeple_004/UsageLog4j.java	(revision db95605945590b92b3cec4b48f3f9a76bfb4cfc1)
++++ chapter_008/src/main/java/princeple_004/UsageLog4j.java	(date 1587127222079)
+@@ -1,5 +1,4 @@
+ package princeple_004;
+-
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
+ 
+@@ -7,16 +6,11 @@
+     private static final Logger LOG = LoggerFactory.getLogger(UsageLog4j.class.getName());
+ 
+     public static void main(String[] args) {
+-        String name = "Petr Arsentev";
+-        int age = 33;
+-        Double  height = 1.78;
+-        char sex = 'm';
+-        int id = 567456;
+-        double weight = 79.5;
+-        String socialStatus = "married";
+-        Boolean job = true;
+-        LOG.debug("User info name : {}, age : {}, height :{}, sex :{}, id :{}, socialStatus:{}, job :{}", name, age, height,
+-                sex, id, weight, socialStatus,job );
++        LOG.trace("trace message");
++        LOG.debug("debug message");
++        LOG.info("info message");
++        LOG.warn("warn message");
++        LOG.error("error message");
+     }
+ }
+ 
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n         xmlns=\"http://maven.apache.org/POM/4.0.0\"\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\">\n    <modelVersion>4.0.0</modelVersion>\n    <groupId>org.example</groupId>\n    <artifactId>job4j</artifactId>\n    <packaging>pom</packaging>\n    <version>3.0</version>\n    <profiles>\n        <profile>\n            <id>test</id>\n            <properties>\n                <db.url>jdbc:postgresql://127.0.0.1:5432/tracker</db.url>\n                <db.username>postgres</db.username>\n                <db.password>password</db.password>\n                <db.driver>org.postgresql.Driver</db.driver>\n            </properties>\n        </profile>\n        <profile>\n            <id>production</id>\n            <properties>\n                <db.url>jdbc:postgresql://127.0.0.1:5432/tracker</db.url>\n                <db.username>postgres</db.username>\n                <db.password>password</db.password>\n                <db.driver>org.postgresql.Driver</db.driver>\n            </properties>\n        </profile>\n        <profile>\n            <id>travis</id>\n            <activation>\n                <activeByDefault>true</activeByDefault>\n            </activation>\n            <properties>\n                <db.url>jdbc:postgresql://localhost/tracker</db.url>\n                <db.username>postgres</db.username>\n                <db.password></db.password>\n                <db.driver>org.postgresql.Driver</db.driver>\n            </properties>\n        </profile>\n    </profiles>\n    <modules>\n        <module>chapter_001</module>\n        <module>chapter_002</module>\n        <module>chapter_003</module>\n        <module>chapter_004</module>\n        <module>chapter_005</module>\n        <module>chapter_006</module>\n        <module>chapter_007</module>\n        <module>chapter_008</module>\n        <module>chapter_005</module>\n\n    </modules>\n    <properties>\n        <maven.compiler.source>11</maven.compiler.source>\n        <maven.compiler.target>11</maven.compiler.target>\n        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>\n    </properties>\n    <dependencies>\n        <dependency>\n            <groupId>org.hamcrest</groupId>\n            <artifactId>hamcrest-all</artifactId>\n            <version>1.3</version>\n            <scope>test</scope>\n        </dependency>\n        <dependency>\n            <groupId>junit</groupId>\n            <artifactId>junit</artifactId>\n            <version>4.12</version>\n            <scope>test</scope>\n        </dependency>\n        <dependency>\n            <groupId>org.apache.logging.log4j</groupId>\n            <artifactId>log4j-api</artifactId>\n            <version>2.11.1</version>\n        </dependency>\n        <dependency>\n            <groupId>org.apache.logging.log4j</groupId>\n            <artifactId>log4j-core</artifactId>\n            <version>2.11.1</version>\n        </dependency>\n        <dependency>\n            <groupId>org.xerial</groupId>\n            <artifactId>sqlite-jdbc</artifactId>\n            <version>3.21.0.1</version>\n        </dependency>\n        <dependency>\n            <groupId>org.telegram</groupId>\n            <artifactId>telegrambots</artifactId>\n            <version>3.5</version>\n        </dependency>\n    </dependencies>\n    <build>\n        <plugins>\n            <plugin>\n                <groupId>org.apache.maven.plugins</groupId>\n                <artifactId>maven-checkstyle-plugin</artifactId>\n                <version>3.0.0</version>\n                <executions>\n                    <execution>\n                        <id>validate</id>\n                        <phase>validate</phase>\n                        <configuration>\n                            <configLocation>checkstyle.xml</configLocation>\n                            <encoding>UTF-8</encoding>\n                            <consoleOutput>true</consoleOutput>\n                            <failsOnError>true</failsOnError>\n                            <includeTestSourceDirectory>true</includeTestSourceDirectory>\n                        </configuration>\n                        <goals>\n                            <goal>check</goal>\n                        </goals>\n                    </execution>\n                </executions>\n            </plugin>\n            <plugin>\n                <groupId>org.jacoco</groupId>\n                <artifactId>jacoco-maven-plugin</artifactId>\n                <version>0.8.4</version>\n                <executions>\n                    <execution>\n                        <goals>\n                            <goal>prepare-agent</goal>\n                        </goals>\n                    </execution>\n                    <execution>\n                        <id>report</id>\n                        <phase>test</phase>\n                        <goals>\n                            <goal>report</goal>\n                        </goals>\n                    </execution>\n                </executions>\n            </plugin>\n        </plugins>\n    </build>\n\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- pom.xml	(revision db95605945590b92b3cec4b48f3f9a76bfb4cfc1)
++++ pom.xml	(date 1587127175239)
+@@ -48,7 +48,7 @@
+         <module>chapter_006</module>
+         <module>chapter_007</module>
+         <module>chapter_008</module>
+-        <module>chapter_005</module>
++        <module>chapter_009</module>
+ 
+     </modules>
+     <properties>
+@@ -70,14 +70,9 @@
+             <scope>test</scope>
+         </dependency>
+         <dependency>
+-            <groupId>org.apache.logging.log4j</groupId>
+-            <artifactId>log4j-api</artifactId>
+-            <version>2.11.1</version>
+-        </dependency>
+-        <dependency>
+-            <groupId>org.apache.logging.log4j</groupId>
+-            <artifactId>log4j-core</artifactId>
+-            <version>2.11.1</version>
++            <groupId>org.slf4j</groupId>
++            <artifactId>slf4j-log4j12</artifactId>
++            <version>1.7.30</version>
+         </dependency>
+         <dependency>
+             <groupId>org.xerial</groupId>
+Index: chapter_008/src/main/java/princeple_004/UsageLog4j2.java
+===================================================================
+--- chapter_008/src/main/java/princeple_004/UsageLog4j2.java	(revision db95605945590b92b3cec4b48f3f9a76bfb4cfc1)
++++ chapter_008/src/main/java/princeple_004/UsageLog4j2.java	(revision db95605945590b92b3cec4b48f3f9a76bfb4cfc1)
+@@ -1,17 +0,0 @@
+-package princeple_004;
+-import org.apache.logging.log4j.Logger;
+-import org.apache.logging.log4j.LogManager;
+-
+-
+-public class UsageLog4j2 {
+-    private static final Logger LOG = LogManager.getLogger(UsageLog4j2.class.getName());
+-
+-    public static void main(String[] args) {
+-        LOG.trace("trace message");
+-        LOG.debug("debug message");
+-        LOG.info("info message");
+-        LOG.warn("warn message");
+-        LOG.error("error message");
+-    }
+-}
+-
+Index: out/production/job4j/ru/job4j/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\"\n         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\">\n    <modelVersion>4.0.0</modelVersion>\n\n    <groupId>org.example</groupId>\n    <artifactId>ru.job4j</artifactId>\n    <version>3.6.3</version>\n\n\n</project>
+===================================================================
+--- out/production/job4j/ru/job4j/pom.xml	(revision db95605945590b92b3cec4b48f3f9a76bfb4cfc1)
++++ chapter_002/pom.xml	(date 1587127175185)
+@@ -5,8 +5,8 @@
+     <modelVersion>4.0.0</modelVersion>
+ 
+     <groupId>org.example</groupId>
+-    <artifactId>ru.job4j</artifactId>
+-    <version>3.6.3</version>
++    <artifactId>chapter_002</artifactId>
++    <version>3.0</version>
+ 
+-
+-</project>
+\ No newline at end of file
++    
++</project>
+Index: chapter_008/src/main/java/design/srp/Store.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_008/src/main/java/design/srp/Store.java	(date 1587127145245)
++++ chapter_008/src/main/java/design/srp/Store.java	(date 1587127145245)
+@@ -0,0 +1,10 @@
++package design.srp;
++
++import javax.sql.rowset.Predicate;
++import java.util.List;
++
++public interface Store {
++
++        List<Employer> findBy(Predicate<Employer> filter);
++    }
++
+Index: .travis.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># используем язык java. Travis CI поддерживает другие языки тоже.\nlanguage: java\njdk:\n  - openjdk11\nservices:\n  - postgresql\n\nbefore_install:\n  - psql -c 'create database tracker;' -U postgres\n\n# используем режим обычного пользователя для сборки проекта.\nsudo: false\n\n# после выполнения сборки запустить скрипт, который будет собирать статистику по JaCoCo\n# Здесь используется сторонни сервис https://codecov.io/\nafter_success:\n  - bash <(curl -s https://codecov.io/bash)\n  env:\n      global:\n  CODECOV_TOKEN=\"2979ef04-73db-424c-95a3-5ab35a5dbabe\"\n# Отправлять уведомление на почту pola7744@mail.ru (Изменить на свою) если сборка упала\nnotifications:\n  email:\n    recipients:\n      -pola7744@mail.ru\n    on_success: never # default: change\n    on_failure: always # default: always\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .travis.yml	(revision db95605945590b92b3cec4b48f3f9a76bfb4cfc1)
++++ .travis.yml	(date 1587127145243)
+@@ -20,9 +20,16 @@
+   CODECOV_TOKEN="2979ef04-73db-424c-95a3-5ab35a5dbabe"
+ # Отправлять уведомление на почту pola7744@mail.ru (Изменить на свою) если сборка упала
+ notifications:
++
+   email:
+     recipients:
+       -pola7744@mail.ru
+     on_success: never # default: change
+     on_failure: always # default: always
+ 
++# safelist
++branches:
++  only:
++    - hotfix
++    - master
++    os: osx
+Index: chapter_006/src/main/java/ioScanFile/PrintFiles.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ioScanFile;\n\n\nimport java.io.IOException;\nimport java.nio.file.FileVisitResult;\nimport java.nio.file.FileVisitor;\nimport java.nio.file.Path;\nimport java.nio.file.attribute.BasicFileAttributes;\n\nimport static java.nio.file.FileVisitResult.CONTINUE;\n\npublic class PrintFiles implements FileVisitor<Path> {\n\n    @Override\n    public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {\n        return CONTINUE;\n    }\n\n    @Override\n    public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {\n        System.out.println(file.toAbsolutePath());\n        return CONTINUE;\n    }\n\n    @Override\n    public FileVisitResult visitFileFailed(Path file, IOException exc) throws IOException {\n        return CONTINUE;\n    }\n\n    @Override\n    public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {\n        return CONTINUE;\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- chapter_006/src/main/java/ioScanFile/PrintFiles.java	(revision db95605945590b92b3cec4b48f3f9a76bfb4cfc1)
++++ chapter_006/src/main/java/ioScanFile/PrintFiles.java	(date 1587127145363)
+@@ -16,6 +16,7 @@
+         return CONTINUE;
+     }
+ 
++
+     @Override
+     public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+         System.out.println(file.toAbsolutePath());
+Index: chapter_006/src/test/java/ioBot/EshoServerTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ioBot;\nimport com.google.common.base.Joiner;\nimport org.junit.Test;\n\nimport java.io.ByteArrayInputStream;\nimport java.io.ByteArrayOutputStream;\nimport java.io.IOException;\n\nimport static org.mockito.Mockito.mock;\n\npublic class EshoServerTest {\n    private static final String LN = System.getProperty(\"line.separator\");\n\n    @Test\n    public void whenAskExit() throws IOException{\n        this.testEchoServer(\"exit\",\" \");\n    }\n\n    @Test\n    public void whenAskHellow() throws IOException{\n        this.testEchoServer(\n                Joiner.on(LN).join(\n                        \"Hello\",\n                        \"exit\"\n                ),\n                String.format(\"http://localhost:9000/?msg=Hello\",LN,LN)\n        );\n    }\n\n    @Test\n    public void whenASkWhat() throws IOException{\n        this.testEchoServer(\n                Joiner.on(LN).join(\n                        \"Any\",\n                        \"exit\"\n                ),\n                String.format(\"http://localhost:9000/?msg=Any...\",LN,LN)\n        );\n    }\n\n    private void testEchoServer(String input,String exepted)throws IOException{\n        Socket socket = mock(Socket.class);\n        ByteArrayOutputStream out = new ByteArrayOutputStream();\n        ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes()\n        );\n    }\n}\n
+===================================================================
+--- chapter_006/src/test/java/ioBot/EshoServerTest.java	(revision db95605945590b92b3cec4b48f3f9a76bfb4cfc1)
++++ chapter_006/src/test/java/ioBot/EshoServerNewTest.java	(date 1587127214710)
+@@ -1,4 +1,5 @@
+ package ioBot;
++
+ import com.google.common.base.Joiner;
+ import org.junit.Test;
+ 
+@@ -8,7 +9,7 @@
+ 
+ import static org.mockito.Mockito.mock;
+ 
+-public class EshoServerTest {
++public class EshoServerNewTest {
+     private static final String LN = System.getProperty("line.separator");
+ 
+     @Test
+@@ -23,10 +24,9 @@
+                         "Hello",
+                         "exit"
+                 ),
+-                String.format("http://localhost:9000/?msg=Hello",LN,LN)
++                String.format("http://localhost:9000/?msg=Hellow",LN,LN)
+         );
+     }
+-
+     @Test
+     public void whenASkWhat() throws IOException{
+         this.testEchoServer(
