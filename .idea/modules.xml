@@ -4,7 +4,11 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/chapter_001/chapter_001.iml" filepath="$PROJECT_DIR$/chapter_001/chapter_001.iml" />
       <module fileurl="file://$PROJECT_DIR$/chapter_002/chapter_002.iml" filepath="$PROJECT_DIR$/chapter_002/chapter_002.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chapter_003/chapter_003.iml" filepath="$PROJECT_DIR$/chapter_003/chapter_003.iml" />
       <module fileurl="file://$PROJECT_DIR$/chapter_004/chapter_004.iml" filepath="$PROJECT_DIR$/chapter_004/chapter_004.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chapter_006/chapter_006.iml" filepath="$PROJECT_DIR$/chapter_006/chapter_006.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chapter_007/chapter_007.iml" filepath="$PROJECT_DIR$/chapter_007/chapter_007.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chapter_008/chapter_008.iml" filepath="$PROJECT_DIR$/chapter_008/chapter_008.iml" />
     </modules>
   </component>
 </project>
